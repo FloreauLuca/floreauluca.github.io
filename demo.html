@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<style>
+body {background-color: powderblue;}
+h3   {color: blue;}
+p    {color: black;}
+p.error {color: red;}
+
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+.gifBack {
+  background-image: url('data/UI.gif');
+  background-attachment: fixed;
+  background-size: 25% 25%;
+  }
+  
+table, th, td {
+  padding: 15px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+}
+table#t01 {
+  width: 100%;
+  background-color: #f1f1c1;
+}
+.menu {
+  float:left;
+  width:20%;
+  text-align:center;
+  background-color:#e5e5e5;
+  padding:8px;
+  margin-top:7px;
+  display:block;
+  width:100%;
+  color:black;
+}
+.main {
+  float:left;
+  width:60%;
+  padding:0 20px;
+}
+.right {
+  background-color:#e5e5e5;
+  float:left;
+  width:20%;
+  padding:15px;
+  margin-top:7px;
+  text-align:center;
+}
+#div1 {
+  width: 350px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+
+@media screen and (max-width:800px) {
+  .left {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+	font-size:5vw
+  }
+  .menu, .main, .right {
+    width:100%;
+  }
+}
+</style>
+  <title>FloreauLuca</title>
+  <meta charset="UTF-8">.
+  <meta name="description" content="Free Web tutorials">
+  <meta name="keywords" content="HTML, CSS, XML, JavaScript">
+  <meta name="author" content="John Doe">
+  <meta http-equiv="refresh" content="30">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--<base href="https://www.w3schools.com/images/" target="_blank">-->
+
+
+<script>
+function clickCounter() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+    document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+  } else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+</script>
+</head>
+<body style="background-color:powderblue;">
+---------------------------------------------------------<br>
+
+<a href="index.html" style="font-size:10vw;"> Menu </a>
+
+<p>Count numbers: <output id="result1"></output></p>
+<button onclick="startWorker()">Start Worker</button> 
+<button onclick="stopWorker()">Stop Worker</button>
+
+<p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
+
+<script>
+var w;
+
+function startWorker() {
+  if(typeof(Worker) !== "undefined") {
+    if(typeof(w) == "undefined") {
+      w = new Worker("demo_workers.js");
+    }
+    w.onmessage = function(event) {
+      document.getElementById("result1").innerHTML = event.data;
+    };
+  } else {
+    document.getElementById("result1").innerHTML = "Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopWorker() { 
+  w.terminate();
+  w = undefined;
+}
+</script>
+
+
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<img id="drag1" src="data/ui.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+---------------------------------------------------------<br>
+---------------------------------------------------------<br>
+
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
+
+<object width="400" height="100" data="Data\Portfolio\File\CV_Floreau_Luca.pdf"></object>
+
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+<video id="video1" width="420" controls>
+  <source src="data/SAUCISSE.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+</div> 
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+  if (myVideo.paused) 
+    myVideo.play(); 
+  else 
+    myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 560; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 420; 
+} 
+</script> 
+
+<svg height="130" width="500">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+  <text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">SVG</text>
+  Sorry, your browser does not support inline SVG.
+</svg>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(95,50,40,0,2*Math.PI);
+ctx.stroke();
+
+</script> 
+
+<form action="/action_page.php"
+oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+  0
+  <input type="range" id="a" name="a" value="50">
+  100 +
+  <input type="number" id="b" name="b" value="50">
+  =
+  <output name="x" for="a b"></output>
+  <br><br>
+  <input type="submit">
+</form>
+
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+    <input type="radio" id="male" name="gender" value="male"><br>
+  <label for="male">Male</label><br>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label><br>
+  <input type="radio" id="other" name="gender" value="other"><br>
+  <label for="other">Other</label>
+  <select id="cars" name="cars" size="3"multiple>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="fiat">Fiat</option>
+  <option value="audi">Audi</option>
+</select>
+  <input list="browsers">
+  <datalist id="browsers">
+    <option value="Internet Explorer">
+    <option value="Firefox">
+    <option value="Chrome">
+    <option value="Opera">
+    <option value="Safari">
+  </datalist>
+</form> 
+
+<textarea name="message" rows="10" cols="30">
+The cat was playing in the garden.
+</textarea>
+
+<p>I will display &euro;</p>
+<p>I will display &#8364;</p>
+<p>I will display &#x20AC;</p>
+<figure>
+  <img src="pic_trulli.jpg" alt="Trulli">
+  <figcaption>Fig1. - Trulli, Puglia, Italy.</figcaption>
+</figure>
+
+<aside>
+  <h4>Epcot Center</h4>
+  <p>The Epcot Center is a theme park in Disney World, Florida.</p>
+</aside>
+
+<section>
+  <h1>WWF</h1>
+  <p>The World Wide Fund for Nature (WWF) is....</p>
+</section>
+<article>
+  <header>
+    <h1>What Does WWF Do?</h1>
+    <p>WWF's mission:</p>
+  </header>
+  <p>WWF's mission is to stop the degradation of our planet's natural environment,
+  and build a future in which humans live in harmony with nature.</p>
+</article>
+
+<footer>
+  <p>Posted by: Hege Refsnes</p>
+  <p>Contact information: <a href="mailto:someone@example.com">
+  someone@example.com</a>.</p>
+</footer>
+
+<p>Save the document by <samp>pressing</samp> <kbd>Ctrl + S</kbd></p>
+
+Einstein wrote: <var>E</var> = <var>mc</var><sup>2</sup>.
+
+
+<code>
+x = 5;<br>
+y = 6;<br>
+z = x + y;
+</code>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+  </div>
+  
+  <div class="main">
+    <h2>Lorum Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+  </div>
+  
+  <div class="right">
+    <h2>About</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+  </div>
+</div>
+
+<header>
+  <h2>Cities</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="#">London</a></li>
+      <li><a href="#">Paris</a></li>
+      <li><a href="#">Tokyo</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>London</h1>
+    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+  </article>
+</section>
+
+<footer>
+  <p>Footer</p>
+</footer>
+
+
+
+<h1 class="left" style="font-size:10vw">Hello World</h1>
+
+
+<script>
+document.getElementById("demo").innerHTML = "Hello JavaScript!";
+</script>
+
+<noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+<script>
+function light(sw) {
+  var pic;
+  if (sw == 0) {
+    pic = "Data/Portfolio/Penguin.png"
+  } else {
+    pic = "Data/Portfolio/Fichier 2.png"
+  }
+  document.getElementById('myImage').src = pic;
+}
+</script>
+
+<img id="myImage" src="Data/Portfolio/Penguin.png" style="max-width:120px;height:auto;">
+
+<p>
+<button type="button" onclick="light(1)">Light On</button>
+<button type="button" onclick="light(0)">Light Off</button>
+</p>
+
+<p id="demo">
+MDR Trop drole
+</p>
+<script>
+document.getElementById("demo").innerHTML = "Hello JavaScript!";
+document.getElementById("demo").style.fontSize = "25px";
+document.getElementById("demo").style.color = "red";
+document.getElementById("demo").style.backgroundColor = "yellow";
+</script>
+
+<iframe src="https://www.w3schools.com/html/html_scripts.asp" height="200" width="750" style="border:2px solid red;" name="iframe_a"></iframe>
+
+<table style="width:100%" id="t01">
+  <caption>Monthly savings</caption>
+  <tr>
+    <th>Firstname</th>
+    <th colspan="2">Telephone</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <th rowspan="2">Telephone:</th>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>94</td>
+  </tr>
+</table>
+
+<picture>
+  <source srcset="data/UI.gif">
+  <source srcset="data/UI.gif">
+  <img src="data/UI.gif" alt="Beatles" style="width:10%">
+</picture>
+
+<button  onclick="myFunction()">HTML Tutorial</button>
+<script>
+function myFunction() {
+  alert("You clicked the coffee cup!");
+}
+</script>
+<div class ="gifBack">
+<h2>Image Maps</h2>
+<p>Click on the computer, the phone, or the cup of coffee to go to a new page and read more about the topic:</p>
+
+<img src="workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379">
+
+<map name="workmap">
+  <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
+  <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
+  <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm">
+</map>
+
+<p><img src="smiley.gif" alt="Smiley face" style="float:left;width:42px;height:42px;">
+The image will float to the left of the text.</p>
+
+<a href="#C4">Jump to Chapter 4</a>
+</div>
+<h2 id="C4">Chapter 4</h2>
+
+<button onclick="document.location = 'data/UI.gif'">HTML Tutorial</button>
+
+<a href="https://www.w3schools.com/html/" target="_blank">HTML5 tutorial!</a>
+<a href="https://www.w3schools.com/html/" target="_self ">HTML5 tutorial!</a>
+<p class="error">I am different</p>
+
+<p>WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>
+<p>Here is a quote from WWF's website:</p>
+<blockquote cite="http://www.worldwildlife.org/who/index.html">
+<!--For 50 years, WWF has been protecting the future of nature.-->
+The world's leading conservation organization,
+WWF works in 100 countries and is supported by
+1.2 million members in the United States and
+close to 5 million globally.
+</blockquote>
+
+<p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+<address>
+Written by John Doe.<br>
+Visit us at:<br>
+Example.com<br>
+Box 564, Disneyland<br>
+USA
+</address>
+
+<p><cite>The Scream</cite> by Edvard Munch. Painted in 1893.</p>
+
+<bdo dir="rtl">This text will be written from right to left</bdo>
+
+
+
+<h1 style="color:green; border:2px solid Tomato; background-color:rgba(255, 99, 71, 0.2);">This is heading 1</h1>
+<p style="color:red; font-family:courier;" title="I'm a tooltip">This is a paragraph.</p>
+<h2 style="text-align:center;">This is heading 2</h2>
+<h3 style="font-size:60px;">This is heading 3</h3>
+
+<p>This is another paragraph.<br>
+<a href="https://floreauluca.github.io">This is a link</a><br>
+<img src="data/UI.gif" alt="UI gif" width="160" height="90" title="I'm a 'tooltip'"><br></p>
+<p>
+<button>Click me</button>
+<ul style="list-style-type:square;">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+
+<ol style="font-family:courier;" type="I" start="50">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+  <li>Milk</li>
+  <li>Milk</li>
+  <li>Milk</li>
+  <li>Milk</li>
+</ol>
+<dl>
+  <dt>Coffee</dt>
+  <dd>- black hot drink</dd>
+  <dd>- black hot drink</dd>
+  <dt>Milk</dt>
+  <dd>- white cold drink</dd>
+</dl>
+<ul>
+  <li>Coffee</li>
+  <li>Tea
+    <ul>
+      <li>Black tea</li>
+      <li>Green tea</li>
+    </ul>
+  </li>
+  <li>Milk</li>
+</ul>
+</p>
+<hr>
+<pre style="color:red;">
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+</pre>
+<p>
+<b>This text is bold</b>
+<strong>This text is strong</strong><br>
+<i>This text is italic</i>
+<em>This text is emphasized</em><br>
+<del>This text is not</del><br>
+<ins>This text is underline</ins><br>
+<sub>This text is down</sub><sup>This text is up</sup><br>
+<h2>HTML <mark style = "background-color:violet;">Marked</mark> Formatting</h2>
+</p>
+</body>
+</html>

@@ -120,16 +120,6 @@ neko::ResourceId neko::ResourceManager::LoadResource(const Path assetPath)
 
 ```
 
-### Without Optimization
-
-![](Data/BlogPost/BlogPost1/LoadResourceNotOpti.png)
-
-### With Optimization
-
-![](Data/BlogPost/BlogPost1/LoadResourceOpti.png)
-
-As you can see, the optimization reduces a lot the critical section (in red) and allow the loading thread to work in parallel.
-
 ## II. IsResourceReady & GetResource
 
 The function **IsResourceReady** searches if a resource is ready and the function **GetResource** will retrieve a resource by its **ResourceID**.

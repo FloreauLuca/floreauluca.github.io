@@ -28,6 +28,9 @@
         The ResourceID used is a UUIDv4, a unique index coded in 128 bits generate randomly. This ResourceID allows users to get a resource much time.<br />
         The Resources are BufferFile, which it's a char* and its size and an integrated loading function.<br />
         <br />
+		<pre class="prettyprint linenums"><code class="prettyprint linenums language-cpp">
+  //ResourceID and BufferFile
+</code></pre>
         <br />
         For the game engine, we use a Separate Thread Resource Manager. It's a Resource Manager working a thread parallel to the main thread.<br />
         This technique allows a big optimization because it allows loading files without interrupt game thread.<br />

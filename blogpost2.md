@@ -159,6 +159,46 @@ This is a loop that will check if the **idQueue** is empty. If it's true, it wil
 As seen earlier, the loop can access the **status** without needing to be locked. To check if the **idQueue** is empty, I preferred to save it in the **status** avoiding to lock the threads.
 As seen at the start, the longest part is the loading. So, I can't let the actions 3 in the critical section. That's why I first get the **LoadPromise**, then unlock threads, **Load** and modify **ready**, and  finally lock again to set the **LoadPromise** in the map.
         
+
+```
+void neko::ResourceManager::LoadingLoop()
+{
+    while (status_ & IS_RUNNING) 
+    {
+        if (status_ & IS_NOT_EMPTY) 
+        {
+            ResourceId resourceToLoad;
+            LoadPromise promise;
+            {
+                std::lock_guard<std::mutex> lockGuard(loadingMutex_);
+                resourceToLoad = idQueue_[0];
+                promise = resourcePromises_[resourceToLoad];
+            }
+            promise.resource.Load(promise.path);
+            promise.ready = true;
+
+            {
+                std::lock_guard<std::mutex> lockGuard(loadingMutex_);
+                resourcePromises_[resourceToLoad] = promise;
+                idQueue_.erase(idQueue_.begin());
+                if (idQueue_.empty())
+                {
+                    status_ &= ~IS_NOT_EMPTY;
+                }
+            }
+        } else 
+        {
+            std::unique_lock<std::mutex> lock(loadingMutex_);
+            if (!(status_ & IS_NOT_EMPTY))
+            {
+                cv_.wait(lock);
+            }
+        }
+    }
+}
+
+```
+
 ### Without Optimization
 
 ![](Data/BlogPost/BlogPost1/LoadNotOpti.png)

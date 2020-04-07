@@ -1,8 +1,8 @@
-# Blog Seperate Thread Resource Manager
+# Blog Separate Thread Resource Manager
 ## Introduction
 I’m currently in a Games Programming formation and, during my second year of study, my classmates and I have different tasks to implement for a Game Engine in C++.
-One of my task was to implement a separate thread resource manager.
-The purpose of the resource manager is to load files in order to use them for the game, that can be materials, shaders, saved datas,...
+One of my tasks was to implement a separate thread resource manager.
+The purpose of the resource manager is to load files to use them for the game, which can be materials, shaders, saved data,...
 
 All these files will be stocked in a map ordering these resources using a **ResourceID** such as a key. The users will then use this key to access the wanted file.
 
@@ -41,7 +41,7 @@ This technique allows a big optimization because it allows loading files on a di
     
 ![](Data/BlogPost/BlogPost1/MultithreadDiagram.png)
 
-Indeed, loading resources is quite a long operation because it requires to have access to the memory.
+Indeed, loading resources is quite a long operation because it requires to have access to memory.
 
 But the difficulty with multi-threading is to access the same members with two threads. The members called by different threads are called critical members and the section using thus members are called critical sections.
 
@@ -85,7 +85,7 @@ So, the critical sections can be represented by the diagram below :
 
 ![](Data/BlogPost/BlogPost1/CriticalMembers.png)
 
-As you can see both threads must access to the same values.
+As you can see both threads must access the same values.
 To prevent threads from interacting with the same values at the same time, we need to block the threads for each use. The objective is then to block members as little as possible.
 We will see how, for each function, I optimize the critical sections to minimize them.
 
@@ -99,8 +99,8 @@ The function **LoadResource** is composed of 5 actions :
 5. Return the **ResourceID**
 
 So parts 1, 2 and 4 need to have access to critical members.
-However, the first optimization is to transform the **status** in an **atomic**. Indeed, **atomic** is a parameter allowing CPU to access and modify a value at the same time. Therefore, the modification of the **status** not need to lock other thread.
-Furthermore, I noted that the creation of a new UUID can take a lot of time. That why, I separate its creation from the push to the queue and took it out of the critical section.
+However, the first optimization is to transform the **status** in an **atomic**. Indeed, **atomic** is a parameter allowing the CPU to access and modify a value at the same time. Therefore, the modification of the **status** does not need to lock other threads.
+Furthermore, I noted that the creation of a new UUID can take a lot of time. That's why I separate its creation from the push to the queue and took it out of the critical section.
 So, only actions 1 and 4 needed to lock other threads.
 
 ```cpp
@@ -128,16 +128,15 @@ neko::ResourceId neko::ResourceManager::LoadResource(const Path assetPath)
 
 ![](Data/BlogPost/BlogPost1/LoadResourceOpti.png)
 
-As you can see, the optimization reduce a lot the critical section (in red) and allow the main thread to work in parallel.
+As you can see, the optimization reduces a lot the critical section (in red) and allow the loading thread to work in parallel.
 
 ## II. IsResourceReady & GetResource
 
-The function **IsResourceReady** search if a resource is ready and the function **GetResource** will retrieve a resource by its **ResourceID**.
-Firstly, I create a resource only when it's ready. However, that implies that I do a **find** which will go through the whole map to check if the **ResourceID** exists. That why I decided to create a **struct LoadPromise** which knows if the resource is ready.
+The function **IsResourceReady** searches if a resource is ready and the function **GetResource** will retrieve a resource by its **ResourceID**.
+Firstly, I create a resource only when it's ready. However, that implies that I do a **find** which will go through the whole map to check if the **ResourceID** exists. That's why I decided to create a **struct LoadPromise** which knows if the resource is ready.
 
 ![](Data/BlogPost/BlogPost1/FindVsReady.png)
 
-As you can see, the **find** is twice as long as the **ready**.
 As you can see, the **find** is twice as long as the **ready**
 
 ```cpp
@@ -167,18 +166,18 @@ This is a loop that will check if the **idQueue** is empty. If it's true, it wil
 3. Load the resource of the saved path
 4. Set the resource as **ready**
 
-As seen earlier, the loop can access the **status** without needed to be locked. To check if the **idQueue** is empty, I preferred to saved it in the **status** avoiding to lock the threads.
+As seen earlier, the loop can access the **status** without needing to be locked. To check if the **idQueue** is empty, I preferred to save it in the **status** avoiding to lock the threads.
 As seen at the start, the longest part is the loading. So, I can't let the actions 3 in the critical section. That's why I first get the **LoadPromise**, then unlock threads, **Load** and modify **ready**, and  finally lock again to set the **LoadPromise** in the map.
         
-###Without Optimization
+### Without Optimization
 
 ![](Data/BlogPost/BlogPost1/LoadNotOpti.png)
 
-###With Optimization
+### With Optimization
 
 ![](Data/BlogPost/BlogPost1/LoadOpti.png)
 
-As you can see, when the **LoadingLoop** is not optimized, the main thread need to wait the end of the loading to be unlock.
+As you can see, when the **LoadingLoop** is not optimized, the main thread needs to wait for the end of the loading to be unlocked.
 But when the **LoadingLoop** is optimized, the main thread can work during the loading.
 
 ## Conclusion
@@ -191,9 +190,9 @@ But when the **LoadingLoop** is optimized, the main thread can work during the l
 
 ![](Data/BlogPost/BlogPost1/OptiEasyProfile.png)
 
-As you can see, with my optimization, all the critical sections are reduced allowing the main thread to run without interruption.
-This example clearly represents the importance of optimization of the critical sections.
+As you can see, with my optimization, all the critical sections are reduced, allowing the main thread to run without interruption.
+This example represents the importance of the optimization of the critical sections.
 
 #### Lesson learned
-This project taught me a lot about the multi-threading and the way to optimized it with the critical sections.
+This project taught me a lot about multi-threading and the way to optimize it with the critical sections.
 

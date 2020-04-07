@@ -41,7 +41,7 @@ This technique allows a big optimization because it allows loading files on a di
     
 ![](Data/BlogPost/BlogPost1/MultithreadDiagram.png)
 
-Indeed, loading resources is quite a long operation because it requires to have access to memory.
+Indeed, loading resources is quite a long operation because it requires to have access to the memory.
 
 But the difficulty with multi-threading is to access the same members with two threads. The members called by different threads are called critical members and the section using thus members are called critical sections.
 
@@ -138,6 +138,7 @@ Firstly, I create a resource only when it's ready. However, that implies that I 
 ![](Data/BlogPost/BlogPost1/FindVsReady.png)
 
 As you can see, the **find** is twice as long as the **ready**.
+As you can see, the **find** is twice as long as the **ready**
 
 ```cpp
 bool neko::ResourceManager::IsResourceReady(const ResourceId resourceId)

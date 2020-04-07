@@ -93,7 +93,7 @@ We will see how, for each function, I optimize the critical sections to minimize
 
 The function **LoadResource** is composed of 5 actions :
 1. Add a **LoadPromise** for the future resource
-2. Add a new **ResourceID** at the end of the **isQueue**
+2. Add a new **ResourceID** at the end of the **idQueue**
 3. Notify threads that a **ResourceID** has been added
 4. Set the **status** to not empty
 5. Return the **ResourceID**

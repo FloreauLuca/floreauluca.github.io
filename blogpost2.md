@@ -34,6 +34,7 @@ For the game engine, we use a **Separate Thread Resource Manager**. It's a resou
 This technique allows a big optimization because it allows loading files without interrupt game thread.
     
 ![](Data/BlogPost/BlogPost1/MultithreadDiagram.png)
+
 Indeed, loading resources is quite a long operation because it requires access to memory.
 
 However, the difficulty with multi-threading is to access the same variable with two threads.
@@ -70,7 +71,9 @@ private:
 ```
 
 So, the critical sections can be represented by the diagram below :
+
 ![](Data/BlogPost/BlogPost1/CriticalMembers.png)
+
 As you can see both threads must access to the same values.
 To prevent threads from interacting with the same values at the same time, we need to block the threads for each use. The objective is then to block members as little as possible.
 
@@ -103,9 +106,12 @@ neko::ResourceId neko::ResourceManager::LoadResource(const Path assetPath)
 }
 
 ```
-###Without Optimization
+### Without Optimization
+
 ![](Data/BlogPost/BlogPost1/LoadResourceNotOpti.png)
-###With Optimization
+
+### With Optimization
+
 ![](Data/BlogPost/BlogPost1/LoadResourceOpti.png)
 
 As you can see, the optimization reduce a lot the critical section (in red) and allow the main thread to work in parallel.
@@ -116,6 +122,7 @@ The function **IsResourceReady** search if a resource is ready and the function 
 Firstly, I create a resource only when it's ready. However, that implies that I do a **find** which will go through the whole map to check if the **ResourceID** exists. That why I decided to create a **struct LoadPromise** which knows if the resource is ready.
 
 ![](Data/BlogPost/BlogPost1/FindVsReady.png)
+
 As you can see, the **find** is twice as long as the **ready**
 
 ```cpp
@@ -148,19 +155,27 @@ This is a loop that will check if the queue is empty. If it's true, it will paus
 As seen earlier, the loop can access the status_ without needed to be locked. To check if the queue is empty, I preferred to register it in the status_ avoiding to lock the threads.
 As seen at the start, the longest part is the loading. So, I can't let the actions 3 in the critical section. That's why I get the struct, unlock threads, load and modify ready, and lock again to set the promise in the map.
         
-###Without Optimization
+### Without Optimization
+
 ![](Data/BlogPost/BlogPost1/LoadNotOpti.png)
-###With Optimization
-![](Data/BlogPost/BlogPost1/LoadOpti.png)
-**TODO Explain Picture**
+
+### With Optimization
+
+![](Data/BlogPost/BlogPost1/LoadOpti.png).
+
+As you can see, when the **LoadingLoop** is not optimize, it lock the main thread during the loading.
 
 ##  V. Conclusion
 
-###Without Optimization
+### Without Optimization
+
 ![](Data/BlogPost/BlogPost1/BenchmarkNotOpti.png)
-###With Optimization
+
+### With Optimization
+
 ![](Data/BlogPost/BlogPost1/BenchmarkOpti.png)
-**TODO Explain Picture**
+
+**TODO Remake benchmark**
 **TODO Display EsayProfiler**
 
 As you can see, with my optimization, all the critical section are reduce allowing the main thread to run without interruption.

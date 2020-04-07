@@ -160,7 +160,7 @@ As seen earlier, the loop can access the **status** without needing to be locked
 As seen at the start, the longest part is the loading. So, I can't let the actions 3 in the critical section. That's why I first get the **LoadPromise**, then unlock threads, **Load** and modify **ready**, and  finally lock again to set the **LoadPromise** in the map.
         
 
-```
+```cpp
 void neko::ResourceManager::LoadingLoop()
 {
     while (status_ & IS_RUNNING) 

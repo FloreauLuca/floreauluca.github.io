@@ -4,22 +4,24 @@ I’m currently in a Games Programming formation and, during my second year of s
 One of my tasks was to implement a separate thread resource manager.
 The purpose of the resource manager is to load files to use them for the game, which can be materials, shaders, saved data,...
 
+![](Data/BlogPost/BlogPost1/map.png)
+
 All these files will be stocked in a map ordering these resources using a **ResourceID** such as a key. The users will then use this key to access the wanted file.
 
 ![](Data/BlogPost/BlogPost1/ResourceManagerDiagram.png)
 
-The **ResourceID** used is a UUIDv4, a unique index coded in 128 bits generates randomly, and the resources are **BufferFile**, which it's a char\* and its size and an integrated loading function.
+The **ResourceID** used is a UUIDv4, a unique index coded in 128 bits generates randomly, and the **Resource** is a struct composed of a **BufferFile**, which it's a char\*, its size and an integrated loading function, a boolean to know if the Resource is Loaded and its path.
 		
 ```cpp
 using ResourceId = sole::uuid;
 using Path = std::string_view;
 
-struct LoadPromise {
+struct Resource {
     BufferFile resource;
     Path path = "";
     bool ready = false;
-    LoadPromise(Path newPath) : path(newPath) {}
-    LoadPromise() {}
+    Resource(Path newPath) : path(newPath) {}
+    Resource() {}
 };
 struct BufferFile
 {
@@ -43,23 +45,25 @@ This technique allows a big optimization because it allows loading files on a di
 
 Indeed, loading resources is quite a long operation because it requires to have access to memory.
 
-But the difficulty with multi-threading is to access the same members with two threads. The members called by different threads are called critical members and the section using thus members are called critical sections.
+![](Data/BlogPost/BlogPost1/GraphSeperate.png)
+
+But the difficulty with multi-threading is to access the same members with two threads. The members called by different threads are called critical members and the section using these members are called critical sections.
 
 A class **Separate Thread Resource Manager** is composed of 3 critical members :
 - **status_** : which allows knowing the status of the resource manager (Empty, Waiting,...)
 - **idQueue_** : which is the queue of **ResourceID** needed to be loaded
-- **resourcePromise_** : which is a map using **ResourceID** as key and contain resources information (resources, path, ready)
+- **resourcePromise_** : which is a map using **ResourceID** as key and **Resource**
 
 ```cpp
 private:
-    std::unordered_map<ResourceId, LoadPromise> resourcePromises_;
-    std::vector<ResourceId> idQueue_;
-    std::atomic<std::uint8_t> status_;
     enum ResourceManagerStatus : std::uint8_t
     {
         IS_RUNNING = 1 << 1, //To check if the ResourceManager is running
         IS_NOT_EMPTY = 1 << 2, //To check if the ResourceManager has no tasks
     };
+    std::unordered_map<ResourceId, Resource> resourcePromises_;
+    std::vector<ResourceId> idQueue_;
+    std::atomic<std::uint8_t> status_;
 ```
 These members are used by 4 functions on different threads :
 Calling from the main thread :
@@ -92,7 +96,7 @@ We will see how, for each function, I optimize the critical sections to minimize
 ### I. LoadResource
 
 The function **LoadResource** is composed of 5 actions :
-1. Add a **LoadPromise** for the future resource
+1. Add a **Resource** for the future resource
 2. Add a new **ResourceID** at the end of the **idQueue**
 3. Notify threads that a **ResourceID** has been added
 4. Set the **status** to not empty
@@ -111,7 +115,7 @@ neko::ResourceId neko::ResourceManager::LoadResource(const Path assetPath)
     {
         const std::lock_guard<std::mutex> lockGuard(loadingMutex_);
         idQueue_.push_back(resourceId);
-        resourcePromises_[resourceId] = LoadPromise(assetPath);
+        resourcePromises_[resourceId] = Resource(assetPath);
     }
     status_ |= IS_NOT_EMPTY;
     cv_.notify_all();
@@ -120,14 +124,18 @@ neko::ResourceId neko::ResourceManager::LoadResource(const Path assetPath)
 
 ```
 
+![](Data/BlogPost/BlogPost1/LoadResourceValues.png)
+
+As you can see, the function not optimized is slower because it is interrupted by the other thread.
+
 ## II. IsResourceReady & GetResource
 
 The function **IsResourceReady** searches if a resource is ready and the function **GetResource** will retrieve a resource by its **ResourceID**.
-Firstly, I create a resource only when it's ready. However, that implies that I do a **find** which will go through the whole map to check if the **ResourceID** exists. That's why I decided to create a **struct LoadPromise** which knows if the resource is ready.
+Firstly, I create a resource only when it's ready. However, that implies that I do a **find** which will go through the whole map to check if the **ResourceID** exists. That's why I decided to create a **struct Resource** which knows if the resource is ready.
 
 ![](Data/BlogPost/BlogPost1/FindVsReady.png)
 
-As you can see, the **find** is twice as long as the **ready**
+As you can see, the **find** is twice as long as the **ready**.
 
 ```cpp
 bool neko::ResourceManager::IsResourceReady(const ResourceId resourceId)
@@ -144,7 +152,7 @@ neko::BufferFile neko::ResourceManager::GetResource(const ResourceId resourceId)
 {
     const std::lock_guard<std::mutex> lockGuard(loadingMutex_);
     neko_assert(resourcePromises_[resourceId].ready, "Resource not ready");
-    return resourcePromises_[resourceId].resource;
+    return resourcePromises_[resourceId].data;
 }
 ```
 
@@ -157,7 +165,7 @@ This is a loop that will check if the **idQueue** is empty. If it's true, it wil
 4. Set the resource as **ready**
 
 As seen earlier, the loop can access the **status** without needing to be locked. To check if the **idQueue** is empty, I preferred to save it in the **status** avoiding to lock the threads.
-As seen at the start, the longest part is the loading. So, I can't let the actions 3 in the critical section. That's why I first get the **LoadPromise**, then unlock threads, **Load** and modify **ready**, and  finally lock again to set the **LoadPromise** in the map.
+As seen at the start, the longest part is the loading. So, I can't let the actions 3 in the critical section. That's why I first get the **Resource**, then unlock threads, **Load** and modify **ready**, and  finally lock again to set the **Resource** in the map.
         
 
 ```cpp
@@ -168,18 +176,18 @@ void neko::ResourceManager::LoadingLoop()
         if (status_ & IS_NOT_EMPTY) 
         {
             ResourceId resourceToLoad;
-            LoadPromise promise;
+            Resource resource;
             {
                 std::lock_guard<std::mutex> lockGuard(loadingMutex_);
                 resourceToLoad = idQueue_[0];
                 promise = resourcePromises_[resourceToLoad];
             }
-            promise.resource.Load(promise.path);
-            promise.ready = true;
+            resource.data.Load(promise.path);
+            resource.ready = true;
 
             {
                 std::lock_guard<std::mutex> lockGuard(loadingMutex_);
-                resourcePromises_[resourceToLoad] = promise;
+                resourcePromises_[resourceToLoad] = resource;
                 idQueue_.erase(idQueue_.begin());
                 if (idQueue_.empty())
                 {
@@ -214,11 +222,11 @@ But when the **LoadingLoop** is optimized, the main thread can work during the l
 
 ### Without Optimization
 
-![](Data/BlogPost/BlogPost1/NotOptiEasyProfile.png)
+![](Data/BlogPost/BlogPost1/NotOptiConclu.png)
 
 ### With Optimization
 
-![](Data/BlogPost/BlogPost1/OptiEasyProfile.png)
+![](Data/BlogPost/BlogPost1/OptiConclu.png)
 
 As you can see, with my optimization, all the critical sections are reduced, allowing the main thread to run without interruption.
 This example represents the importance of the optimization of the critical sections.

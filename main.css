@@ -129,3 +129,12 @@ h3 {
     padding:10px 10px 10px 10px;
 	border-style: solid;
 }
+
+.indexBody {
+	background-position: fixed;
+	background-image:url('Data/background.png');
+	background-repeat: repeat;
+	background-position: center top;
+	background-attachment: scroll;
+	background-size: 100%;
+}

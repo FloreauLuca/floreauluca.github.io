@@ -4,7 +4,7 @@ I’m currently in a Games Programming formation and, during my second year of s
 One of my tasks was to implement a separate thread resource manager.
 The purpose of the resource manager is to load files to use them for the game, which can be materials, shaders, saved data,...
 
-![](Data/BlogPost/BlogPost1/map.png =500x)
+<img src="Data/BlogPost/BlogPost1/map.png" width="300">
 
 All these files will be stocked in a map ordering these resources using a **ResourceID** such as a key. The users will then use this key to access the wanted file.
 
@@ -45,7 +45,7 @@ This technique allows a big optimization because it allows loading files on a di
 
 Indeed, loading resources is quite a long operation because it requires to have access to memory.
 
-![](Data/BlogPost/BlogPost1/GraphSeperate.png =500x)
+<img src="Data/BlogPost/BlogPost1/GraphSeperate.png" width="800">
 
 But the difficulty with multi-threading is to access the same members with two threads. The members called by different threads are called critical members and the section using these members are called critical sections.
 

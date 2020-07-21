@@ -72,9 +72,11 @@ If the chunk exists, it uses the [Frustrum culling of Guillaume]() to know if th
 If the chunk is not in the frustum it removes the status visible and accessible.
 Finally, the chunk status looks like that.
 
+
 <img src="Data/BlogPost/BlogPost3/chunkFrustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
 > Without frustum
-<img src="Data/BlogPost/BlogPost3/chunkwithoutfrustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
+
+<img src="Data/BlogPost/BlogPost3/chunkwithout frustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
 > With frustum
 > Caption : Green = ACCESSIBLE; RED = VISIBLE; BLUE = LOADED
 
@@ -88,6 +90,7 @@ To generate a chunk, it uses the chunk position.
 ### MapGeneration
 If the chunk is underground, it fills all the chunks. If the chunk is over the surface, it will be empty.
 If the chunk is at the surface, it uses the [Map Generation of Sebastien]() to generate the ChunkContent.
+
 <img src="Data/BlogPost/BlogPost3/mapgen.jpg" width="300" alt="">
 > Slice of map generation without occlusion
 
@@ -137,6 +140,7 @@ class ChunkRenderManager final : public ComponentManager<ChunkRender, ComponentT
 ## III. CalculateBlockOcclusion
 This function is call by the **UpdateDirtyChunks** and the **GenerateChunkContent**. Its purpose is to calculate the occlusion of each block of the ChunkContentVector.
 The function is pretty simple, for each block, if there is not another block on each side, it will set it visible.
+
 <img src="Data/BlogPost/BlogPost3/blockocclusion.jpg" width="300" alt="">
 > Slice of map generation without occlusion
 
@@ -171,6 +175,7 @@ That's why, this function must be called after the **CalculateOcclusionStatus** 
 
 ### Check neighbor occlusion
 For each side of the chunks, this function will get the neighbor ChunkStatus. If all the neighbors are occluded or if their side occludes the chunk, the chunk will be occluded.
+
 <img src="Data/BlogPost/BlogPost3/chunkocclusion.jpg" width="300" alt="">
 > Slice of map generation with occlusion
 
@@ -193,14 +198,17 @@ And then, it set this ChunkContentVector into the ChunkRender in the render thre
 For each side of the chunk, it calculates the occlusion status using **CalculateOcclusionStatus**. If the calculated occlusion status is different from the stored status, it will set or remove the occlusion status.
 Then, it gets the chunk next to the modified side and call **CalculateVisibleStatus** for the neighbor chunk.
 Finally, if remove the dirty status.
+
 <img src="Data/BlogPost/BlogPost3/dirtychunk.gif" width="300" alt="">
 > Slice of map generation without occlusion
 
 ## Results
 
+
 <img src="Data/BlogPost/BlogPost3/result.gif" width="300" alt="Result rendering">
 
 ## Performance
+
 
 <img src="Data/BlogPost/BlogPost3/performance.jpg" width="300" alt="Performance With Optimization">
 

@@ -1,18 +1,18 @@
 # Blog Infinite Chunks Generation
-#Work in Progress
+
 ## Introduction
 I’m currently in a Games Programming formation and as part of the module of computer graphics, we are asked to create a Minecraft-like in C++ using the NekoEngine.
 The NekoEngine is a custom C++ Engine using SDL 2.0 and OpenGL ES 3.0. 
 
 One of my tasks was to implement the **infinite chunk generation**.
 
-Our goal was to be able to generate an infinite world horizontally and 256 blocks vertically.
+Our goal was to be able to generate an infinite world horizontally and 64 blocks vertically.
 
 So, we started on the segmentation of the world in a chunk of 16 x 16 x 16 blocks.
 
 <img src="Data/BlogPost/BlogPost3/chunk.jpg" width="300" alt="Image chunk">
 
-My chunk generation is composed of 5 actions :
+My chunk generation is composed of 6 actions :
 1. Update chunks if they are visible or not
 2. Generate new chunk if they are in the view distance
 3. Calculate if the blocks are occluded by other blocks
@@ -73,11 +73,12 @@ If the chunk is not in the frustum it removes the status visible and accessible.
 Finally, the chunk status looks like that.
 
 
-<img src="Data/BlogPost/BlogPost3/chunkFrustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
+<img src="Data/BlogPost/BlogPost3/chunkwithout frustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
 > Without frustum
 
-<img src="Data/BlogPost/BlogPost3/chunkwithout frustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
+<img src="Data/BlogPost/BlogPost3/chunkFrustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
 > With frustum
+
 > Caption : Green = ACCESSIBLE; RED = VISIBLE; BLUE = LOADED
 
 ### CheckGenerationJobs
@@ -89,7 +90,7 @@ This function is always executed in separate threads. Indeed, the chunk generati
 To generate a chunk, it uses the chunk position.
 ### MapGeneration
 If the chunk is underground, it fills all the chunks. If the chunk is over the surface, it will be empty.
-If the chunk is at the surface, it uses the [Map Generation of Sebastien]() to generate the ChunkContent.
+If the chunk is at the surface, it uses the [Map Generation of Sebastien](https://sebastienfeser.github.io/) to generate the ChunkContent.
 
 <img src="Data/BlogPost/BlogPost3/mapgen.jpg" width="300" alt="">
 > Slice of map generation without occlusion
@@ -121,7 +122,7 @@ In the stored chunk content, it calls **CalculateBlockOcclusion** to keep only v
 And finally, it set this ChunkContentVector into the ChunkRender in the render thread.
 
 ### ChunkRender
-The ChunkRender is an ECS component used to store the render data of the chunks. It creates OpenGL data of the instance based on the ChunkContentVector. For more information, you can check the [Chunk Rendering of Simon]().
+The ChunkRender is an ECS component used to store the render data of the chunks. It creates OpenGL data of the instance based on the ChunkContentVector. For more information, you can check the [Chunk Rendering of Simon](https://canassimon.github.io/blog/programming/2020/07/20/chunk-rendering).
 ```cpp
 struct ChunkRender
 {
@@ -210,10 +211,12 @@ Finally, if remove the dirty status.
 ## Performance
 
 
-<img src="Data/BlogPost/BlogPost3/performance.jpg" width="300" alt="Performance With Optimization">
+<img src="Data/BlogPost/BlogPost3/performance.jpg" width="750" alt="Performance With Optimization">
+
+> On Windows10, Intel(R) Core(TM) i7-8750H CPU @2.20GHz, NVIDIA GeForce GTX 1060 with MSVC v16.5
 
 - First 256 chunks take 1319 ms to be generate in 9 threads
-- On average, the generation of chunks takes 33 ms
+- On average, the generation of new chunks takes 33 ms
 - UpdateVisibleChunk take 1.6 ms each update
 - Breaking a block and update chunk take 13 ms
 

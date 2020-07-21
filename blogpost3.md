@@ -167,7 +167,7 @@ That's why, this function must be called after the **CalculateOcclusionStatus** 
 For each side of the chunks, this function will get the neighbour ChunkStatus. If all the neighbour are occluded or if their side occlude the chunk, the chunk will be occluded.
 
 <a name="UpdateDirtyChunks"></a>
-## VI. UpdateDirtyChunks
+## V. UpdateDirtyChunks
 This function is only call by the **UpdateVisibleChunks** because it purpose is to recalculate chunk if a chunk is occluded or can occlude when the chunk has been modified.
 ### Chunk Dirty Status
 The ChunkStatus Dirty is set by the PlayerController when a block is placed or break. It used to recalculate if a chunk is occluded or can occlude.
@@ -177,42 +177,39 @@ enum class ChunkFlag: std :: uint16_t
 	DIRTY = 1u << 11u;
 }
 ```
-### Check Chunk Occlusion Status
+### Reset Block Occlusion
+First, it recalculate the block occlusion of the chunk with **CalculateBlockOcclusion**.
+And then, it set this ChunkContentVector into the ChunkRender in the render thread.
 
 ### Check Chunk Occlusion Status
+For each side of the chunk, it calculate the occlusion status using **CalculateOcclusionStatus**. If the calculated occlusion status is different from the stored status, it will set or remove the occlusion status.
+Then, it get the chunk next to the modified side and call **CalculateVisibleStatus** for the neighbour chunk.
+Finally, if remove the dirty status.
 
-- Get the player's chunk, for this, 
-- For each chunk in the viewing distance, I will check if the chunk exists.
-- If it exists I will set it as visible, otherwise I will add GenerateChunkArray tu the job task. .
-- Then, for each visible chunk, I will call the SetChunkOcclusion.
+## Results
 
+<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Result rendering">
+
+## Performance
 
 ### Without Optimization
 
-![](Data/BlogPost/BlogPost1/LoadNotOpti.png)
-
+<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Performance without Optimization">
 ### With Optimization
 
-![](Data/BlogPost/BlogPost1/LoadOpti.png)
+<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Performance With Optimization">
 
-As you can see, when the **LoadingLoop** is not optimized, the main thread needs to wait for the end of the loading to be unlocked.
-But when the **LoadingLoop** is optimized, the main thread can work during the loading.
+- Firsts chnks take 800ms to be generate X threads
+- generation of new chunks take 76.7 ms
 
 ## Conclusion
 
-### Without Optimization
-
-![](Data/BlogPost/BlogPost1/NotOptiConclu.png)
-
-### With Optimization
-
-![](Data/BlogPost/BlogPost1/OptiConclu.png)
-
 As you can see, with my optimization, all the critical sections are reduced, allowing the main thread to run without interruption.
-This example represents the importance of the optimization of the critical sections.
+The project run at X fps with shadows and X fps without shadows
 
 #### How to go futher
-This project taught me a lot about multi-threading and the way to optimize it with the critical sections.
+- the use of IDs for chunks greatly facilitated by the decision to set up a finite world
 
 #### Lesson learned
-This project taught me a lot about multi-threading and the way to optimize it with the critical sections.
+This project taught me a lot about the importance of good data management.
+

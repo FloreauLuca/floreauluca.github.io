@@ -10,7 +10,7 @@ Our goal was to be able to generate an infinite world horizontally and 256 block
 
 So, we started on the segmentation of the world in a chunk of 16 x 16 x 16 blocks.
 
-<img src="Data/BlogPost/BlogPost3/chunk.png" width="300" alt="Image chunk">
+<img src="Data/BlogPost/BlogPost3/chunk.jpg" width="300" alt="Image chunk">
 
 My chunk generation is composed of 5 actions :
 1. Update chunks if they are visible or not
@@ -19,8 +19,6 @@ My chunk generation is composed of 5 actions :
 2. Calculate if the new chunks occlude other chunks
 3. Calculate if the new chunks are occluded by other chunks
 5. Recalculate if a chunk is occluded or can occlude when the chunk has been modified
-
-<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Diagram chunk generation">
 
 All these actions will be done in the class **ChunkSystem**.
 
@@ -74,9 +72,9 @@ If the chunk exists, it uses the [Frustrum culling of Guillaume]() to know if th
 If the chunk is not in the frustum it removes the status visible and accessible.
 Finally, the chunk status looks like that.
 
-<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Gif of CheckVisibleChunks">
+<img src="Data/BlogPost/BlogPost3/chunkFrustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
 > Without frustum
-<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Gif of CheckVisibleChunks">
+<img src="Data/BlogPost/BlogPost3/chunkwithoutfrustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
 > With frustum
 > Caption : Green = ACCESSIBLE; RED = VISIBLE; BLUE = LOADED
 
@@ -139,7 +137,7 @@ class ChunkRenderManager final : public ComponentManager<ChunkRender, ComponentT
 ## III. CalculateBlockOcclusion
 This function is call by the **UpdateDirtyChunks** and the **GenerateChunkContent**. Its purpose is to calculate the occlusion of each block of the ChunkContentVector.
 The function is pretty simple, for each block, if there is not another block on each side, it will set it visible.
-<img src="Data/BlogPost/BlogPost3/mapgen.jpg" width="300" alt="">
+<img src="Data/BlogPost/BlogPost3/blockocclusion.jpg" width="300" alt="">
 > Slice of map generation without occlusion
 
 <a name="CalculateVisibleStatus"></a>
@@ -173,8 +171,8 @@ That's why, this function must be called after the **CalculateOcclusionStatus** 
 
 ### Check neighbor occlusion
 For each side of the chunks, this function will get the neighbor ChunkStatus. If all the neighbors are occluded or if their side occludes the chunk, the chunk will be occluded.
-<img src="Data/BlogPost/BlogPost3/mapgen.jpg" width="300" alt="">
-> Slice of map generation without occlusion
+<img src="Data/BlogPost/BlogPost3/chunkocclusion.jpg" width="300" alt="">
+> Slice of map generation with occlusion
 
 <a name="UpdateDirtyChunks"></a>
 ## V. UpdateDirtyChunks
@@ -195,31 +193,27 @@ And then, it set this ChunkContentVector into the ChunkRender in the render thre
 For each side of the chunk, it calculates the occlusion status using **CalculateOcclusionStatus**. If the calculated occlusion status is different from the stored status, it will set or remove the occlusion status.
 Then, it gets the chunk next to the modified side and call **CalculateVisibleStatus** for the neighbor chunk.
 Finally, if remove the dirty status.
-<img src="Data/BlogPost/BlogPost3/mapgen.jpg" width="300" alt="">
+<img src="Data/BlogPost/BlogPost3/dirtychunk.gif" width="300" alt="">
 > Slice of map generation without occlusion
 
 ## Results
 
-<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Result rendering">
+<img src="Data/BlogPost/BlogPost3/result.gif" width="300" alt="Result rendering">
 
 ## Performance
 
-### Without Optimization
+<img src="Data/BlogPost/BlogPost3/performance.jpg" width="300" alt="Performance With Optimization">
 
-<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Performance without Optimization">
-### With Optimization
-
-<img src="Data/BlogPost/BlogPost3/map.png" width="300" alt="Performance With Optimization">
-
-- Firsts chnks take 800ms to be generate X threads
-- generation of new chunks take 76.7 ms
+- First 256 chunks take 1319 ms to be generate in 9 threads
+- On average, the generation of chunks takes 33 ms
+- UpdateVisibleChunk take 1.6 ms each update
+- Breaking a block and update chunk take 13 ms
 
 ## Conclusion
-
-The project run at X fps with shadows and X fps without shadows
+Using my chunk generation, I optimize the generation and the rendering of our Minecraft-like thanks to Chunks Occlusion, Blocks Occlusion and Frustum Culling. 
 
 #### How to go futher
-- the use of IDs for chunks greatly facilitated by the decision to set up a finite world
+You can use of IDs for chunks greatly facilitated by the decision to set up a finite world
 
 #### Lesson learned
 This project taught me a lot about the importance of good data management.

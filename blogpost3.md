@@ -32,8 +32,8 @@ This function is call every Update of the engine. It purpose is to update chunks
 ### GetLoadedChunks
 For each loaded, if it's not in viewDIst, remove visible and if it's not in accessibleDist, remove accessible.
 To know the ChunkStatus, they are all stored inside ChunkStatusManager
-
 ```cpp
+using ChunkMask = std::uint16_t;
 enum class ChunkFlag: std :: uint16_t
 {
 EMPTY = 1u << 0u,
@@ -70,7 +70,7 @@ If it's Dirty, I call **UpdateDirtyChunks**.
 
 ### CheckVisibleChunks
 For each position inside the view distance, I search if the chunk exist.
-If not I create a Job to launch the [**GenerateChunkContent**](#GenerateChunkContent) in the other thread.
+If not I create a Job to launch the **GenerateChunkContent** in the other thread.
 If the chunk exist, I use the [Frustrum culling of Guillaume]() to know if the chunk is in the view field and set it at visible. If this chunk is in the accessible distance, I will set it accessible.
 If the chunk is not in the frustum I remove the status visible and accessible.
 Finally the chunk Update look like that.
@@ -93,6 +93,8 @@ The ChunkContentVector is an ECS component used to store blocks data in chunks. 
 struct ChunkContentVector
 {
 	std::vector<ChunkContent> blocks;
+	
+	void CalculateBlockOcclusion();
 }
 class ChunkContentManager final : public ComponentManager<ChunkContentVector, ComponentType::CHUNK_CONTENT>
 {
@@ -128,19 +130,57 @@ class ChunkRenderManager final : public ComponentManager<ChunkRender, ComponentT
 ```
 
 <a name="CalculateOcclusionBlocks"></a>
-## III. CalculateOcclusionBlocks
-- When the chunks are generated, check if the chunk occludes the vision of the adjacent blocks.
+## III. CalculateBlockOcclusion
+This function is call by the **UpdateDirtyChunks** and the **GenerateChunkContent**. It purpose is to calculate the occlusion of each block of the ChunkContentVector.
+The function is pretty simple, for each block, if there is not another block on each side, it will set it visible.
 
 <a name="CalculateVisibleStatus"></a>
-## III. CalculateVisibleStatus 
-- For each visible chunk, I check the adjacent chunk and if they are occluded, I will set them as invisible.
+## III. CalculateOcclusionStatus 
+This function is also call by the **UpdateDirtyChunks** and the **GenerateChunkContent**. It purpose is to calculate if a chunk can occlude another chunk.
+
+### Chunk Oclussion Status
+The chunk occlusion status is store inside the ChunkStatus. It used to know if a side of a chunk can occlude its neighbour.
+```cpp
+enum class ChunkFlag: std :: uint16_t
+{
+OCCLUDE_DOWN = 1u << 4u,
+OCCLUDE_UP = 1u << 5u,
+OCCLUDE_RIGHT = 1u << 6u,
+OCCLUDE_LEFT = 1u << 7u,
+OCCLUDE_FRONT = 1u << 8u,
+OCCLUDE_BACK = 1u << 9u,
+}
+```
+
+### Chunk Side Check
+First, if a chunk is empty, the function return false because it can't occlude another chunk and if a chunk is full, the function return true because it always occlude another chunk.
+Then, I check all the side, if the side if full of block it return true because the side occlude the neighbor chunk, else it return false.
+
 
 <a name="CalculateBlockOcclusion"></a>
-## IV. CalculateBlockOcclusion 
-- For each block in chunks, I check their is a adjacent block, I will set them as invisible.
+## IV. CalculateVisibleStatus 
+This function is also call by the **UpdateDirtyChunks** and the seperate thread by the **UpdateVisibleChunks**. Indeed, this fonction can be run in another thread because it will online affect invisible chunks.
+Indeed, it purpose is to calculate if a chunk is occlude by another chunk.
+That's why, this function must be called after the **CalculateOcclusionStatus** because it will use the occlusion datas of the other chunks.
+
+### Check neighbour occlusion
+For each side of the chunks, this function will get the neighbour ChunkStatus. If all the neighbour are occluded or if their side occlude the chunk, the chunk will be occluded.
 
 <a name="UpdateDirtyChunks"></a>
 ## VI. UpdateDirtyChunks
+This function is only call by the **UpdateVisibleChunks** because it purpose is to recalculate chunk if a chunk is occluded or can occlude when the chunk has been modified.
+### Chunk Dirty Status
+The ChunkStatus Dirty is set by the PlayerController when a block is placed or break. It used to recalculate if a chunk is occluded or can occlude.
+```cpp
+enum class ChunkFlag: std :: uint16_t
+{
+	DIRTY = 1u << 11u;
+}
+```
+### Check Chunk Occlusion Status
+
+### Check Chunk Occlusion Status
+
 - Get the player's chunk, for this, 
 - For each chunk in the viewing distance, I will check if the chunk exists.
 - If it exists I will set it as visible, otherwise I will add GenerateChunkArray tu the job task. .

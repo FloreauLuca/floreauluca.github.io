@@ -143,7 +143,7 @@ This function is call by the **UpdateDirtyChunks** and the **GenerateChunkConten
 The function is pretty simple, for each block, if there is not another block on each side, it will set it visible.
 
 <img src="Data/BlogPost/BlogPost3/blockocclusion.jpg" width="300" alt="">
-> Slice of map generation without occlusion
+> Chunk with block occlusion
 
 <a name="CalculateVisibleStatus"></a>
 ## III. CalculateOcclusionStatus 
@@ -201,7 +201,8 @@ Then, it gets the chunk next to the modified side and call **CalculateVisibleSta
 Finally, if remove the dirty status.
 
 <img src="Data/BlogPost/BlogPost3/dirtychunk.gif" width="300" alt="">
-> Slice of map generation without occlusion
+
+> Example of occluded chunks generate when blocks are break
 
 ## Results
 

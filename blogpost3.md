@@ -68,7 +68,7 @@ If the chunk is dirty, I call **UpdateDirtyChunks**.
 ### CheckVisibleChunks
 For each position inside the view distance, it searches if the chunk already exists.
 If not, it creates a Job to launch the **GenerateChunkContent** in the other thread.
-If the chunk exists, it uses the [Frustrum culling of Guillaume]() to know if the chunk is in the view field and set it visible. If this chunk is in the accessible distance, I will set it accessible.
+If the chunk exists, it uses the [Frustrum culling of Guillaume](https://gjeannin0.github.io/) to know if the chunk is in the view field and set it visible. If this chunk is in the accessible distance, I will set it accessible.
 If the chunk is not in the frustum it removes the status visible and accessible.
 Finally, the chunk status looks like that.
 
@@ -86,7 +86,7 @@ Finally, it checks if all my jobs are done and launch the **CalculateVisibleStat
 
 <a name="GenerateChunkContent"></a>
 ## II. GenerateChunkContent
-This function is always executed in separate threads. Indeed, the chunk generation is pretty slow (avg **TODO**) and, to avoid to freeze the player when a new chunk is generated, it is better to loaded chunk in multi-threading. 
+This function is always executed in separate threads. Indeed, the chunk generation is pretty slow (33ms/chunk) and, to avoid to freeze the player when a new chunk is generated, it is better to loaded chunk in multi-threading. 
 To generate a chunk, it uses the chunk position.
 ### MapGeneration
 If the chunk is underground, it fills all the chunks. If the chunk is over the surface, it will be empty.

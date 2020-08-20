@@ -16,8 +16,10 @@
 .header {
     padding: 80px; /* some padding */
     text-align: center; /* center the text */
-    background: lightblue; /* green background */
-    color: white; /* white text color */
+    background: url(Data/Portfolio/fond.png); /* green background */
+    color: #313094; /* white text color */
+    background-repeat: repeat;
+    background-position: center;
 }
 
 .mySlides {
@@ -25,10 +27,34 @@
     padding: 20px;
     margin: auto;
 }
+.gamepanel {
+    padding-bottom: 100px;
+}
 
 /* Increase the font size of the <h1> element */
 .header h1 {
-  font-size: 40px;
+  font-size: 80px;
+}
+
+/* Increase the font size of the <h1> element */
+h1 {
+    font-size: 80px;
+    color: #313094; /* white text color */
+}
+
+/* Increase the font size of the <h1> element */
+h2 {
+    font-size: 35px;
+    color: #313094; /* white text color */
+}
+/* Increase the font size of the <h1> element */
+h5 {
+    font-size: 30px;
+}
+
+/* Increase the font size of the <h1> element */
+p {
+    font-size: 20px;
 }
 
 /* Style the top navigation bar */
@@ -76,9 +102,9 @@
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
-  flex: 30%; /* Set the width of the sidebar */
-  background-color: #f1f1f1; /* Grey background color */
-  padding: 20px; /* Some padding */
+    flex: 30%; /* Set the width of the sidebar */
+    background-color: #C3F3FA; /* Grey background color */
+    padding: 20px; /* Some padding */
 }
 
 .sideimg {
@@ -86,9 +112,9 @@
 
 /* Main column */
 .main {
-  flex: 70%; /* Set the width of the main content */
-  background-color: white; /* White background color */
-  padding: 20px; /* Some padding */
+    flex: 70%; /* Set the width of the main content */
+    background-color: #def3fa; /* White background color */
+    padding: 20px; /* Some padding */
 }
 
 .footer {
@@ -107,19 +133,17 @@
 /* game image*/
 .gameimg {
     height : 500px;
-    padding: 20px;
 }
 
 /* label bar*/
 .labelbar {
     display: flex;
-    background-color: #f1f1f1; /* Grey background color */
 }
 
 /* game image*/
 .label {
     width: 150px; /* Set the width of the sidebar */
-    padding: 20px; /* Some padding */
+    padding: 10px; /* Some padding */
     float: left; /* Make sure that the links stay side-by-side */
 }
 
@@ -130,20 +154,24 @@
 /* game image*/
 .contact {
     display: flex;
-    background-color: #aaa;
+    background-color: #19D1FF;
     width: 100%;
-    padding: 20px;
-    text-align: center;
 }
 
 /* game image*/
 .contactimg {
-    height: 50px; /* Set the width of the sidebar */
+    flex: 30%; /* Set the width of the sidebar */
+    height: 70px; /* Set the width of the sidebar */
     padding: 10px 15px; /* Some padding */
     float: left; /* Make sure that the links stay side-by-side */
 }
 
 /* game image*/
 .contacttxt {
+    flex: 70%; /* Set the width of the main content */
     display: inline-block;
+    color: black;
+    font-weight: bold;
+    padding-left: 15px; /* Some padding */
+    vertical-align: middle;
 }

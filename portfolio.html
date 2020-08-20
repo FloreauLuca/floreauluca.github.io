@@ -1,150 +1,232 @@
 ﻿<!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="main.css">
+    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="portfolio.css">
     <style>
-        
-        
-        
-        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
-    <title>FloreauLuca</title>
-    <meta charset="UTF-8">.
-    <meta name="description" content="Free Web tutorials">
-    <meta name="keywords" content="HTML, CSS, XML, JavaScript">
-    <meta name="author" content="John Doe">
-    <meta http-equiv="refresh" content="30">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 <body>
-<header>
-    <div class="headbar">
-        <a class="headbutton" href="index.html"> Accueil</a>
-        <a class="headbutton" href="#Apropos"> A propos</a>
-        <a class="headbutton" href="#ProjScol"> Projets Scolaires</a>
-        <a class="headbutton" href="#ProjPerso"> Projets Personels</a>
-        <a class="headbutton" style="float: right" href="#Contact"> Contact</a>
-    </div>
-</header>
-    <a href="index.html">Menu </a>
-<div class="mainBody" id="Accueil">
-    <h1> Portfolio </h1>
 
-    <div class="titleBack">
-        <img src="Data/Portfolio/Penguin.png" class="titleImg">
-        <p class="titleTxt"> Floreau Luca</p>
+    <div class="navbar">
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#" class="right">Link</a>
     </div>
 
-    <div id="Apropos">
-        <br />
-        <h1> A Propos</h1>
-        <div style="float: left; display: block;">
-            <img src="Data/Portfolio/Fichier 2.png" />
-        </div>
-        <div style="display: block; left: 50px; position:relative;">
+
+    <div class="header">
+        <h1>Portfolio</h1>
+        <p>A website created by me.</p>
+        <section>
+            <img class="mySlides" src="Data\Portfolio\Game\PotionCooking\mainmenu.png">
+            <img class="mySlides" src="Data\Portfolio\Game\PenguinCollector\Title Screen.png">
+            <img class="mySlides" src="Data\Portfolio\Game\OnTheDancefloor\titre.png">
+            <img class="mySlides" src="Data\Portfolio\Game\GoblinKiller\screen shot.png">
+            <img class="mySlides" src="Data\Portfolio\Game\FarWestDefender\title.gif">
+            <img class="mySlides" src="Data\Portfolio\Game\SpaceOutLove\title.png">
+            <img class="mySlides" src="Data\Portfolio\Game\LeechWeapon\title.png">
+        </section>
+    </div>
+    <script>
+        // Automatic Slideshow - change image every 3 seconds
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {
+            myIndex = 1
+        }
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 3000);
+        }
+    </script>
+
+    <div class="row">
+        <div class="side">
+            <h2>About Me</h2>
+            <img class="sideimg" src="Data\Portfolio\Fichier 2.png">
             <p>
-                <br />
-                Je suis Floreau Luca, j'ai 18 ans et je suis un développeur de jeux vidéo français. Je suis actuellement en formation à la SAE Istitute de Genève.<br />
-                Je suis passionné de jeux vidéo et je souhaite partager ma passion. Mon objectif est de créer des jeux jouables par tout le monde et n'importe où.<br />
-                J'ai créé mon premier jeu tout seul à 10 ans sur Game Develop.<br />
-                J'utilise Unity 3D et je sais programmer en C#, C++, Python et Java.<br />
+                Je suis Floreau Luca, j'ai 19 ans et je suis un développeur de jeux vidéo français. Je suis actuellement en formation à la SAE Istitute de Genève.
+                Je suis passionné de jeux vidéo et je souhaite partager ma passion. Mon objectif est de créer des jeux jouables par tout le monde et n'importe où.
+                J'ai créé mon premier jeu tout seul à 10 ans sur Game Develop.
+                J'utilise Unity 3D et je sais programmer en C#, C++.
             </p>
+            <h2>Contactez-moi</h2>
+            <div class="contactbar">
+                <div class="contact">
+                    <a class="contacttxt" href="mailto:floreauluca@gmail.com">
+                        <img class="contactimg" src="Data\Portfolio\Icone\mail.png">
+                        <p class="contacttxt">floreauluca@gmail.com</p>
+                    </a>
+                </div>
+                <br>
+                <div class="contact">
+                    <a class="contacttxt" href="http://www.linkedin.com/in/luca-floreau/">
+                        <img class="contactimg" src="Data\Portfolio\Icone\linkedin.png">
+                        <p class="contacttxt">http://www.linkedin.com/in/luca-floreau/</p>
+                    </a>
+                </div>
+                <br>
+                <div class="contact">
+                    <a class="contacttxt" href="http://demonskiddy.itch.io/">
+                        <img class="contactimg" src="Data\Portfolio\Icone\website.png">
+                        <p class="contacttxt">http://demonskiddy.itch.io/</p>
+                    </a>
+                </div>
+                <br>
+                <div class="contact">
+                    <a href="Data\Portfolio\File\CV_Floreau_Luca.pdf">
+                        <img class="contactimg" src="Data\Portfolio\Icone\cvicon.png">
+                        <p class="contacttxt" >Téléchargez mon CV</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <h1>Projets Scolaires</h1>
+            <div class="PotionCooking">
+                <h2>Potion Cooking</h2>
+                <h5>Game made on Nov 25, 2018</h5>
+                <img class="gameimg" src="Data\Portfolio\Game\PotionCooking\mainmenu.png">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Solo.png">
+                    <img class="label" src="Data\Portfolio\Icone\Design.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                    <img class="label" src="Data\Portfolio\Icone\Art.png">
+                </div>
+                <p>
+                    - Potion Cooking est un point and click dans lequel vous incarnez un mage qui doit fabriquer et vendre des potions magiques à ses clients.
+                </p>
+                <p>
+                    - Ce projet était le premier jeu créé dans la cadre de ma formation à la SAE. Il permettait de mettre en pratique ce que j'apprenais et de créer mon premier jeu mobile. De plus, j'ai vraiment apprécié créer les sprites avec ce style minimaliste.
+                </p>
+                <iframe frameborder="0" src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00" width="560" height="175"><a href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
+            </div>
+            <div class="PenguinCollector">
+                <h2>Penguin Collector</h2>
+                <h5>Game made on Apr 16, 2019</h5>
+                <img class="gameimg" src="Data\Portfolio\Game\PenguinCollector\Title Screen.png">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Solo.png">
+                    <img class="label" src="Data\Portfolio\Icone\Design.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                    <img class="label" src="Data\Portfolio\Icone\Art.png">
+                </div>
+                <p>
+                    - Penguin Collector est un shooter dans lequel vous devez sauver les manchots de leurs prédateurs.
+                </p>
+                <p>
+                    - Ce projet a été créé dans le but d'apprendre la génération procédurale et l'implémentation d'intelligence artificielle. Il est aussi disponible sur mobile. Je me suis occupé des graphismes, du gameplay et du game design.
+                </p>
+                <iframe frameborder="0" src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00" width="560" height="175"><a href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
+            </div>
+            <div class="OnTheDancefloor">
+                <h2>On The Dancefloor</h2>
+                <h5>Game made on Dec 18, 2018</h5>
+                <img class="gameimg" src="Data\Portfolio\Game\OnTheDancefloor\titre.png">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Team.png">
+                    <img class="label" src="Data\Portfolio\Icone\Design.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                </div>
+                <p>
+                    - On The Dancefloor est un jeu de rythme dans lequel il faut taper en rythme avec la musique pour faire bouger la danseuse.
+                </p>
+                <p>
+                    - Ce projet a été créé en une semaine dans la cadre de ma formation à SAE. C'était l'un de mes premiers projets en groupe.
+                </p>
+                <iframe frameborder="0" src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00" width="560" height="175"><a href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
+            </div>
+            <div class="GoblinsKiller">
+                <h2>Goblins Killer</h2>
+                <h5>Game made on Mar 05, 2019</h5>
+                <img class="gameimg" src="Data\Portfolio\Game\GoblinKiller\screen shot.png">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Team.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                </div>
+                <p>
+                    - Goblins Killer est un jeu de puzzle dans lequel vous devez tuer vos prisonnières avant que le héros ne viennent les sauver.
+                </p>
+                <p>
+                    - Ce projet a été créé dans le cadre de ma formation à la SAE. C'était mon premier gros projets de groupe. J'ai appris les difficultés du travail à plusieurs.
+                </p>
+                <iframe frameborder="0" src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00" width="560" height="175"><a href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
+            </div>
+            <h1>
+                Projets personnels
+            </h1>
+            <div class="FarWestDefender">
+                <h2>Far West Defender</h2>
+                <h5>Game made on Nov 25, 2018</h5>
+                <img class="gameimg" src="Data\Portfolio\Game\FarWestDefender\title.gif">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Solo.png">
+                    <img class="label" src="Data\Portfolio\Icone\Design.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                    <img class="label" src="Data\Portfolio\Icone\Art.png">
+                </div>
+                <p>
+                    - Western Defender est un tower defense dans lequel vous devez éliminer les indiens qui viennent voler l'or du train.
+                </p>
+                <p>
+                    - Ce projet a été créé dans le cadre d'un stage à Isart Digital. J'ai appris à utiliser Illustrator et Construct 2. N'ayant pas récupéré les fichiers du jeu, je ne peux réparer certains bugs graphiques.
+                </p>
+                <iframe frameborder="0" src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00" width="560" height="175"><a href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
+            </div>
+            <div class="SpaceoutLove">
+                <h2>Space out Love</h2>
+                <h5>Game made on Nov 25, 2018</h5>
+                <img class="gameimg" src="Data\Portfolio\Game\SpaceOutLove\title.png">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Team.png">
+                    <img class="label" src="Data\Portfolio\Icone\Design.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                </div>
+                <p>
+                    - Space out Love est un runner dans lequel vous incarnez une météorite qui veut retrouver son amour la Terre mais les humains vont tout faire pour l'en empêcher.
+                </p>
+                <p>
+                    - Ce projet a été créé lors de ma première Game Jam. C'était la première fois que je travaillais en groupe et on a facilement réussi à s'organiser même si on était tous les trois débutants.
+                </p>
+                <iframe frameborder="0" src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00" width="560" height="175"><a href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
+            </div>
+            <div class="LeechWeapon">
+                <h2>Leech Weapon</h2>
+                <h5>Game made on Apr 29, 2019</h5>
+                <img class="gameimg" src="Data\Portfolio\Game\LeechWeapon\title.png">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Solo.png">
+                    <img class="label" src="Data\Portfolio\Icone\Design.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                    <img class="label" src="Data\Portfolio\Icone\Art.png">
+                </div>
+                <p>
+                    - Leech Weapon est un shooter dans lequel vous devez vous défendre en aspirant la vie des zombies.
+                </p>
+                <p>
+                    - Ce projet a été créé lors de la Ludum Dare 44. C'était ma première Game Jam solo et mon premier projet en 3D. J'ai aussi pu me perfectionner sur Magical Voxel.
+                </p>
+                <iframe frameborder="0" src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00" width="560" height="175"><a href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
+            </div>
+
         </div>
     </div>
-
-	<div id="ProjScol">
-        <br />
-        <h1> Projets Scolaires</h1>
-		
-		<div class="gamePanel">
-			<div>
-				<img style="float: left; height:100px;overflow: hidden;" src="Data/Portfolio/Fichier 2.png" />
-			</div>
-			<div style="">
-				<p>
-					<br />
-					- Potion Cooking est un point and click dans lequel vous incarnez un mage qui doit fabriquer et vendre des potions magiques à ses clients.<br />
-					- Ce projet était le premier jeu créé dans la cadre de ma formation à la SAE. Il permettait de mettre en pratique ce que j'apprenais et de créer mon premier jeu mobile. De plus, j'ai vraiment apprécié créer les sprites avec ce style minimaliste.<br />
-				</p>
-			</div>
-        </div>
+    <div class="footer">
     </div>
-
-
-    <ul style="list-style-type: square;">
-        <li>Coffee</li>
-        <li>Tea</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-        <li>Milk</li>
-    </ul>
-</div>
 </body>
 </html>

@@ -23,7 +23,7 @@
 }
 
 .mySlides {
-    height: 500px;
+    height: 400px;
     padding: 20px;
     margin: auto;
 }
@@ -149,6 +149,7 @@ p {
 
 /* game image*/
 .contactbar {
+    width: 100%;
 }
 
 /* game image*/
@@ -160,7 +161,7 @@ p {
 
 /* game image*/
 .contactimg {
-    flex: 30%; /* Set the width of the sidebar */
+    display: block;
     height: 70px; /* Set the width of the sidebar */
     padding: 10px 15px; /* Some padding */
     float: left; /* Make sure that the links stay side-by-side */
@@ -168,8 +169,8 @@ p {
 
 /* game image*/
 .contacttxt {
-    flex: 70%; /* Set the width of the main content */
     display: inline-block;
+    overflow-wrap: normal;
     color: black;
     font-weight: bold;
     padding-left: 15px; /* Some padding */

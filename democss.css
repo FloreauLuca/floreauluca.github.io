@@ -480,3 +480,66 @@ h3.count::before {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
+
+.contenu,
+.contenu1,
+.contenu2 {
+    color: #fff;
+    font: 100 24px/100px sans-serif;
+    height: 150px;
+    text-align: center;
+          }
+
+.contenu div,
+.contenu1 div,
+.contenu2 div {
+    height: 50%;
+    width: 300px;
+              }
+
+.rouge {
+    background: orangered;
+       }
+
+.vert {
+    background: yellowgreen;
+      }
+
+.bleu {
+    background: steelblue;
+      }
+
+/* Styles pour les boîtes flexibles*/
+.contenu {
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid #c3c3c3;
+    height: 100vh;
+}
+
+.contenu1 {
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px solid #c3c3c3;
+}
+
+.contenu2 {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    border: 1px solid #c3c3c3;
+}
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: DodgerBlue;
+    border: 5px solid #c3c3c3;
+                }
+
+.flex-container div {
+    background-color: #f1f1f1;
+    width: 100px;
+/*    margin: 10px;*/
+/*    text-align: center;*/
+/*    line-height: 75px;*/
+/*    font-size: 30px;*/
+                      }

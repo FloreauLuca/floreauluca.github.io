@@ -4,6 +4,22 @@
         width: 552px;
         height: 167px;
     }
+
+    /* game image*/
+    .label {
+        height: 100px; /* Set the width of the sidebar */
+    }
+    .side {
+        flex: 30%; /* Set the width of the sidebar */
+          }
+
+    .main {
+        flex: 70%; /* Set the width of the main content */
+          }
+    /* Increase the font size of the <h1> element */
+    h1 {
+        font-size: 80px;
+       }
 }
 
 /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
@@ -12,6 +28,22 @@
         width: 208px;
         height: 167px;
     }
+
+    /* game image*/
+    .label {
+        height: 75px; /* Set the width of the sidebar */
+    }
+    .side {
+        flex: 100%; /* Set the width of the sidebar */
+          }
+
+    .main {
+        flex: 100%; /* Set the width of the main content */
+          }
+    /* Increase the font size of the <h1> element */
+    h1 {
+        font-size: 40px;
+       }
 }
 
 .header {
@@ -40,7 +72,6 @@
 
 /* Increase the font size of the <h1> element */
 h1 {
-    font-size: 80px;
     color: #313094; /* white text color */
 }
 
@@ -104,7 +135,6 @@ p {
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
-    flex: 30%; /* Set the width of the sidebar */
     background-color: #C3F3FA; /* Grey background color */
     padding: 20px; /* Some padding */
 }
@@ -114,7 +144,6 @@ p {
 
 /* Main column */
 .main {
-    flex: 70%; /* Set the width of the main content */
     background-color: #def3fa; /* White background color */
     padding: 20px; /* Some padding */
 }
@@ -147,8 +176,6 @@ p {
 
 /* game image*/
 .label {
-    height: 100px; /* Set the width of the sidebar */
-    width: auto; /* Set the width of the sidebar */
     padding: 10px; /* Some padding */
     float: left; /* Make sure that the links stay side-by-side */
 }

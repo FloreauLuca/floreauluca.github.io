@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Data",
-    "\\Data\\Portfolio",
-    "\\Data\\Portfolio\\File",
-    "\\Data\\Portfolio\\Icone"
+    "\\blog",
+    "\\blog\\_posts",
+    "\\Data\\Portfolio\\File"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\blog\\_config.yml",
   "PreviewInSolutionExplorer": false
 }

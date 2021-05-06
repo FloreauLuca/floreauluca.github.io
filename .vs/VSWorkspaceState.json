@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\blog",
-    "\\blog\\_posts",
-    "\\Data\\Portfolio\\File"
+    "\\aer_racers"
   ],
-  "SelectedNode": "\\blog\\_config.yml",
+  "SelectedNode": "\\aer_racers\\blogpost_physx.md",
   "PreviewInSolutionExplorer": false
 }

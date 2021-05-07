@@ -12,3 +12,6 @@ During this project, we decided to use Unity to design the level. For this, we h
 
 We chose to implement the level design on Unity because it allowed us to use the Unity editor tools without having to recreate them in the NekoEngine.
 
+<img src="data/unity_editor.png" width="300" alt="Unity Editor">
+
+> Editor in Unity

@@ -53,7 +53,7 @@ First of all, we welcomed the second-year Games Programmer as part of their Tool
 
 > Tools Hierarchy
 
-Next, we welcomed the second-year Game Artist for the production of graphic models. They used Nicolas Vallée's concept art to produce the environment, the ships, and the totems.
+Next, we welcomed the second-year Game Artist for the production of graphic models. They used Nicolas Vallee's concept art to produce the environment, the ships, and the totems.
 
 <img src="data/hierarchy_art.png" width="300" alt="Art Hierarchy">
 

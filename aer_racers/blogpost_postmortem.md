@@ -187,7 +187,8 @@ Finally, in the last phase of production, we still had many tasks on the engine 
 
 Finally, the AerRacers project could be finished in time. It is available [here]().
 
-<img src="data/" width="300" alt="Pictures of the game"> <!--TODO-->
+<img src="data/gameplay1.gif" width="300" alt="Pictures of the game">
+
 > Pictures of the game
 
 ### Final opinion

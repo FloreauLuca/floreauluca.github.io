@@ -47,9 +47,9 @@ As they used the serialization system of Unity, it was not possible to export a 
 
 In addition to the components, each entity had its instance id and the instance id of its parent, the index of its tag and layer, and its name. Moreover, it is indicated if it is active or not.
 
-```cpp
+```csharp
 [Serializable]
-public class Data
+public class EntityData
 {
     public string name;
     public string tag;
@@ -69,17 +69,43 @@ public class Data
 
 Finally, we have exported the whole scene with all the components and the list of tags and layers
 
-<img src="data/" width="300" alt="Diagram Scene Exportation"> <!--TODO-->
-
-> Diagram Scene Exprtation
-
 ### JSON Files
 
 Once this Json file was created, we set up a JSON Validator which allows us to check that the JSON is correct and that it contains all the necessary information for the import. It could then be integrated directly into the generation of data to verify during the generation of the scene is correct.
 
-<img src="data/" width="300" alt="JSON Validator"> <!--TODO-->
-
-> Part of the JSON Validator
+```json
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [ "name", "instanceId", "parent", "layer", "tag", "transform" ],
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "active": { "title": "Active", "type": "boolean" },
+          "instanceId": { "title": "Instanceid", "type": "integer" },
+          "parentId": { "title": "parentId", "type": "integer" },
+          "layer": { "title": "Layer", "type": "string" },
+          "tag": { "title": "Tag",  "type": "string" },
+          "transform": {
+            "title": "Transform",
+            "type": "object",
+            "required": [ "position", "rotation", "scale" ],
+            "properties": {
+              "position": {
+                "title": "Position",
+                "$ref": "#/definitions/vector3"
+              },
+              "rotation": {
+                "title": "Rotation",
+                "$ref": "#/definitions/vector3"
+              },
+              "scale": {
+                "title": "Scale",
+                "$ref": "#/definitions/vector3"
+              }
+            }
+          },
+```
 
 ## Scene Importer
 
@@ -131,7 +157,7 @@ As each component has a unique way of defining the information, it was important
 
 So, once the scene is finished loading, all the entities are defined with the right components and their right information.
 
-<img src="data/" width="300" alt="Diagram Scene Importation"> <!--TODO-->
+<img src="data/load_scene.png" width="300" alt="Diagram Scene Importation">
 
 > Diagram Scene Importation
 

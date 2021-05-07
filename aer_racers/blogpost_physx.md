@@ -125,7 +125,7 @@ Each physical component is composed of a RigidActor containing the parameters co
 
 However, in our project, we use two types of RigidActor, the static immobile RigidActor, and the dynamic RigidActor. In addition, we use 4 types of colliders: boxes, spheres, capsules, and meshes.
 
-<img src="data/" width="300" alt="Schema RigidActor"> <!--TODO-->
+<img src="data/rigidbody_diagram.png" width="300" alt="Schema RigidActor">
 > Diagram of a Rigid Actor
 
 So, we had to be able to initialize each RigidActor with the different possible colliders and all the parameters. 
@@ -134,7 +134,7 @@ My first decision was to separate the RigidStatic and RigidDynamic into two comp
 
 To initialize the RigidActor, I decided to use RigidActorData. These are structures containing all the parameters of the possible colliders of the RigidActor as well as the parameters of the Physics Material. The RigidDynamicData inherits from the RigidActorData but contains, in addition, the parameters of the RigidDynamic.
 
-<img src="data/" width="300" alt="UML of RigidActorData"> <!--TODO-->
+<img src="data/rigidactordata_uml.png" width="300" alt="UML of RigidActorData">
 > UML of RigidActorData
 
 Once this information is retrieved, I first create the PxShape corresponding to the Collider and PhysicsMaterial information. As our project does not require several Colliders per RigidActor, I initialize only one collider per RigidActor.
@@ -301,7 +301,7 @@ Thus, the engine on Neko allows to
 
 > Comparaison Unity and Neko
 
-<img src="data/" width="300" alt="Result in game"> <!--TODO-->
+<img src="data/game_physics.gif" width="300" alt="Result in game">
 > Result in game
 
 ### Go further

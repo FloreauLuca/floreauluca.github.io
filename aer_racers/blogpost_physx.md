@@ -2,7 +2,7 @@
 
 ## Introduction
 ### Context
-During my third year of Game Programming at SAE, we were asked to create a game on a custom C++ engine that could be played on the Nintendo Switch. So we develop the AerRacers project which you can find more details on my [post-mortem](https://floreauluca.github.io/aer_racers/blogpost_postmortem).
+During my third year of Game Programming at SAE, we were asked to create a game on a custom **C++ engine** that could be played on the **Nintendo Switch**. So we developed the **AerRacers** project which you can find more details on my [post-mortem](https://floreauluca.github.io/aer_racers/blogpost_postmortem).
 
 During this project, we first developed a prototype on Unity to define the needs of the project. Following this prototype, we realized that we would need a physics engine. 
 
@@ -21,16 +21,16 @@ After some research on the different physics engines at our disposal, we decided
 
 ## PhysX presentation
 
-PhysX is an open-source library developed by Nvidia and used in many programs or games like Unity,...
+**PhysX** is an open-source library developed by Nvidia and used in many games or programs like Unity.
 
 This choice was made because of several advantages of this library:
-- First of all, the compatibility with Unity: indeed as PhysX is the engine of Unity we did not need to change the engine for the prototype.
-- Then, PhysX is an open-source engine, so we could access the code freely if we needed it.
-- Finally, PhysX being an Nvidia library, the integration to the Nintendo Switch was greatly facilitated.
+- First of all, the **compatibility with Unity**: indeed as PhysX is the engine of Unity we did not need to change the engine for the prototype.
+- Then, PhysX is an **open-source engine**, so we could access the code freely if we needed it.
+- Finally, PhysX being an Nvidia library, the **integration to the Nintendo Switch** was greatly facilitated.
 
 ## Integration with CMake
 
-The first step for the integration of PhysX in the game engine was to integrate it into the visual studio project. For this, we used CMake because it is the tool used to manage the other libraries.
+The first step for the integration of PhysX in the game engine was to integrate it into the Visual Studio project. For this, we used **CMake** because it is the tool used to manage the other libraries.
 
 By chance, the PhysX library has a CMake List already in place.
 
@@ -126,6 +126,7 @@ Each physical component is composed of a RigidActor containing the parameters co
 However, in our project, we use two types of RigidActor, the static immobile RigidActor, and the dynamic RigidActor. In addition, we use 4 types of colliders: boxes, spheres, capsules, and meshes.
 
 <img src="data/rigidbody_diagram.png" width="300" alt="Schema RigidActor">
+
 > Diagram of a Rigid Actor
 
 So, we had to be able to initialize each RigidActor with the different possible colliders and all the parameters. 
@@ -135,6 +136,7 @@ My first decision was to separate the RigidStatic and RigidDynamic into two comp
 To initialize the RigidActor, I decided to use RigidActorData. These are structures containing all the parameters of the possible colliders of the RigidActor as well as the parameters of the Physics Material. The RigidDynamicData inherits from the RigidActorData but contains, in addition, the parameters of the RigidDynamic.
 
 <img src="data/rigidactordata_uml.png" width="300" alt="UML of RigidActorData">
+
 > UML of RigidActorData
 
 Once this information is retrieved, I first create the PxShape corresponding to the Collider and PhysicsMaterial information. As our project does not require several Colliders per RigidActor, I initialize only one collider per RigidActor.
@@ -289,7 +291,7 @@ Thus, the engine on Neko allows to
 - launch raycasts on specific objects
 - detect collision between two objects
 - import components from Unity
-- 
+
 <img src="data/test_cubefall.gif" width="300" alt="Test RigidDynamic">
 <img src="data/test_raycast.gif" width="300" alt="Test Raycasts">
 <img src="data/test_trigger.gif" width="300" alt="Tests Colliders">

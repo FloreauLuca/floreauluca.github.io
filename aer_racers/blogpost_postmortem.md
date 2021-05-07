@@ -1,4 +1,4 @@
-#Blog Import Unity Scene into Engine C++
+# Blog Post Mortem of the AerRacers Project
 
 ## Introduction
 
@@ -73,7 +73,7 @@ My first task as a producer was to divide, plan and distribute the tasks until D
 
 <img src="data/planning_september.png" width="300" alt="Plannification in September">
 
-> Plannification in September
+> Planification in September
 
 For this, I was inspired by the documents put in place during the PokProject of the third-year student last year.
 
@@ -103,7 +103,7 @@ Almost all the teams were behind schedule and the tasks were stuck on a task.
 
 <img src="data/planning_december.png" width="300" alt="Plannification in December"> 
 
-> Plannification in December
+> Planification in December
 
 For my part, I was stuck on the physics engine
 
@@ -211,10 +211,21 @@ Finally, we do not want to continue the production of the game. It was a good ex
 
 However, this project allowed me to learn several lessons that I suppose will be useful in the future.
 
-First of all, the importance of good planning
-Then, keep an eye on the objectives
-Finally, trust does not exclude control
-As well as some more technical knowledge, especially on the organization of a project.
+First of all, this project allowed me to become aware of the importance of good planning and documentation on the progress of a project but also of the time that it takes to set up. Indeed, the replanning in deliverables allowed us to advance more efficiently on our project.
+
+Moreover, it is also important to keep an eye on the objective. As I said before, this allowed us to better plan the tasks and avoid tasks that are not necessary to produce the goal. It is also a good way to show the team the importance and usefulness of their work.
+
+I noticed that it is important to follow the progress of everyone because it allows to better understand the difficulties of some tasks, but also to redirect if some tasks are not necessary. 
+
+Finally, I also learned a lot about teamwork and especially how to interact with artists and what they need to work. 
+
+But I also learned many more technical skills.
+
+First of all about the organization of a game engine and the implementation of libraries in it.
+
+Moreover, I learned the implementation of many systems like input management or file management...
+
+In parallel, I also learned how to use a development kit for a console (the Nintendo Switch).
 
 ## Thank you
 ### External thanks

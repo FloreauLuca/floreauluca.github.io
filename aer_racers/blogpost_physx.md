@@ -50,7 +50,7 @@ The first step was the initialization of all the PhysX modules.
 
 The first module is PxFoundation allowing the initialization of the other modules.
 
-Then we initialized PxPvd which allowed us to use PhysX Visual Debugger. It is a tool allowing us to visualize the physical elements in real-time. It was particularly useful to check that the elements displayed correspond to the simulated physical elements.
+Then I initialized PxPvd which allowed us to use PhysX Visual Debugger. It is a tool allowing us to visualize the physical elements in real-time. It was particularly useful to check that the elements displayed correspond to the simulated physical elements.
 
 <img src="data/physx_visual_debug.gif" width="300" alt="PhysX Visual Debugger">
 
@@ -62,9 +62,9 @@ And the last module is the initialization of the PxCooking which allowed us to c
 
 The next step consists of the creation and definition of the parameters of the scene.
 
-It is here that we specified that we use continuous collision detection allowing us to have no problem during a high-speed collision.
+It is here that I specified that we use continuous collision detection allowing us to have no problem during a high-speed collision.
 
-Finally, the last step is the call of the FixedUpdate function. For this, we used the Update function and added an accumulator to trigger the FixedUpdate only when the accumulator is greater than the step size.
+Finally, the last step is the call of the FixedUpdate function. For this, I used the Update function and added an accumulator to trigger the FixedUpdate only when the accumulator is greater than the step size.
 Moreover, I added a simulation of several steps per frame so that there is no physical slowdown in case of graphical slowdown.
 
 ```cpp
@@ -117,7 +117,7 @@ public:
 
 ## Creation of the RigidActorManager
 
-Once the physics engine was set up, we still had to link the creation of physical elements to the ECS (Entity Component System).
+Once the physics engine was set up, I still had to link the creation of physical elements to the ECS (Entity Component System).
 
 In the ECS, the components represent the parameters of an entity. So, to add physical parameters to an entity, I had to create a physical component.
 
@@ -129,7 +129,7 @@ However, in our project, we use two types of RigidActor, the static immobile Rig
 
 > Diagram of a Rigid Actor
 
-So, we had to be able to initialize each RigidActor with the different possible colliders and all the parameters. 
+So, I had to be able to initialize each RigidActor with the different possible colliders and all the parameters. 
 
 My first decision was to separate the RigidStatic and RigidDynamic into two components as they define different behaviors and only the RigidDynamic needed to be updated with each fixed update.
 

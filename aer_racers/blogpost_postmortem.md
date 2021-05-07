@@ -45,22 +45,3 @@ For the artistic direction, we received concept arts from Nicolas Vallée inspire
 
 > Concept Arts
 
-During the production, we welcomed several teams to help us.
-
-First of all, we welcomed the second-year Games Programmer as part of their Tool Production modules. They produced tools on Unity and Neko to help us in the production of our project.
-
-<img src="data/hierarchy_prog.png" width="300" alt="Tools Hierarchy">
-
-> Tools Hierarchy
-
-Next, we welcomed the second-year Game Artist for the production of graphic models. They used Nicolas Vallee's concept art to produce the environment, the ships, and the totems.
-
-<img src="data/hierarchy_art.png" width="300" alt="Art Hierarchy">
-
-> Art Hierarchy
-
-We also welcomed the second-year Audio Designer for the production of the sound effects. We also used the production of Leo for the music of the game.
-
-<img src="data/hierarchy_audio.png" width="300" alt="Audio Hierarchy">
-
-> Audio Hierarchy

@@ -1,12 +1,12 @@
-# Blog Import Unity Scene into Engine C++
+# Blog Importing Unity Scene into a C++ Engine
 
 ## Introduction
 
 ### Context
 
-During my third year of Game Programming at SAE, we were asked to create a game on a custom C++ engine that could be played on the Nintendo Switch. So we develop the AerRacers project which you can find more details on my [post-mortem](https://floreauluca.github.io/aer_racers/blogpost_postmortem).
+During my third year of Game Programming at SAE, we were asked to create a game on a custom **C++ engine** that could be played on the Nintendo Switch. So we develop the **AerRacers** project which you can find more details on my [post-mortem](https://floreauluca.github.io/aer_racers/blogpost_postmortem).
 
-During this project, we decided to use Unity to design the level. For this, we had to set up a scene system that could be imported from Unity. 
+During this project, we decided to use **Unity to design the level**. For this, we had to set up a scene system that could be imported from Unity. 
 
 ### Problematic
 
@@ -16,7 +16,7 @@ We chose to implement the level design on Unity because it allowed us to use the
 
 > Editor in Unity
 
-Moreover, the whole team is used to Unity, it allowed to avoid wasting time on the handling of a new tool.
+Moreover, the whole team is used to Unity, it allows us to avoid wasting time on the handling of a new tool.
 
 Finally, this decision was inspired by the previous student's team who had used the same technique.
 
@@ -29,7 +29,7 @@ As we already had a JSON import in Neko, we decided to export and import the sce
 
 ## Scene Exporter
 
-The Unity scene export system has been implemented by [William and Solange] in their Tool Programming module. 
+The **Unity scene export system** has been implemented by [William](https://worgaros.github.io/Pages/BPTool) and [Solange](https://sosolamojo.github.io/tool_scene_exporter_doc_tech) in their Tool Programming module. 
 
 The tool is a Unity window allowing to select the objects not to be exported and to save the .aerscene file to the desired location.
 
@@ -39,7 +39,7 @@ The tool is a Unity window allowing to select the objects not to be exported and
 
 ### Scene Exportation
 
-The first step was to export the components. To do this, they have set up Serializable structures for each component allowing them to be exported in JSON.
+The first step was to **export the components**. To do this, they have set up **Serializable structures** for each component allowing them to be exported in JSON.
 
 So for each object, they exported the information of all the components.
 
@@ -71,7 +71,7 @@ Finally, we have exported the whole scene with all the components and the list o
 
 ### JSON Files
 
-Once this Json file was created, we set up a JSON Validator which allows us to check that the JSON is correct and that it contains all the necessary information for the import. It could then be integrated directly into the generation of data to verify during the generation of the scene is correct.
+Once this Json file was created, I set up a **JSON Validator** which allows me to check that the JSON is correct and that it contains all the necessary information for the import. It could then be integrated directly into the generation of data to verify during the generation of the scene is correct.
 
 ```json
     "objects": {
@@ -111,7 +111,7 @@ Once this Json file was created, we set up a JSON Validator which allows us to c
 
 So, based on the JSON file exported by the Unity tool, I created a SceneManager that loads the scene and creates the entities and components.
 
-The first step of the loading of the scene is the recording of the parameters of the scene. Its parameters are saved in a scene structure to be able to load several scenes. As we realized that we only needed one scene, we decided to abandon this feature.
+The first step of the loading of the scene is the recording of the parameters of the scene. Its parameters are saved in a scene structure to be able to load several scenes. As I realize that we only needed one scene, I decided to abandon this feature.
 
 ```cpp
 struct Scene
@@ -124,13 +124,13 @@ struct Scene
 };
 ```
 
-When importing, we first check if the entity is active because we don't use inactive entities, then we instantiate the entity in the ECS. We register the instance id and the instance id of the parent to use them later. Indeed, since the order is not defined and a child can be exported before a parent, the organization of the entity hierarchy is done only after all entities have been created. Finally, after defining the tag and layer index of the entity, we import all the components of the entity.
+When importing, I first check if the entity is active because I don't use inactive entities, then I instantiate the entity in the ECS. I register the instance id and the instance id of the parent to use them later. Indeed, since the order is not defined and a child can be exported before a parent, the organization of the entity hierarchy is done only after all entities have been created. Finally, after defining the tag and layer index of the entity, I import all the components of the entity.
 
-The import of the components is done in 3 steps:
-- First, we check that the component object exists in the JSON and that the component is present on the entity.
-- Then, we create the component in the ECS. (As we use ECS, the component is not defined in the entity. It is defined in an array of components with the same number of elements as the number of the entity. Moreover, the possession of a component by an entity is also defined by an array of bytes containing the possessed components.)
-- Next, we import the parameters of this component.
-For this, we have set up a Component Viewer system to take care of the serialization of the components of the Component Manager. Each Component Manager has a Component Viewer that will read and write the component information from JSON but also display the component information in Imgui.
+The **import of the components** is done in 3 steps:
+- First, I check that the component object exists in the JSON and that the component is present on the entity.
+- Then, I create the component in the ECS. As we use ECS, the component is not defined in the entity. It is defined in an array of components with the same number of elements as the number of the entity. Moreover, the possession of a component by an entity is also defined by an array of bytes containing the possessed components.)
+- Next, I import the parameters of this component.
+For this, I have set up a Component Viewer system to take care of the serialization of the components of the Component Manager. Each Component Manager has a Component Viewer that will read and write the component information from JSON but also display the component information in Imgui.
 
 
 ```cpp
@@ -185,7 +185,7 @@ Finally, the scene system works well and it allowed us to easily export the leve
 <img src="data/scene_unity.png" width="300" alt="Comparison of the Unity scene">
 <img src="data/scene_neko.png" width="300" alt="Comparison of the Neko scene">
 
-> Comparison of the Unity and Neko scene
+> Comparison of the Unity scene (left) and Neko imported scene (right) 
 
 
 ### How to go further
@@ -194,14 +194,14 @@ This scene manager is as I just said based on our project. So it would be intere
 
 ### What I learned
 
-The implementation of this system allowed me to learn many things
+The implementation of this system allowed me to learn many things.
 
-First of all, I learned a lot about Unity tool production and how exporting JSON files from Unity works.
+First of all, I learned a lot about **Unity tool production** and how **exporting JSON** files from Unity works.
 
-I also learned a lot about how JSON validator works and the possibilities of using them.
+I also learned a lot about how **JSON validator** works and the possibilities of using them.
 
-Then, by importing the components in ECS, it allowed me to better understand the ECS and to better take it in hand.
+Then, by importing the components in ECS, it allowed me to **better understand the ECS** and to better take it in hand.
 
-Finally, this task allowed me to understand the importance of keeping an eye on the objective to avoid the production of useless elements for the project
+Finally, this task allowed me to understand the importance of **keeping an eye on the objective** to avoid the production of useless elements for the project
 
-Thanks to the feedback from my teachers, I understood that it was important not to base a system on a library. Indeed, this avoids having to redo a system when it is necessary to change the library.
+Thanks to the feedback from my teachers, I understood that it was important **not to base a system on a library**. Indeed, this avoids having to redo a system when it is necessary to change the library.

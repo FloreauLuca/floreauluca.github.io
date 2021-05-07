@@ -35,29 +35,34 @@ Finally, I also took care of the Engine and Game tasks according to the needs of
 
 So we decided to start on a pod racing game inspired by Star Wars Pod Racer. 
 
-<img src="data/" width="300" alt="Star Wars Pod Racer"> <!--TODO-->
+<img src="data/star_wars.jpg" width="300" alt="Star Wars Pod Racer">
+
 > Star Wars Pod Racer
 
 For the artistic direction, we received concept arts from Nicolas Vallée inspired by Porco Rosso. However, following a lack of communication of our art, we have some misunderstandings concerning the concept art produced.
 
-<img src="data/" width="300" alt="Concept Arts"> <!--TODO-->
+<img src="data/concept_art.jpg" width="300" alt="Concept Arts">
+
 > Concept Arts
 
 During the production, we welcomed several teams to help us.
 
 First of all, we welcomed the second-year Games Programmer as part of their Tool Production modules. They produced tools on Unity and Neko to help us in the production of our project.
 
-<img src="data/" width="300" alt="Tools Hierarchy"> <!--TODO-->
+<img src="data/hierarchy_prog.png" width="300" alt="Tools Hierarchy">
+
 > Tools Hierarchy
 
 Next, we welcomed the second-year Game Artist for the production of graphic models. They used Nicolas Vallée's concept art to produce the environment, the ships, and the totems.
 
-<img src="data/" width="300" alt="Art Hierarchy"> <!--TODO-->
+<img src="data/hierarchy_art.png" width="300" alt="Art Hierarchy">
+
 > Art Hierarchy
 
 We also welcomed the second-year Audio Designer for the production of the sound effects. We also used the production of Leo for the music of the game.
 
-<img src="data/" width="300" alt="Audio Hierarchy"> <!--TODO-->
+<img src="data/hierarchy_audio.png" width="300" alt="Audio Hierarchy">
+
 > Audio Hierarchy
 
 ## Pre-production

@@ -12,7 +12,8 @@ During this project, we decided to use Unity to design the level. For this, we h
 
 We chose to implement the level design on Unity because it allowed us to use the Unity editor tools without having to recreate them in the NekoEngine.
 
-<img src="data/" width="300" alt="Unity Editor"> <!--TODO-->
+<img src="data/unity_editor.png" width="300" alt="Unity Editor">
+
 > Editor in Unity
 
 Moreover, the whole team is used to Unity, it allowed to avoid wasting time on the handling of a new tool.
@@ -32,7 +33,8 @@ The Unity scene export system has been implemented by [William and Solange] in t
 
 The tool is a Unity window allowing to select the objects not to be exported and to save the .aerscene file to the desired location.
 
-<img src="data/" width="300" alt="Tool Scene Exporter"> <!--TODO-->
+<img src="data/scene_exporter.png" width="300" alt="Tool Scene Exporter">
+
 > Tool Scene Exporter in Unity
 
 ### Scene Exportation
@@ -67,7 +69,8 @@ public class Data
 
 Finally, we have exported the whole scene with all the components and the list of tags and layers
 
-<img src="data/" width="300" alt="Diagram Scene Exprtation"> <!--TODO-->
+<img src="data/" width="300" alt="Diagram Scene Exportation"> <!--TODO-->
+
 > Diagram Scene Exprtation
 
 ### JSON Files
@@ -75,6 +78,7 @@ Finally, we have exported the whole scene with all the components and the list o
 Once this Json file was created, we set up a JSON Validator which allows us to check that the JSON is correct and that it contains all the necessary information for the import. It could then be integrated directly into the generation of data to verify during the generation of the scene is correct.
 
 <img src="data/" width="300" alt="JSON Validator"> <!--TODO-->
+
 > Part of the JSON Validator
 
 ## Scene Importer
@@ -128,6 +132,7 @@ As each component has a unique way of defining the information, it was important
 So, once the scene is finished loading, all the entities are defined with the right components and their right information.
 
 <img src="data/" width="300" alt="Diagram Scene Importation"> <!--TODO-->
+
 > Diagram Scene Importation
 
 
@@ -139,8 +144,9 @@ To do this, I write the same information I read in the scene for the scene infor
 
 In order to make the loading of the scenes easier, I have set up a tool to display the scenes that can be loaded and to load them and save them.
 
-<img src="data/" width="300" alt="Tool Scee Loading Neko"> <!--TODO-->
-> Tool Scee Loading
+<img src="data/scene_loader.png" width="300" alt="Tool Scene Loading Neko">
+
+> Tool Scene Loading
 
 
 
@@ -150,7 +156,9 @@ In order to make the loading of the scenes easier, I have set up a tool to displ
 
 Finally, the scene system works well and it allowed us to easily export the level design scenes to test them on the NekoEngine.
 
-<img src="data/" width="300" alt="Comparison of the Unity and Neko scene"> <!--TODO-->
+<img src="data/scene_unity.png" width="300" alt="Comparison of the Unity scene">
+<img src="data/scene_neko.png" width="300" alt="Comparison of the Neko scene">
+
 > Comparison of the Unity and Neko scene
 
 

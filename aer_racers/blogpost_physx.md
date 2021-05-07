@@ -9,9 +9,8 @@ During this project, we first developed a prototype on Unity to define the needs
 ### Problematic
 Indeed, as we developed a racing game, we use the Unity physics engine to control speed, manage collisions and perform raycasting to determine how high the ships are.
 
-<img src="data/" width="300" alt="Vitesse"> <!--TODO-->
-<img src="data/" width="300" alt="Collision"> <!--TODO-->
-<img src="data/" width="300" alt="Raycast"> <!--TODO-->
+<img src="data/physics_proto.gif" width="300" alt="Pictures from the prototype">
+
 > Pictures from the prototype
 
 However, as we wanted to be able to import the movements directly from Unity, we had to make sure that the reactions of our engine are compatible with the engine used in Unity.
@@ -53,7 +52,8 @@ The first module is PxFoundation allowing the initialization of the other module
 
 Then we initialized PxPvd which allowed us to use PhysX Visual Debugger. It is a tool allowing us to visualize the physical elements in real-time. It was particularly useful to check that the elements displayed correspond to the simulated physical elements.
 
-<img src="data/" width="300" alt="PhysX Visual Debugger"> <!--TODO-->
+<img src="data/physx_visual_debug.gif" width="300" alt="PhysX Visual Debugger">
+
 > PhysX Visual Debugger
 
 The next module is the creation of the PxPhysic.
@@ -166,8 +166,11 @@ protected:
 ```
 
 However, as this information cannot be read at the same time as it is modified by physics, it must be retrieved in the FixedUpdate. Therefore, I had a problem when I wanted to display them in the editor for each frame. For that, and as the editor displays only one entity at a time, I save in the ComponentViewer the RigidActorData displayed and I update it at each FixedUpdate.
-<img src="data/" width="300" alt="Physics Inspector"> <!--TODO-->
+
+<img src="data/physics_inspector.gif" height="300" alt="Physics Inspector">
+
 > RigidDynamic Inspector
+
 ```cpp
 class RigidDynamicViewer final : public ComponentViewer,
 								 public FixedUpdateInterface
@@ -287,11 +290,16 @@ Thus, the engine on Neko allows to
 - detect collision between two objects
 - import components from Unity
 - 
-<img src="data/" width="300" alt="Test RigidDynamic"> <!--TODO-->
-<img src="data/" width="300" alt="Test Raycasts"> <!--TODO-->
-<img src="data/" width="300" alt="Tests Colliders"> <!--TODO-->
-<img src="data/" width="300" alt="Comparaison Unity"> <!--TODO-->
+<img src="data/test_cubefall.gif" width="300" alt="Test RigidDynamic">
+<img src="data/test_raycast.gif" width="300" alt="Test Raycasts">
+<img src="data/test_trigger.gif" width="300" alt="Tests Colliders">
+
 > Tests of the physics engine
+
+<img src="data/nekophysic.gif" width="300" alt="Comparaison Neko">
+<img src="data/unityphysic.gif" width="300" alt="Comparaison Unity">
+
+> Comparaison Unity and Neko
 
 <img src="data/" width="300" alt="Result in game"> <!--TODO-->
 > Result in game

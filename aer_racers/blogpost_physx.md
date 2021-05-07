@@ -1,7 +1,7 @@
-#Blog Import Unity Scene into Engine C++
+# Blog Integration of PhysX into a C++ Engine
 
-# Introduction
-## Context
+## Introduction
+### Context
 During my third year of Game Programming at SAE, we were asked to create a game on a custom C++ engine that could be played on the Nintendo Switch. So we develop the AerRacers project which you can find more details on my [post-mortem](https://floreauluca.github.io/aer_racers/blogpost_postmortem).
 
 During this project, we first developed a prototype on Unity to define the needs of the project. Following this prototype, we realized that we would need a physics engine. 
@@ -20,7 +20,7 @@ Therefore we had several possibilities: Create our physics engine, but we had to
 
 After some research on the different physics engines at our disposal, we decided to use PhysX.
 
-# PhysX presentation
+## PhysX presentation
 
 PhysX is an open-source library developed by Nvidia and used in many programs or games like Unity,...
 
@@ -29,7 +29,7 @@ This choice was made because of several advantages of this library:
 - Then, PhysX is an open-source engine, so we could access the code freely if we needed it.
 - Finally, PhysX being an Nvidia library, the integration to the Nintendo Switch was greatly facilitated.
 
-# Integration with CMake
+## Integration with CMake
 
 The first step for the integration of PhysX in the game engine was to integrate it into the visual studio project. For this, we used CMake because it is the tool used to manage the other libraries.
 
@@ -41,7 +41,7 @@ This task helped me to realize how long it can take to integrate a library in CM
 
 But it also allowed me to better understand how libraries work and how to integrate them with CMake.
 
-# Initialization of PhysX
+## Initialization of PhysX
 
 Once the library was integrated with CMake, I still had to integrate the engine into the project. 
 
@@ -115,7 +115,7 @@ public:
 };
 ```
 
-# Creation of the RigidActorManager
+## Creation of the RigidActorManager
 
 Once the physics engine was set up, we still had to link the creation of physical elements to the ECS (Entity Component System).
 
@@ -204,11 +204,11 @@ struct DynamicData
 };
 ```
 
-# Added functionality
+## Added functionality
 
 In addition to the RigidDynamicManager and RigidActorManager, the game needed some extra functionality.
 
-## Raycast
+### Raycast
 
 The raycast system is calculated directly from the physics engine. It returns all information used by the game.
 ```cpp
@@ -226,7 +226,7 @@ public:
 
 However the game also needed to filter a certain type of component, so I added a filter on the raycast and a type of filter in the RigidActorData. 
 
-## Contact detection
+### Contact detection
 
 The collision detection system allows to detect of a collision with a wall and also adds some force to unblock the ship. For that, I first added in the description of the scene a ContactReportShader and a PhysicsSimultationEventCallback. Then when the contact was detected in the PhysicsSimulationEventCallback, I used the listener system allowing the classes needing the ContactEnter to inherit the ContactInterface.  
 
@@ -247,13 +247,13 @@ public:
 };
 ```
 
-## MeshCollider
+### MeshCollider
 
 Finally, I had to set up the creation of a mesh collider allowing better precision with the ground. For that, it was necessary first to check that the mesh is loaded to create the RigidStatic as the mesh collider is used only for the static objects. Once loaded, I created a shape for each mesh. Finally, to create the mesh collider, I get the vertices and the indices of the mesh and I send them to the PxCooking so that it creates a PxTriangleMesh. 
 
 One of the problems I encountered was the size of the triangles. Since the terrain is large, it was impossible to generate a mesh collider with such large triangles. Therefore, I reduced the size of the model and rescaled the entity only after creating the mesh collider.
 
-## Integration in the SceneManager
+### Integration in the SceneManager
 
 Finally, I needed to export the physical components from Unity. Therefore, using the scene exporter, I decided to organize the export according to the structure in Neko. So each RigidBody has all the Collider types but with only one defined. And since there is no RigidStatic in Unity, I create a RigidStatic each time there is a collider without RigidBody.
 ```cpp
@@ -276,9 +276,9 @@ public class RigidbodyData
 }
 ```
 
-# Conclusion
+## Conclusion
 
-## Final result
+### Final result
 
 Thus, the engine on Neko allows to 
 - create RigidActor static or dynamic
@@ -296,11 +296,11 @@ Thus, the engine on Neko allows to
 <img src="data/" width="300" alt="Result in game"> <!--TODO-->
 > Result in game
 
-## Go further
+### Go further
 
 I only implemented the functions that were necessary for our project, however, PhysX has many extra features like articulations or GPU optimization.
 
-## What I learned
+### What I learned
 
 The integration of this physics engine has first of all taught me to better master the libraries and the integration of libraries in a CMake project.
 
@@ -308,9 +308,9 @@ Moreover, I also learned to better organize my files and my classes to make thin
 
 Finally, I also learned not to generalize everything but to do only the things necessary for the good progress of the project.
 
-## What I would do differently
+### What I would do differently
 
 As I learned a lot about file organization, I would reorganize them differently. I also think it would have been more interesting to make a single component for RigidDynamic and RigidStatic to avoid duplicating the same code.
 
-## Source
+### Source
 https://gameworksdocs.nvidia.com/PhysX/4.1/documentation/physxguide/Manual/BuildingWithPhysX.html 

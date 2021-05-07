@@ -71,7 +71,8 @@ The pre-production started mid-September with the presentation of the instructio
 
 My first task as a producer was to divide, plan and distribute the tasks until December. 
 
-<img src="data/" width="300" alt="Plannification in September"> <!--TODO-->
+<img src="data/planning_september.png" width="300" alt="Plannification in September">
+
 > Plannification in September
 
 For this, I was inspired by the documents put in place during the PokProject of the third-year student last year.
@@ -100,7 +101,8 @@ Arrived in December, the project had not progressed as planned.
 
 Almost all the teams were behind schedule and the tasks were stuck on a task.
 
-<img src="data/" width="300" alt="Plannification in December"> <!--TODO-->
+<img src="data/planning_december.png" width="300" alt="Plannification in December"> 
+
 > Plannification in December
 
 For my part, I was stuck on the physics engine
@@ -114,18 +116,17 @@ So at the beginning of the Christmas vacations, thanks to his advice and the tec
 First, we set up a system of deliverables, requiring us to produce certain tasks by a certain date. 
 This allowed us to have shorter-term goals that were easier to achieve.
 
-<img src="data/" width="300" alt="Deliverables"> <!--TODO-->
+<img src="data/delivrables.png" width="300" alt="Deliverables"> 
+
 > Deliverables
 
 
 Secondly, in addition to the tasks, we set up subtasks, allowing us to better define the tasks and to fit the tasks into the duration of a sprint.
 
-<img src="data/" width="300" alt="Plannification by sprints"> <!--TODO-->
-> Plannification by sprints
-
 Finally, Elias advised us to organize the tasks according to the MVP, allowing us to avoid unnecessary tasks and to see the progress of the game.
 
-<img src="data/" width="300" alt="MVP Grid"> <!--TODO-->
+<img src="data/mvp.png" width="300" alt="MVP Grid">
+
 > MVP Grid
 
 ## Importation in Neko
@@ -143,7 +144,8 @@ After the import in NekoEngine, we welcomed the graphic and audio artists.
 
 So I took care of defining the deadlines for the assets so that the Lead Artist could define the production milestones.
 
-<img src="data/" width="300" alt="Artist Planification"> <!--TODO-->
+<img src="data/art_planning.png" width="300" alt="Artist Planification">
+
 > Artist Planification
 
 We also followed the production of the arts to answer their questions and give them feedback.
@@ -160,7 +162,8 @@ In parallel, we also asked the artists to help us with the level design.
 
 Indeed, as we didn't know exactly how to reconcile adaptable level design and a fluid terrain, we directly gave the responsibility of the game design to the artists. 
 
-<img src="data/" width="300" alt="Level Design"> <!--TODO-->
+<img src="data/level_design.png" width="300" alt="Level Design">
+
 > Level Design
 
 However, I regret that we didn't take enough time to give feedback on the level design which could have been done differently to avoid game design confusion.

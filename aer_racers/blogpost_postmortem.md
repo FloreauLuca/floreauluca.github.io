@@ -39,7 +39,7 @@ So we decided to start on a pod racing game inspired by Star Wars Pod Racer.
 
 > Star Wars Pod Racer
 
-For the artistic direction, we received concept arts from Nicolas Vallée inspired by Porco Rosso. However, following a lack of communication of our art, we have some misunderstandings concerning the concept art produced.
+For the artistic direction, we received concept arts from Nicolas Vallee inspired by Porco Rosso. However, following a lack of communication of our art, we have some misunderstandings concerning the concept art produced.
 
 <img src="data/concept_art.jpg" width="300" alt="Concept Arts">
 

@@ -25,7 +25,7 @@
             display: none
         }
         .fr {
-            display: initial 
+            display: block 
         }
     </style> 
     <script>
@@ -47,10 +47,10 @@
         function checkCookie() {
             var user=getCookie("lang");
             if (user === "fr") {
-                document.getElementsByClassName("fr").style.display = initial;
+                document.getElementsByClassName("fr").style.display = block;
                 document.getElementsByClassName("en").style.display = none;
             } else {
-                document.getElementsByClassName("en").style.display = initial;
+                document.getElementsByClassName("en").style.display = block;
                 document.getElementsByClassName("fr").style.display = none;
             }
             console.log("lang" + user);

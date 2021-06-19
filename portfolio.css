@@ -7,11 +7,15 @@
 
     /* game image*/
     .label {
-        height: 100px; /* Set the width of the sidebar */
+        height: 75px; /* Set the width of the sidebar */
     }
     .side {
         flex: 30%; /* Set the width of the sidebar */
           }
+
+    .mySlides {
+        height: 400px;
+    }
 
     .main {
         flex: 70%; /* Set the width of the main content */
@@ -37,6 +41,10 @@
         flex: 100%; /* Set the width of the sidebar */
           }
 
+    .mySlides {
+        height: 250px;
+    }
+
     .main {
         flex: 100%; /* Set the width of the main content */
           }
@@ -49,15 +57,13 @@
 .header {
     padding: 80px; /* some padding */
     text-align: center; /* center the text */
-    background: url(Data/Portfolio/fond.png); /* green background */
+    background: linear-gradient(180deg, rgba(87,162,255,1) 64%, rgba(222,243,250,1) 100%); /* green background */
     color: #313094; /* white text color */
     background-repeat: repeat;
     background-position: center;
 }
 
 .mySlides {
-    max-width: 800px;
-    width:100%;
     padding: 20px;
     margin: auto;
 }

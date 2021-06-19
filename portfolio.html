@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-733ERGFVJ7"></script>
-	<script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-733ERGFVJ7"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-733ERGFVJ7');
@@ -13,7 +13,7 @@
     <title>Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio de Luca Floreau">
+    <meta name="description" content="Floreau Luca's Portfolio in english">
     <meta name="keywords" content="Floreau, Luca, FloreauLuca, Portfolio, Game, Dev, SAE, Student">
     <meta name="author" content="Floreau Luca">
     <link rel="stylesheet" href="portfolio.css">
@@ -21,54 +21,14 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
-        .en {
-            display: none
-        }
-        .fr {
-            display: block 
-        }
-    </style> 
-    <script>
-        function getCookie(cname) {
-            var name = cname + "=";
-            var decodedCookie = decodeURIComponent(document.cookie);
-            var ca = decodedCookie.split(';');
-            for(var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-        function checkCookie() {
-            var user=getCookie("lang");
-            if (user === "fr") {
-                document.getElementsByClassName("fr").style.display = "block";
-                document.getElementsByClassName("en").style.display = "none";
-            } else {
-                document.getElementsByClassName("en").style.display = "block";
-                document.getElementsByClassName("fr").style.display = "none";
-            }
-            console.log("lang" + user);
-        } 
-        function setLang(lang) {          
-            var d = new Date();
-            d.setTime(d.getTime() + (10*24*60*60*1000));
-            var expires = "expires=" + d.toGMTString();
-            document.cookie = "lang=" + lang + ";" + expires + ";path=/";
-        }
-    </script>
+    </style>
 </head>
-<body onload="checkCookie()">
+<body>
     <div class="navbar">
         <a href="index.html">Menu</a>
         <a href="blogMenu.html">Blog</a>
-        <a href="portfolio.html" class="right" onclick="setLang('fr')">FR</a>
-        <a href="portfolio.html" class="right" onclick="setLang('en')">EN</a>
+        <a href="portfolio.html" class="right">FR</a>
+        <a href="portfolioenglish.html" class="right">EN</a>
     </div>
     <div class="header">
         <h1>Floreau Luca</h1>
@@ -82,6 +42,7 @@
             <img class="mySlides" src="Data\Portfolio\Game\PortalMan\title.gif">
             <img class="mySlides" src="Data\Portfolio\Game\TheUnstoppableMrStarr\title.png">
             <img class="mySlides" src="Data\Portfolio\Game\FarWestDefender\title.gif">
+            <img class="mySlides" src="Data\Portfolio\Game\AerRacers\title.png">
         </section>
     </div>
     <script>
@@ -99,31 +60,23 @@
             if (myIndex > x.length) {
                 myIndex = 1
             }
-            x[myIndex-1].style.display = "block";
+            x[myIndex - 1].style.display = "block";
             setTimeout(carousel, 3000);
         }
     </script>
 
     <div class="row">
         <div class="side">
-            <h2>A propos</h2>
-            <img class="sideimg" src="Data\Portfolio\Fichier 2.png"> 
-            <br/>
-            <p class="fr">
-                Je suis Floreau Luca, j'ai 19 ans et je suis un développeur français de jeux vidéo. Je suis actuellement en formation à la SAE Institute de Genève. <br />
-                Je suis passionné de jeux vidéo et je souhaite partager ma passion. Mon objectif est de créer des jeux pouvant être joué par tout le monde et partout.<br />
-                J'ai créé mon premier jeu quand j'avais 10 ans sur Game Develop<br />
-                Je développe actuellement avec Unity3D et en C++<br />
-                Si vous appréciez ce que vous voyez, vous pouvez regarder mon Twitter ou mon itch.io . <br />
-            </p>
-            <p class="en">
+            <h2>About Me</h2>
+            <img class="sideimg" src="Data\Portfolio\Fichier 2.png">
+            <p>
                 I am Floreau Luca, I am 19 years old and I am a French video game developer. I am currently in formation at the SAE Institute in Geneva. <br />
                 I am passionate about video games and I want to share my passion. My goal is to create games that can be played by anyone, anywhere. <br />
                 I created my first game on my own when I was 10 years old on Game Develop. <br />
                 I develop with Unity 3D and C ++. <br />
                 If you like what you see, you can check out more of what I do on my twitter and my itch.io . <br />
             </p>
-            <h2>Mes contacts</h2>
+            <h2>Contact me</h2>
             <div class="contactbar">
                 <div class="contact">
                     <a class="contacttxt" href="mailto:floreauluca@gmail.com">
@@ -149,19 +102,47 @@
                 <div class="contact">
                     <a class="contacttxt" href="Data\Portfolio\File\CV_Floreau_Luca.pdf">
                         <img class="contactimg" src="Data\Portfolio\Icone\cvicon.png">
-                        <p class="contacttxt">Téléchargez mon CV</p>
+                        <p class="contacttxt">Download my CV</p>
                     </a>
                 </div>
+                <br>
                 <div class="contact">
                     <a class="contacttxt" href="https://github.com/FloreauLuca">
                         <img class="contactimg" src="Data\Portfolio\Icone\website.png">
-                        <p class="contacttxt">https://github.com/FloreauLuca</p>
+                        <p class="contacttxt">github.com/FloreauLuca</p>
+                    </a>
+                </div>
+                <br>
+                <div class="contact">
+                    <a class="contacttxt" href="https://twitter.com/Kiddy_Prod">
+                        <img class="contactimg" src="Data\Portfolio\Icone\website.png">
+                        <p class="contacttxt">twitter.com/Kiddy_Prod</p>
                     </a>
                 </div>
             </div>
         </div>
         <div class="main">
             <h1>School Projects</h1>
+            <div class="AerRacers gamepanel">
+                <h2>AerRacers</h2>
+                <p><b>Program made on May 10, 2021</b></p>
+                <img class="gameimg" src="Data\Portfolio\Game\AerRacers\aerracers_run.gif">
+                <div class="labelbar">
+                    <img class="label" src="Data\Portfolio\Icone\Team.png">
+                    <img class="label" src="Data\Portfolio\Icone\Prog.png">
+                    <img class="label" src="Data\Portfolio\Icone\C++.png">
+                </div>
+                <p>
+                    - AerRacers is a local multi-player pod racing game running on Nintendo Switch.
+                </p>
+                <p>
+                    - This project was create in 8 months as part of my Bachelor.     <br />
+                    - I work in team with 4 of my classmates in C++ using the NekoEngine, we also work with 8 tools programmers, 10 visual artists and 2 audio artists.  <br />
+                    - I was Lead Programmer and Producer.
+                    - I learn a lot working with a big team for a long-term project  
+                </p>
+                <a href="https://github.com/SAE-Institute-Geneva/AerRacers/releases"><p>Checkout the release : github.com/SAE-Institute-Geneva/AerRacers/releases</p></a>
+            </div>
             <div class="Minecraft-like gamepanel">
                 <h2>Minecraft-like</h2>
                 <p><b>Program made on Jul 24, 2020</b></p>
@@ -175,9 +156,9 @@
                     - Our Minecraft-like is a project where you can move inside an infinite generate world.
                 </p>
                 <p>
-                    - This project was create in 2 months as part of the module of computer graphics.
-                    I work in team with 7 of my classmates in C++ using the NekoEngine.
-                    The NekoEngine is a custom C++ Engine using SDL 2.0 and OpenGL ES 3.0. <br />
+                    - This project was create in 2 months as part of the module of computer graphics. <br />
+                    - I work in team with 7 of my classmates in C++ using the NekoEngine.  <br />
+                    - The NekoEngine is a custom C++ Engine using SDL 2.0 and OpenGL ES 3.0. <br />
                     - I enjoy working on chunk generation and chunk rendering.
                 </p>
                 <a href="https://github.com/LoshkinOleg/NekoEngine/releases"><p>Checkout the release : github.com/LoshkinOleg/NekoEngine/releases</p></a>
@@ -282,10 +263,11 @@
                     - This project was created in 48 hours during the Miz Jam 1. The goal was to create a game using a specific art assets. The game is available in mobile.
                 </p>
                 <iframe class="gamewidget" frameborder="0" src="https://itch.io/embed/734163?bg_color=4a2e3b&amp;fg_color=ffffff&amp;link_color=e0403f&amp;border_color=410033"><a href="https://demonskiddy.itch.io/springman">SpringMan by DemonsKiddy</a></iframe>
-            </div><div class="PortalMan gamepanel">
-                <h2>PortalMan</h2>
-                <p><b>Game made on August 11, 2020</b></p>
-                <img class="gameimg" src="Data\Portfolio\Game\PortalMan\title.gif">
+            </div>
+            <div class="LeechWeapon gamepanel">
+                <h2>LeechWeapon</h2>
+                <p><b>Game made on Apr 29, 2019</b></p>
+                <img class="gameimg" src="Data\Portfolio\Game\LeechWeapon\title.gif">
                 <div class="labelbar">
                     <img class="label" src="Data\Portfolio\Icone\Solo.png">
                     <img class="label" src="Data\Portfolio\Icone\Jam.png">
@@ -296,12 +278,12 @@
                 </div>
 
                 <p>
-                    - PortalMan is a puzzle-plateformer in 3D where you have to reach the end using your portal.
+                    - LeechWeapon is a action shooter in 3D where you have to use your health to kill zombies.
                 </p>
                 <p>
-                    - This project was created in 2 hours during the RigidJam 20. The goal was to create a game using Portal and Teleportation. It allow me to learn how to use ShaderGraph.
+                    - This project was created in 48 hours during the Ludum Dare 44. I learn a lot on programming and graphism.
                 </p>
-                <iframe class="gamewidget" frameborder="0" src="https://itch.io/embed/727225?bg_color=9c0000&amp;fg_color=ffffff&amp;link_color=009739&amp;border_color=550002"><a href="https://demonskiddy.itch.io/portalman">PortalMan by DemonsKiddy</a></iframe>
+                <iframe class="gamewidget" frameborder="0" src="https://itch.io/embed/412405?bg_color=494949&amp;fg_color=ffffff&amp;link_color=00d41d&amp;border_color=7f7373"><a href="https://demonskiddy.itch.io/leech-weapon">LeechWeapon by DemonsKiddy</a></iframe>
             </div>
             <div class="TheUnstoppableMrStarr gamepanel">
                 <h2>The Unstoppable Mr.Starr</h2>

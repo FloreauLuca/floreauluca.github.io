@@ -47,11 +47,11 @@
         function checkCookie() {
             var user=getCookie("lang");
             if (user === "fr") {
-                document.getElementsByClassName("fr").style.display = block;
-                document.getElementsByClassName("en").style.display = none;
+                document.getElementsByClassName("fr").style.display = "block";
+                document.getElementsByClassName("en").style.display = "none";
             } else {
-                document.getElementsByClassName("en").style.display = block;
-                document.getElementsByClassName("fr").style.display = none;
+                document.getElementsByClassName("en").style.display = "block";
+                document.getElementsByClassName("fr").style.display = "none";
             }
             console.log("lang" + user);
         } 

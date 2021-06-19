@@ -46,7 +46,7 @@
         }
         function checkCookie() {
             var user=getCookie("lang");
-            if (user == "fr") {
+            if (user === "fr") {
                 document.getElementsByClassName("fr").style.display = initial;
                 document.getElementsByClassName("en").style.display = none;
             } else {
@@ -339,5 +339,5 @@
             </div>
         </div>
     </div>
-</bodyonload="checkCookie()">
+</body>
 </html>

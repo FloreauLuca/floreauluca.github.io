@@ -2,3 +2,50 @@ plugins:
   - jekyll-remote-theme
 
 remote_theme: ngzhio/jekyll-theme-hamilton
+
+google_analytics : G-65NZKTGSSM
+google_site_verification: u4WXQl0Eu66rsQo2kRdCNx
+
+# Standard
+# ======
+title : Floreau Luca WebSite
+
+description: Floreau Luca WebSite
+
+author : Floreau Luca
+
+email : floreauluca@gmail.com
+
+location : france
+lang: en
+
+# Hamilton
+# ======
+skin : midnight
+avatar : /Data/Portfolio/Penguin.png
+
+paginate : 10
+
+date_format : "%b %-d, %Y"
+
+subscribe : true
+
+# Jekyll
+# ======
+exclude:
+  - scripts/
+  - README.md
+  - jekyll-theme-hamilton.gemspec
+
+# Jekyll SEO Tag (Optional)
+# =========================
+twitter:
+  username: Kiddy_Prod
+  card: summary
+logo: /Data/Portfolio/Penguin.png
+social:
+  name: Floreau Luca
+  links:
+    - https://twitter.com/Kiddy_Prod
+    - https://www.facebook.com/ngzhio
+    - https://github.com/floreauluca

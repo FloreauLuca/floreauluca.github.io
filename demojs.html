@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <style>
+    </style>
+    <title>FloreauLuca</title>
+    <meta charset="UTF-8">.
+    <meta name="description" content="DemoJS de floreauluca.github.io">
+    <meta name="keywords" content="Floreau, Luca, DemoJS">
+    <meta name="author" content="Floreau Luca">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="demojs.js"></script>
+    <style>
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: yellow;
+        }
+
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>What Can JavaScript Do?</h2>
+
+    <p id="text">JavaScript can change HTML content.</p>
+
+    <button type="button" onclick='document.getElementById("text").innerHTML = "Hello JavaScript!"'>text</button>
+
+    <p id="display" style="display:none">Hello JavaScript!</p>
+
+    <button type="button" onclick="document.getElementById('display').style.display='block'">block</button>
+
+    <p id="color">Hello JavaScript!</p>
+
+    <button type="button" onclick="document.getElementById('color').style.backgroundColor='red'">color</button>
+
+    <p id="paragraph"></p>
+    <button type="button" onclick="paragraph()">paragraph</button>
+
+
+    <button type="button" onclick="document.write(5 + 6)">Write</button>
+    <button type="button" onclick="window.alert(5 + 6)">Alert</button>
+    <button type="button" onclick="console.log(5 + 6)">Console</button>
+    <button type="button" onclick="window.print()">Print</button>
+    <button type="button" onclick="myfunction()">myfunction</button>
+    <p id="mult"></p>
+    <script>
+        document.getElementById("mult").innerHTML = mult(4, 3);
+    </script>
+    <p id="function"></p>
+    <script>
+        function toCelsius(f) {
+            return (5 / 9) * (f - 32);
+        }
+        document.getElementById("function").innerHTML = toCelsius;
+    </script>
+    <button id="event"
+            onclick="document.getElementById('event').style.backgroundColor = 'red'"
+            onmouseover="document.getElementById('event').style.backgroundColor = 'blue'"
+            onmouseout="document.getElementById('event').style.backgroundColor = 'purple'"
+            onkeydown="document.getElementById('event').style.backgroundColor = 'green'">
+        Event
+    </button>
+</body>
+
+<button type="button" onclick="console.log('A\bB\fC\nD\rE\tF\vGHIJKLMNOPQRSTUVWXYZ')">myfunction</button>
+
+<p id="array"></p>
+<script>
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    document.getElementById("array").innerHTML = fruits.join(" * ");
+    fruits.sort();        // First sort the elements of fruits
+    fruits.reverse();     // Then reverse the order of the elements
+</script>
+<script>
+    const numbers = [45, 4, 9, 16, 25];
+    let txt = "";
+    numbers.forEach(newline);
+    console.log(txt);
+
+    function newline(value, index, array) {
+        txt += value + "<br>";
+    }
+</script>
+
+<p><button onclick="myMove()">Click Me</button></p>
+
+<div id="container">
+    <div id="animate">My animation will go here</div>
+</div>
+
+<script>
+    function myMove() {
+        let id = null;
+        const elem = document.getElementById("animate");
+        let pos = 0;
+        clearInterval(id);
+        id = setInterval(frame, 5);
+        function frame() {
+            if (pos == 350) {
+                clearInterval(id);
+            } else {
+                pos++;
+                elem.style.top = pos + "px";
+                elem.style.left = pos + "px";
+            }
+        }
+    }
+</script>
+<h1 onclick="this.innerHTML = 'Ooops!'">Click on this text!</h1>
+<p id="overthis">overthis</p>
+<script>
+    document.getElementById("overthis").onmouseover = displayDate;
+    document.getElementById("overthis").addEventListener("mouseover", displayDate);
+    function displayDate() {
+        document.getElementById("overthis").innerHTML = Date();
+    }
+</script>
+<div onmousedown="mDown(this)" onmouseup="mUp(this)"
+     style="background-color:#D94A38;width:90px;height:20px;padding:40px;">
+    Click Me
+</div>
+
+<script>
+    function mDown(obj) {
+        obj.style.backgroundColor = "#1ec5e5";
+        obj.innerHTML = "Release Me";
+    }
+
+    function mUp(obj) {
+        obj.style.backgroundColor = "#D94A38";
+        obj.innerHTML = "Thank You";
+    }
+</script>
+
+<p id="resize">"Screen Width: " + screen.width</p>
+<script>
+    window.addEventListener("resize", function () {
+        document.getElementById("resize").innerHTML = "Screen Width: " + screen.width + "Screen availWidth: " + screen.availWidth;
+    });
+</script>
+<input type="button" value="Back" onclick="window.history.back()">
+<button onclick="setTimeout(helloalert, 3000)">Try it</button>
+
+<script>
+    function helloalert() {
+        alert('Hello');
+    }
+</script>
+
+<button onclick="getLocation()">Try It</button>
+
+
+</html>                                                                          s

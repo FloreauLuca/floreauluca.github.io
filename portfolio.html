@@ -4,12 +4,12 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-733ERGFVJ7"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-	  gtag('config', 'G-733ERGFVJ7');
-	</script>
+        gtag('config', 'G-733ERGFVJ7');
+    </script>
     <title>Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,14 +21,47 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
-    </style>
+        .en {
+            display: none
+        }
+        .fr {
+            display: initial 
+        }
+    </style> 
+    <script>
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function checkCookie() {
+            var user=getCookie("lang");
+            if (user == "fr") {
+                document.getElementsByClassName("fr").style.display = initial;
+                document.getElementsByClassName("en").style.display = none;
+            } else {
+                document.getElementsByClassName("en").style.display = initial;
+                document.getElementsByClassName("fr").style.display = none;
+            }
+        } 
+    </script>
 </head>
-<body>
+<body onload="checkCookie()">
     <div class="navbar">
         <a href="index.html">Menu</a>
         <a href="blogMenu.html">Blog</a>
-        <a href="portfolio.html" class="right">FR</a>
-        <a href="portfolioenglish.html" class="right">EN</a>
+        <a href="portfolio.html?lang=fr" class="right">FR</a>
+        <a href="portfolio.html?lang=en" class="right">EN</a>
     </div>
     <div class="header">
         <h1>Floreau Luca</h1>
@@ -50,17 +83,17 @@
         carousel();
 
         function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) {
-        myIndex = 1
-        }
-        x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 3000);
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1
+            }
+            x[myIndex-1].style.display = "block";
+            setTimeout(carousel, 3000);
         }
     </script>
 
@@ -68,12 +101,19 @@
         <div class="side">
             <h2>A propos</h2>
             <img class="sideimg" src="Data\Portfolio\Fichier 2.png">
-            <p>
-				Je suis Floreau Luca, j'ai 19 ans et je suis un développeur de jeux vidéo français. Je suis actuellement en formation à la SAE Institute de Genève. <br />
-				Je suis passionné de jeux vidéo et je souhaite partager ma passion. Mon objectif est de créer des jeux pouvant être joué par tout le monde et partout.<br />
-				J'ai créé mon premier jeu quand j'avais 10 ans sur Game Develop<br />
-				Je développe actuellement avec Unity3D et en C++<br />
-				Si vous appréciez ce que vous voyez, vous pouvez regarder mon Twitter ou mon itch.io . <br />
+            <p class="fr">
+                Je suis Floreau Luca, j'ai 19 ans et je suis un développeur français de jeux vidéo. Je suis actuellement en formation à la SAE Institute de Genève. <br />
+                Je suis passionné de jeux vidéo et je souhaite partager ma passion. Mon objectif est de créer des jeux pouvant être joué par tout le monde et partout.<br />
+                J'ai créé mon premier jeu quand j'avais 10 ans sur Game Develop<br />
+                Je développe actuellement avec Unity3D et en C++<br />
+                Si vous appréciez ce que vous voyez, vous pouvez regarder mon Twitter ou mon itch.io . <br />
+            </p>
+            <p class="en">
+                I am Floreau Luca, I am 19 years old and I am a French video game developer. I am currently in formation at the SAE Institute in Geneva. <br />
+                I am passionate about video games and I want to share my passion. My goal is to create games that can be played by anyone, anywhere. <br />
+                I created my first game on my own when I was 10 years old on Game Develop. <br />
+                I develop with Unity 3D and C ++. <br />
+                If you like what you see, you can check out more of what I do on my twitter and my itch.io . <br />
             </p>
             <h2>Mes contacts</h2>
             <div class="contactbar">
@@ -287,5 +327,5 @@
             </div>
         </div>
     </div>
-</body>
+</bodyonload="checkCookie()">
 </html>

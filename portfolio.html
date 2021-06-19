@@ -54,8 +54,11 @@
                 document.getElementsByClassName("fr").style.display = none;
             }
         } 
-        function setLang(lang) {
-            document.cookie = "lang=" + lang;
+        function setLang(lang) {          
+            var d = new Date();
+            d.setTime(d.getTime() + (10*24*60*60*1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = "lang=" + lang + ";" + expires + ";path=/";
         }
     </script>
 </head>
@@ -145,6 +148,12 @@
                     <a class="contacttxt" href="Data\Portfolio\File\CV_Floreau_Luca.pdf">
                         <img class="contactimg" src="Data\Portfolio\Icone\cvicon.png">
                         <p class="contacttxt">Téléchargez mon CV</p>
+                    </a>
+                </div>
+                <div class="contact">
+                    <a class="contacttxt" href="https://github.com/FloreauLuca">
+                        <img class="contactimg" src="Data\Portfolio\Icone\website.png">
+                        <p class="contacttxt">https://github.com/FloreauLuca</p>
                     </a>
                 </div>
             </div>

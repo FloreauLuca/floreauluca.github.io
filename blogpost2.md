@@ -1,3 +1,9 @@
+---
+layout: post
+title: Task Item List
+tags: [to-do list]
+---
+
 # Blog Separate Thread Resource Manager
 ## Introduction
 I’m currently in a Games Programming formation and, during my second year of study, my classmates and I have different tasks to implement for a Game Engine in C++.

@@ -54,14 +54,17 @@
                 document.getElementsByClassName("fr").style.display = none;
             }
         } 
+        function setLang(lang) {
+            document.cookie = "lang=" + lang;
+        }
     </script>
 </head>
 <body onload="checkCookie()">
     <div class="navbar">
         <a href="index.html">Menu</a>
         <a href="blogMenu.html">Blog</a>
-        <a href="portfolio.html?lang=fr" class="right">FR</a>
-        <a href="portfolio.html?lang=en" class="right">EN</a>
+        <a href="portfolio.html" class="right" onclick="setLang('fr')">FR</a>
+        <a href="portfolio.html" class="right" onclick="setLang('en')">EN</a>
     </div>
     <div class="header">
         <h1>Floreau Luca</h1>

@@ -1,189 +1,89 @@
-# Hamilton <!-- omit in toc -->
+# [TeXt Theme](https://github.com/kitian616/jekyll-TeXt-theme)
 
-A minimal and beautiful Jekyll theme best for writing and note-taking.
+[![license](https://img.shields.io/github/license/kitian616/jekyll-TeXt-theme.svg)](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/LICENSE)
+[![Gem Version](https://img.shields.io/gem/v/jekyll-text-theme.svg)](https://github.com/kitian616/jekyll-TeXt-theme/releases)
+[![Travis](https://img.shields.io/travis/kitian616/jekyll-TeXt-theme.svg)](https://travis-ci.org/kitian616/jekyll-TeXt-theme)
+[![Tip Me via PayPal](https://img.shields.io/badge/PayPal-tip%20me-1462ab.svg?logo=paypal)](https://www.paypal.me/kitian616)
+[![Tip Me via Bitcoin](https://img.shields.io/badge/Bitcoin-tip%20me-f7931a.svg?logo=bitcoin)](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/3Fkufxcw2xd8HnaRJBNK4ccdtkUDyyNu4V.jpg)
 
-The original purpose of this theme is to be a replacement of the default Jekyll theme -- [Minima](https://github.com/jekyll/minima). Hamilton is an enhancement of Minima but still, keep in minimal.
+![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
 
-Please check out the [demo](https://ngzhio.github.io/jekyll-theme-hamilton/).
+![TeXt Theme Details](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-layouts.png)
 
-| Skins | Displays |
-| ----- | -------- |
-| Daylight | ![screenshot](screenshot.png) |
-| Sunrise/Sunset | ![screenshot](screenshot-sunrise.png) |
-| Midnight | ![screenshot](screenshot-midnight.png) |
+TeXt is a super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc. Similar to iOS 11 style, it has large and prominent titles, round buttons and cards.
 
-## Features <!-- omit in toc -->
+**[Change Log](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/CHANGELOG.md)** | **[中文](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/README-zh.md)**
 
-- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
-- [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
-- [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
-- [Google Analytics](https://analytics.google.com/)
-- [MathJax](https://www.mathjax.org/)
-- [Disqus](https://disqus.com/)
-- [Font Awesome](https://fontawesome.com/)
-- TOC
-- Customizable head
-- Configurable page navigation
-- Customizable styles and skins
-- Archive pages implemented in pure Liquid
+## Features
 
-## Table of Contents <!-- omit in toc -->
+- Responsive
+- Semantic HTML
+- Skins
+- Highlight Theme
+- Internationalization
+- Search
+- Table of contents
+- Authors
+- Additional styles (alert, tag, image, icon, button, grid, etc)
+- Extensions (audios, videos, slides, demos)
+- Markdown enhancements ([MathJax](https://www.mathjax.org/), [mermaid](https://mermaidjs.github.io/), [chartjs](http://www.chartjs.org/))
+- Sharing ([AddToAny](https://www.addtoany.com/), [AddThis](https://www.addthis.com/))
+- Comments ([Disqus](https://disqus.com/), [Gitalk](https://gitalk.github.io/), [Valine](https://valine.js.org/en/))
+- Pageview ([LeanCloud](https://leancloud.cn/))
+- Analytics ([Google Analytics](https://analytics.google.com/analytics/web/))
+- RSS ([jekyll-feed](https://github.com/jekyll/jekyll-feed))
 
-- [Installation](#installation)
-- [Configuration](#configuration)
-  - [Optional Parameters](#optional-parameters)
-- [Archive Pages](#archive-pages)
-- [MathJax](#mathjax)
-- [TOC](#toc)
-- [Customization](#customization)
-  - [Metadata](#metadata)
-  - [Navigation](#navigation)
-  - [Social Media](#social-media)
-  - [Skins](#skins)
-  - [More Customized Styles](#more-customized-styles)
-- [License](#license)
+## Skins
 
-## Installation
+TeXt has 6 built-in skins, you can also set up your own skin.
 
-You can choose one of the following methods to install Hamilton:
+| `default` | `dark` | `forest` |
+| --- |  --- | --- |
+| ![Default](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_default.jpg) | ![Dark](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_dark.jpg) | ![Forest](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_forest.jpg) |
 
-- Directly specify the `jekyll-theme-hamilton` gem.
+| `ocean` | `chocolate` | `orange` |
+| --- |  --- | --- |
+| ![Ocean](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_ocean.jpg) | ![Chocolate](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_chocolate.jpg) | ![Orange](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_orange.jpg) |
 
-    1. Add `gem 'jekyll-theme-hamilton'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
+### Highlight Theme
 
-        ```yml
-        plugins:
-          - jekyll-theme-hamilton
-        ```
+TeXt use [Tomorrow](https://github.com/chriskempson/tomorrow-theme) as the highlight theme.
 
-- If your site is hosted on GitHub Pages, you can use [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme) to import the master branch of Hamilton.
+| `tomorrow` | `tomorrow-night` | `tomorrow-night-eighties` | `tomorrow-night-blue` | `tomorrow-night-bright` |
+| --- |  --- | --- | --- |  --- |
+| ![Tomorrow](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow.png) | ![Tomorrow Night](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night.png) | ![Tomorrow Night Eighties](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-eighties.png) | ![Tomorrow Night Blue](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-blue.png) | ![Tomorrow Night Bright](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-bright.png) |
 
-    1. Add `gem 'jekyll-remote-theme'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
+## Documentation
 
-        ```yml
-        plugins:
-          - jekyll-remote-theme
+### Start
 
-        remote_theme: ngzhio/jekyll-theme-hamilton
-        ```
+- [Quick Start](https://tianqi.name/jekyll-TeXt-theme/docs/en/quick-start)
+- [Update from 1.x to 2.x](https://tianqi.name/jekyll-TeXt-theme/docs/en/update-from-1-to-2)
 
-## Configuration
+### Customization
 
-After installation, you can run `jekyll serve` to check out your site, but before that, *make sure* the below **required parameters** are configured in your `_config.yml`.
+- [Configuration](https://tianqi.name/jekyll-TeXt-theme/docs/en/configuration)
+- [Navigation](https://tianqi.name/jekyll-TeXt-theme/docs/en/navigation)
+- [Layouts](https://tianqi.name/jekyll-TeXt-theme/docs/en/layouts)
+- [Logo and Favicon](https://tianqi.name/jekyll-TeXt-theme/docs/en/logo-and-favicon)
+- [Authors](https://tianqi.name/jekyll-TeXt-theme/docs/en/authors)
+- [Internationalization](https://tianqi.name/jekyll-TeXt-theme/docs/en/i18n)
 
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `title`    | string | The site title |
-| `disqus`   | string | The Disqus shortname; Unless you don't want to enable the comments system, you must specify this parameter. It is used in the production environment. |
-| `google_analytics` | string | The Google Analytics tracking ID; It is used in the production environment. |
+### Content
 
-### Optional Parameters
+- [Writing Posts](https://tianqi.name/jekyll-TeXt-theme/docs/en/writing-posts)
+- [Additional styles](https://tianqi.name/jekyll-TeXt-theme/docs/en/additional-styles)
+- [Extensions](https://tianqi.name/jekyll-TeXt-theme/docs/en/extensions)
+- [Markdown Enhancements](https://tianqi.name/jekyll-TeXt-theme/docs/en/markdown-enhancements)
 
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `author`   | string | The name of the author of the site; It would be showed in the copyright statement. |
-| `avatar`   | string | The avatar of the author of the site. |
-| `email`    | string | The email of the author of the site. |
-| `location` | string | The current living location of the author of the site. |
-| `skin`     | string | The skin name. See more information on the [Customization](#customization) section. |
-| `lang`     | string | The language of the site; The default value is `en`. |
-| `paginate` | int    | The number of posts on each page. |
-| `date_format` | string | The date format; The default value is `%b %-d, %Y`. |
-| `subscribe` | boolean | Show the subsribe feed button. |
+## Demo Pages
 
-## Archive Pages
-
-Hamilton implements some archive templates in pure Liquid. For example, if you want to create a category archive page, set the below parameters on that page:
-
-```yml
----
-layout: archive-taxonomies
-type: categories
----
-```
-
-Or a tag archive page:
-
-```yml
-layout: archive-taxonomies
-type: tags
-```
-
-Or archive by years:
-
-```yml
-layout: archive-years
-```
-
-## MathJax
-
-You can enable MathJax on each post or page, just set `math: true` on that page.
-
-## TOC
-
-If you want to show the Table of Contents of a post or page on the left sidebar, just set `toc: true` on that page.
-
-## Customization
-
-### Metadata
-
-You can create a file `_includes/custom-head.html` in your repository, and add any metadata into that page, e.g. favicons.
-
-### Navigation
-
-You can create a file `_data/navigation.yml` to configure links to some pages. For example,
-
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
-```
-
-The navigation bar also supports dropdown submenus:
-
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
-- title: More
-  sublinks:
-    - title: FAQ
-      url: /faq/
-    - title: Docs
-      url: /docs/
-```
-
-### Social Media
-
-You can create a file `_data/social.yml` to configure links to your social media. For example,
-
-```yml
-- title: Twitter
-  url: https://twitter.com/ngzhio
-  icon: fab fa-twitter
-- title: GitHub
-  url: https://github.com/ngzhio/jekyll-theme-hamilton
-  icon: fab fa-github
-```
-
-### Skins
-
-You can select a skin by setting `skin` in `_config.yml`. The built-in skins include `daylight`, `midnight`, `sunrise`, and `sunset`. If you don't specify any skin, Hamilton would dynamically select one in these built-in skins according to different hours in a day.
-
-You can also customize a new skin, for example, a skin called `solarized`. You need to copy [`_sass/hamilton/skins/daylight.scss`](_sass/hamilton/skins/daylight.scss) into your repository and then rename it to `solarized.scss`, and adjust some colors in that file. Finally, specify `skin: solarized` in `_config.yml`.
-
-### More Customized Styles
-
-If you want to create more CSS styles in your site, creating a file `_sass/hamilton/custom-styles.scss`, and putting your code in there, Hamilton would automatically refer to them.
+| Name | Description |
+| --- | --- |
+| [Home](https://tianqi.name/jekyll-TeXt-theme/test/) | Home page |
+| [Archive](https://tianqi.name/jekyll-TeXt-theme/archive.html) | Archive page |
+| [Layout Examples](https://tianqi.name/jekyll-TeXt-theme/samples.html) | Examples for different layouts |
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](LICENSE.txt).
+TeXt Theme is [MIT licensed](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/LICENSE).

@@ -10,7 +10,7 @@ Our goal was to be able to generate an infinite world horizontally and 64 blocks
 
 So, we started on the segmentation of the world in a chunk of 16 x 16 x 16 blocks.
 
-<img src="Data/BlogPost/BlogPost3/chunk.jpg" width="300" alt="Image chunk">
+<img src="Data/BlogPost/BlogPost3/chunk.jpg" width="600" alt="Image chunk">
 
 My chunk generation is composed of 6 actions :
 1. Update chunks if they are visible or not
@@ -73,10 +73,10 @@ If the chunk is not in the frustum it removes the status visible and accessible.
 Finally, the chunk status looks like that.
 
 
-<img src="Data/BlogPost/BlogPost3/chunkwithout frustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
+<img src="Data/BlogPost/BlogPost3/chunkwithout frustum.jpg" width="600" alt="Gif of CheckVisibleChunks">
 > Without frustum
 
-<img src="Data/BlogPost/BlogPost3/chunkFrustum.jpg" width="300" alt="Gif of CheckVisibleChunks">
+<img src="Data/BlogPost/BlogPost3/chunkFrustum.jpg" width="600" alt="Gif of CheckVisibleChunks">
 > With frustum
 
 > Caption : Green = ACCESSIBLE; RED = VISIBLE; BLUE = LOADED
@@ -92,7 +92,7 @@ To generate a chunk, it uses the chunk position.
 If the chunk is underground, it fills all the chunks. If the chunk is over the surface, it will be empty.
 If the chunk is at the surface, it uses the [Map Generation of Sebastien](https://sebastienfeser.github.io/) to generate the ChunkContent.
 
-<img src="Data/BlogPost/BlogPost3/mapgen.jpg" width="300" alt="">
+<img src="Data/BlogPost/BlogPost3/mapgen.jpg" width="600" alt="">
 > Slice of map generation without occlusion
 
 ### ChunkContent
@@ -142,7 +142,7 @@ class ChunkRenderManager final : public ComponentManager<ChunkRender, ComponentT
 This function is call by the **UpdateDirtyChunks** and the **GenerateChunkContent**. Its purpose is to calculate the occlusion of each block of the ChunkContentVector.
 The function is pretty simple, for each block, if there is not another block on each side, it will set it visible.
 
-<img src="Data/BlogPost/BlogPost3/blockocclusion.jpg" width="300" alt="">
+<img src="Data/BlogPost/BlogPost3/blockocclusion.jpg" width="600" alt="">
 > Chunk with block occlusion
 
 <a name="CalculateVisibleStatus"></a>
@@ -177,7 +177,7 @@ That's why, this function must be called after the **CalculateOcclusionStatus** 
 ### Check neighbor occlusion
 For each side of the chunks, this function will get the neighbor ChunkStatus. If all the neighbors are occluded or if their side occludes the chunk, the chunk will be occluded.
 
-<img src="Data/BlogPost/BlogPost3/chunkocclusion.jpg" width="300" alt="">
+<img src="Data/BlogPost/BlogPost3/chunkocclusion.jpg" width="600" alt="">
 > Slice of map generation with occlusion
 
 <a name="UpdateDirtyChunks"></a>
@@ -200,14 +200,14 @@ For each side of the chunk, it calculates the occlusion status using **Calculate
 Then, it gets the chunk next to the modified side and call **CalculateVisibleStatus** for the neighbor chunk.
 Finally, if remove the dirty status.
 
-<img src="Data/BlogPost/BlogPost3/dirtychunk.gif" width="300" alt="">
+<img src="Data/BlogPost/BlogPost3/dirtychunk.gif" width="600" alt="">
 
 > Example of occluded chunks generate when blocks are break
 
 ## Results
 
 
-<img src="Data/BlogPost/BlogPost3/result.gif" width="300" alt="Result rendering">
+<img src="Data/BlogPost/BlogPost3/result.gif" width="600" alt="Result rendering">
 
 ## Performance
 

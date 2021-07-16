@@ -29,7 +29,7 @@ paginate : 10
 
 date_format : "%b %-d, %Y"
 
-subscribe : true
+subscribe : false
 
 # Jekyll
 # ======

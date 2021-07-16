@@ -35,13 +35,13 @@ Finally, I also took care of the Engine and Game tasks according to the needs of
 
 So we decided to start on a pod racing game inspired by Star Wars Pod Racer. 
 
-<img src="data/star_wars.jpg" width="300" alt="Star Wars Pod Racer">
+<img src="data/star_wars.jpg" width="600" alt="Star Wars Pod Racer">
 
 > Star Wars Pod Racer
 
 For the artistic direction, we received concept arts from Nicolas Vallee inspired by Porco Rosso. However, following a lack of communication of our art, we have some misunderstandings concerning the concept art produced.
 
-<img src="data/concept_art.jpg" width="300" alt="Concept Arts">
+<img src="data/concept_art.jpg" width="600" alt="Concept Arts">
 
 > Concept Arts
 
@@ -49,7 +49,7 @@ During the production, we welcomed several teams to help us.
 
 First of all, we welcomed the second-year Games Programmer as part of their Tool Production modules. They produced tools on Unity and Neko to help us in the production of our project.
 
-<img src="data/hierarchy_prog.png" width="300" alt="Tools Hierarchy">
+<img src="data/hierarchy_prog.png" width="600" alt="Tools Hierarchy">
 
 > Tools Hierarchy
 
@@ -61,7 +61,7 @@ Next, we welcomed the second-year Game Artist for the production of graphic mode
 
 We also welcomed the second-year Audio Designer for the production of the sound effects. We also used the production of Leo for the music of the game.
 
-<img src="data/hierarchy_audio.png" width="300" alt="Audio Hierarchy">
+<img src="data/hierarchy_audio.png" width="600" alt="Audio Hierarchy">
 
 > Audio Hierarchy
 
@@ -71,7 +71,7 @@ The pre-production started mid-September with the presentation of the instructio
 
 My first task as a producer was to divide, plan and distribute the tasks until December. 
 
-<img src="data/planning_september.png" width="300" alt="Plannification in September">
+<img src="data/planning_september.png" width="600" alt="Plannification in September">
 
 > Planification in September
 
@@ -101,7 +101,7 @@ Arrived in December, the project had not progressed as planned.
 
 Almost all the teams were behind schedule and the tasks were stuck on a task.
 
-<img src="data/planning_december.png" width="300" alt="Plannification in December"> 
+<img src="data/planning_december.png" width="600" alt="Plannification in December"> 
 
 > Planification in December
 
@@ -116,7 +116,7 @@ So at the beginning of the Christmas vacations, thanks to his advice and the tec
 First, we set up a system of deliverables, requiring us to produce certain tasks by a certain date. 
 This allowed us to have shorter-term goals that were easier to achieve.
 
-<img src="data/delivrables.png" width="300" alt="Deliverables"> 
+<img src="data/delivrables.png" width="600" alt="Deliverables"> 
 
 > Deliverables
 
@@ -125,7 +125,7 @@ Secondly, in addition to the tasks, we set up subtasks, allowing us to better de
 
 Finally, Elias advised us to organize the tasks according to the MVP, allowing us to avoid unnecessary tasks and to see the progress of the game.
 
-<img src="data/mvp.png" width="300" alt="MVP Grid">
+<img src="data/mvp.png" width="600" alt="MVP Grid">
 
 > MVP Grid
 
@@ -144,7 +144,7 @@ After the import in NekoEngine, we welcomed the graphic and audio artists.
 
 So I took care of defining the deadlines for the assets so that the Lead Artist could define the production milestones.
 
-<img src="data/art_planning.png" width="300" alt="Artist Planification">
+<img src="data/art_planning.png" width="600" alt="Artist Planification">
 
 > Artist Planification
 
@@ -162,7 +162,7 @@ In parallel, we also asked the artists to help us with the level design.
 
 Indeed, as we didn't know exactly how to reconcile adaptable level design and a fluid terrain, we directly gave the responsibility of the game design to the artists. 
 
-<img src="data/level_design.png" width="300" alt="Level Design">
+<img src="data/level_design.png" width="600" alt="Level Design">
 
 > Level Design
 
@@ -187,7 +187,7 @@ Finally, in the last phase of production, we still had many tasks on the engine 
 
 Finally, the AerRacers project could be finished in time. It is available [here]().
 
-<img src="data/gameplay1.gif" width="300" alt="Pictures of the game">
+<img src="data/gameplay1.gif" width="600" alt="Pictures of the game">
 
 > Pictures of the game
 
@@ -227,7 +227,7 @@ Moreover, I learned the implementation of many systems like input management or 
 
 In parallel, I also learned how to use a development kit for a console (the Nintendo Switch).
 
-## Thank you
+## Thanks
 ### External thanks
 - Nicolas Schneider
 - Amandine Coget

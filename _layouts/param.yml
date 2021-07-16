@@ -1,0 +1,20 @@
+---
+layout: home
+#Page param :
+mode : immersive # normal (default), immersive
+type : webpage # webpage (default), article
+show_title : true # true (default), false
+show_date	: true # true (default), false
+show_tags	: true #  true (default), false
+full_width : false #	true, false (default)
+pageview : false #	true, false (default)
+comment : false #	true (default), false
+cover : Data/Portfolio/Penguin.png
+header :
+  - theme : dark # light, dark
+  - background : #str
+aside	: test
+sidebar : test
+footer : true
+lightbox : true
+---

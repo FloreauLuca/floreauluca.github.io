@@ -1,14 +1,17 @@
 ---
 layout: article
 title: Separate Thread Resource Manager
-tags: C++ 
-excerpt: Another excerpt
+tags: C++
+date: 2020-04-07
+excerpt: Implementation of a separate thread resource manager
 key: resource-manager
+show_title : true
+show_excerpt : false
+show_date : true
+show_tags : true
 cover : /Data/BlogPost/BlogPost1/ResourceManagerDiagram.png
 pageview : true
-permalink: /blogposts/blogpost2.html
 mode: normal
-excerpt_separator: <!--more-->
 article_header:
   type: overlay
   theme: dark

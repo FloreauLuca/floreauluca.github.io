@@ -1,3 +1,25 @@
+---
+layout: article
+title: Integration of PhysX into a C++ Engine
+tags: C++ AerRacers
+date: 2021-06-07
+excerpt: For AerRacers, we use the Unity physics engine to control speed, manage collisions and perform raycasting. I had to integrate PhysX inside our engine.
+key: physx-integration
+show_title : true
+show_excerpt : false
+show_date : true
+show_tags : true
+cover : /Data/Blogpost/AerRacers/nekophysic.gif
+mode: normal
+article_header:
+  type: overlay
+  theme: dark
+  background_color: rgb(34, 57, 230)
+  background_image: 
+    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
+    src: /Data/Blogpost/AerRacers/nekophysic.gif
+---
+
 # Blog Integration of PhysX into a C++ Engine
 
 ## Introduction
@@ -9,7 +31,7 @@ During this project, we first developed a prototype on Unity to define the needs
 ### Problematic
 Indeed, as we developed a racing game, we use the Unity physics engine to control speed, manage collisions and perform raycasting to determine how high the ships are.
 
-<img src="data/physics_proto.gif" width="300" alt="Pictures from the prototype">
+<img src="/Data/Blogpost/AerRacers/physics_proto.gif" width="300" alt="Pictures from the prototype">
 
 > Pictures from the prototype
 
@@ -52,7 +74,7 @@ The first module is PxFoundation allowing the initialization of the other module
 
 Then I initialized PxPvd which allowed us to use PhysX Visual Debugger. It is a tool allowing us to visualize the physical elements in real-time. It was particularly useful to check that the elements displayed correspond to the simulated physical elements.
 
-<img src="data/physx_visual_debug.gif" width="300" alt="PhysX Visual Debugger">
+<img src="/Data/Blogpost/AerRacers/physx_visual_debug.gif" width="300" alt="PhysX Visual Debugger">
 
 > PhysX Visual Debugger
 
@@ -125,7 +147,7 @@ Each physical component is composed of a RigidActor containing the parameters co
 
 However, in our project, we use two types of RigidActor, the static immobile RigidActor, and the dynamic RigidActor. In addition, we use 4 types of colliders: boxes, spheres, capsules, and meshes.
 
-<img src="data/rigidbody_diagram.png" width="300" alt="Schema RigidActor">
+<img src="/Data/Blogpost/AerRacers/rigidbody_diagram.png" width="300" alt="Schema RigidActor">
 
 > Diagram of a Rigid Actor
 
@@ -135,7 +157,7 @@ My first decision was to separate the RigidStatic and RigidDynamic into two comp
 
 To initialize the RigidActor, I decided to use RigidActorData. These are structures containing all the parameters of the possible colliders of the RigidActor as well as the parameters of the Physics Material. The RigidDynamicData inherits from the RigidActorData but contains, in addition, the parameters of the RigidDynamic.
 
-<img src="data/rigidactordata_uml.png" width="300" alt="UML of RigidActorData">
+<img src="/Data/Blogpost/AerRacers/rigidactordata_uml.png" width="300" alt="UML of RigidActorData">
 
 > UML of RigidActorData
 
@@ -169,7 +191,7 @@ protected:
 
 However, as this information cannot be read at the same time as it is modified by physics, it must be retrieved in the FixedUpdate. Therefore, I had a problem when I wanted to display them in the editor for each frame. For that, and as the editor displays only one entity at a time, I save in the ComponentViewer the RigidActorData displayed and I update it at each FixedUpdate.
 
-<img src="data/physics_inspector.gif" height="300" alt="Physics Inspector">
+<img src="/Data/Blogpost/AerRacers/physics_inspector.gif" height="300" alt="Physics Inspector">
 
 > RigidDynamic Inspector
 
@@ -292,18 +314,18 @@ Thus, the engine on Neko allows to
 - detect collision between two objects
 - import components from Unity
 
-<img src="data/test_cubefall.gif" width="300" alt="Test RigidDynamic">
-<img src="data/test_raycast.gif" width="300" alt="Test Raycasts">
-<img src="data/test_trigger.gif" width="300" alt="Tests Colliders">
+<img src="/Data/Blogpost/AerRacers/test_cubefall.gif" width="300" alt="Test RigidDynamic">
+<img src="/Data/Blogpost/AerRacers/test_raycast.gif" width="300" alt="Test Raycasts">
+<img src="/Data/Blogpost/AerRacers/test_trigger.gif" width="300" alt="Tests Colliders">
 
 > Tests of the physics engine
 
-<img src="data/nekophysic.gif" width="300" alt="Comparaison Neko">
-<img src="data/unityphysic.gif" width="300" alt="Comparaison Unity">
+<img src="/Data/Blogpost/AerRacers/nekophysic.gif" width="300" alt="Comparaison Neko">
+<img src="/Data/Blogpost/AerRacers/unityphysic.gif" width="300" alt="Comparaison Unity">
 
 > Comparaison Unity and Neko
 
-<img src="data/game_physics.gif" width="300" alt="Result in game">
+<img src="/Data/Blogpost/AerRacers/game_physics.gif" width="300" alt="Result in game">
 > Result in game
 
 ### Go further

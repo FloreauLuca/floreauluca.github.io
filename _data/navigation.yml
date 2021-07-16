@@ -1,8 +1,8 @@
 header:
-  - titles: Portfolio
+  - title: Portfolio
     url: /portfolio.html
 
-  - titles: Blog
+  - title: Blog
     url: /blog_menu
 
   - titles:

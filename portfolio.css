@@ -140,8 +140,8 @@ p {
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
-    background-color: #C3F3FA; /* Grey background color */
-    padding: 20px; /* Some padding */
+  background-color: #c3f3fa; /* Grey background color */
+  padding: 20px; /* Some padding */
 }
 
 .sideimg {

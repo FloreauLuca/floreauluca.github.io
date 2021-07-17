@@ -1,5 +1,5 @@
-﻿---
-layout: home
+---
+layout: tag_page
 ---     
 
 

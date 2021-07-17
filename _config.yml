@@ -79,6 +79,10 @@ license: CC-BY-NC-4.0 # "CC-BY-4.0", "CC-BY-SA-4.0", "CC-BY-NC-4.0", "CC-BY-ND-4
 toc:
   selectors: # "h1,h2,h3" (default)
 
+tag_page_layout: tag_page
+tag_page_dir: tag
+tag_feed_layout: tag_feed
+tag_feed_dir: tag
 
 ## => Markdown Enhancements
 ##############################
@@ -203,6 +207,8 @@ exclude:
 collections:
   blogposts:
     output: true
+  projects:
+    output: true
 
 defaults:
   - scope:
@@ -220,6 +226,19 @@ defaults:
   - scope:
       path: ""
       type: blogposts
+    values:
+      layout: article
+      sharing: true
+      license: true
+      aside:
+        toc: true
+      show_edit_on_github: false
+      show_subscribe: false
+      pageview: true
+      permalink: /:collection/:name
+  - scope:
+      path: ""
+      type: projects
     values:
       layout: article
       sharing: true

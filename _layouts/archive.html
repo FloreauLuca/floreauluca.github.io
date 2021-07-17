@@ -30,6 +30,9 @@ titles:
   <div class="js-result layout--archive__result d-none">
     {%- include article-list.html articles=site.blogposts type='brief' show_info=true reverse=true group_by='year' -%}
   </div>
+  <div class="js-result layout--archive__result d-none">
+    {%- include article-list.html articles=site.projects type='brief' show_info=true reverse=true group_by='year' -%}
+  </div>
 </div>
 
 <script>

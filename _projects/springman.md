@@ -19,3 +19,32 @@ article_header:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: /Data/Portfolio/Game/SpringMan/tutoGif.gif
 ---
+
+# Contexe
+- 48 hours MizJam1 
+- Pack de texture imposé
+
+# Pitch
+- Embodie an enchanted spring around a level
+- Drag and drop to bounce acros the level
+
+# Réalisation
+- Control
+	- Point and click
+	- bouncing adjustement
+- Juicy 
+	- Score
+	- Particle
+	- Sound
+	- Effect
+
+
+# Learned Skills
+- Juicy
+- Work with an impose asset
+
+# Result
+
+- More information
+- itch.io
+

@@ -19,3 +19,30 @@ article_header:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: /Data/Portfolio/Game/FarWestDefender/screen.jpg
 ---
+# Contexe
+- Isart summer camp
+- 2 week
+- Tower defense with Construct 2
+- (First real game)
+
+# Pitch
+- Spawn cowboy to kill indians 
+- Towe defense with multiple type of tower and multiple upgrades for tomer
+
+# Réalisation
+- Grphisme
+- Spawning and targeting tower
+- Upgrading toer
+- Spawning and moving ennemy
+
+# Learned Skills
+- Illustrator
+- Construct 2
+- Basic game developement learning
+- Tower defense base learning
+
+# Result
+
+- More information
+Itch;io
+

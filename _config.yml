@@ -209,6 +209,7 @@ collections:
     output: true
   projects:
     output: true
+    sort_by: order
 
 defaults:
   - scope:

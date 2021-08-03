@@ -3,6 +3,7 @@ layout: article
 title: Penguin Collector
 tags: Solo Design Prog Art Unity Android
 date: 2019-04-16
+order: 3
 excerpt: Penguin Collector is a shooter in which you must save the penguins from their predators.
 key: penguin-collector
 show_title : true

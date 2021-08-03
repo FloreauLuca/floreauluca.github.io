@@ -3,6 +3,7 @@ layout: article
 title: Minecraft-like
 tags: Team Prog C++
 date: 2020-07-24
+order: 2
 excerpt: Our Minecraft-like is a project where you can move and construct inside an infinite generated world.
 key: minecraft-like
 show_title : true

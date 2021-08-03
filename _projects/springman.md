@@ -3,6 +3,7 @@ layout: article
 title: SpringMan
 tags: Solo Jam Design Prog Unity Android
 date: 2020-08-20
+order: 6
 excerpt: SpringMan is a platformer where you control the bounce of a spring inside an underground level.
 key: springman
 show_title : true

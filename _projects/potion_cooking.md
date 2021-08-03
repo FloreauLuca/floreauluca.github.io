@@ -3,6 +3,7 @@ layout: article
 title: Potion Cooking
 tags: Solo Design Prog Art Unity Android
 date: 2018-11-25
+order: 4
 excerpt: Potion Cooking is a point'n'click in which you play as a mage who must make and sell magic potions to his customers.
 key: potion-cooking
 show_title : true

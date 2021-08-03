@@ -9,7 +9,7 @@ show_title : true
 show_excerpt : false
 show_date : true
 show_tags : true
-cover : /Data/Blogpost/AerRacers/gameplay1.gif
+cover : /Data/BlogPost/AerRacers/gameplay1.gif
 mode: normal
 article_header:
   type: overlay
@@ -17,7 +17,7 @@ article_header:
   background_color: rgb(34, 57, 230)
   background_image: 
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
-    src: /Data/Blogpost/AerRacers/gameplay1.gif
+    src: /Data/BlogPost/AerRacers/gameplay1.gif
 ---
 
 # Blog Post Mortem of the AerRacers Project
@@ -57,13 +57,13 @@ Finally, I also took care of the Engine and Game tasks according to the needs of
 
 So we decided to start on a pod racing game inspired by Star Wars Pod Racer. 
 
-<img src="/Data/Blogpost/AerRacers/star_wars.jpg" width="600" alt="Star Wars Pod Racer">
+<img src="/Data/BlogPost/AerRacers/star_wars.jpg" width="600" alt="Star Wars Pod Racer">
 
 > Star Wars Pod Racer
 
 For the artistic direction, we received concept arts from Nicolas Vallee inspired by Porco Rosso. However, following a lack of communication of our art, we have some misunderstandings concerning the concept art produced.
 
-<img src="/Data/Blogpost/AerRacers/concept_art.jpg" width="600" alt="Concept Arts">
+<img src="/Data/BlogPost/AerRacers/concept_art.jpg" width="600" alt="Concept Arts">
 
 > Concept Arts
 
@@ -71,19 +71,19 @@ During the production, we welcomed several teams to help us.
 
 First of all, we welcomed the second-year Games Programmer as part of their Tool Production modules. They produced tools on Unity and Neko to help us in the production of our project.
 
-<img src="/Data/Blogpost/AerRacers/hierarchy_prog.png" width="600" alt="Tools Hierarchy">
+<img src="/Data/BlogPost/AerRacers/hierarchy_prog.png" width="600" alt="Tools Hierarchy">
 
 > Tools Hierarchy
 
 Next, we welcomed the second-year Game Artist for the production of graphic models. They used Nicolas Vallee's concept art to produce the environment, the ships, and the totems.
 
-<img src="/Data/Blogpost/AerRacers/hierarchy_art.png" width="300" alt="Art Hierarchy">
+<img src="/Data/BlogPost/AerRacers/hierarchy_art.png" width="300" alt="Art Hierarchy">
 
 > Art Hierarchy
 
 We also welcomed the second-year Audio Designer for the production of the sound effects. We also used the production of Leo for the music of the game.
 
-<img src="/Data/Blogpost/AerRacers/hierarchy_audio.png" width="600" alt="Audio Hierarchy">
+<img src="/Data/BlogPost/AerRacers/hierarchy_audio.png" width="600" alt="Audio Hierarchy">
 
 > Audio Hierarchy
 
@@ -93,7 +93,7 @@ The pre-production started mid-September with the presentation of the instructio
 
 My first task as a producer was to divide, plan and distribute the tasks until December. 
 
-<img src="/Data/Blogpost/AerRacers/planning_september.png" width="600" alt="Plannification in September">
+<img src="/Data/BlogPost/AerRacers/planning_september.png" width="600" alt="Plannification in September">
 
 > Planification in September
 
@@ -123,7 +123,7 @@ Arrived in December, the project had not progressed as planned.
 
 Almost all the teams were behind schedule and the tasks were stuck on a task.
 
-<img src="/Data/Blogpost/AerRacers/planning_december.png" width="600" alt="Plannification in December"> 
+<img src="/Data/BlogPost/AerRacers/planning_december.png" width="600" alt="Plannification in December"> 
 
 > Planification in December
 
@@ -138,7 +138,7 @@ So at the beginning of the Christmas vacations, thanks to his advice and the tec
 First, we set up a system of deliverables, requiring us to produce certain tasks by a certain date. 
 This allowed us to have shorter-term goals that were easier to achieve.
 
-<img src="/Data/Blogpost/AerRacers/delivrables.png" width="600" alt="Deliverables"> 
+<img src="/Data/BlogPost/AerRacers/delivrables.png" width="600" alt="Deliverables"> 
 
 > Deliverables
 
@@ -147,7 +147,7 @@ Secondly, in addition to the tasks, we set up subtasks, allowing us to better de
 
 Finally, Elias advised us to organize the tasks according to the MVP, allowing us to avoid unnecessary tasks and to see the progress of the game.
 
-<img src="/Data/Blogpost/AerRacers/mvp.png" width="600" alt="MVP Grid">
+<img src="/Data/BlogPost/AerRacers/mvp.png" width="600" alt="MVP Grid">
 
 > MVP Grid
 
@@ -166,7 +166,7 @@ After the import in NekoEngine, we welcomed the graphic and audio artists.
 
 So I took care of defining the deadlines for the assets so that the Lead Artist could define the production milestones.
 
-<img src="/Data/Blogpost/AerRacers/art_planning.png" width="600" alt="Artist Planification">
+<img src="/Data/BlogPost/AerRacers/art_planning.png" width="600" alt="Artist Planification">
 
 > Artist Planification
 
@@ -184,7 +184,7 @@ In parallel, we also asked the artists to help us with the level design.
 
 Indeed, as we didn't know exactly how to reconcile adaptable level design and a fluid terrain, we directly gave the responsibility of the game design to the artists. 
 
-<img src="/Data/Blogpost/AerRacers/level_design.png" width="600" alt="Level Design">
+<img src="/Data/BlogPost/AerRacers/level_design.png" width="600" alt="Level Design">
 
 > Level Design
 
@@ -209,7 +209,7 @@ Finally, in the last phase of production, we still had many tasks on the engine 
 
 Finally, the AerRacers project could be finished in time. It is available [here]().
 
-<img src="/Data/Blogpost/AerRacers/gameplay1.gif" width="600" alt="Pictures of the game">
+<img src="/Data/BlogPost/AerRacers/gameplay1.gif" width="600" alt="Pictures of the game">
 
 > Pictures of the game
 

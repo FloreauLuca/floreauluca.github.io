@@ -9,7 +9,7 @@ show_title : true
 show_excerpt : false
 show_date : true
 show_tags : true
-cover : /Data/Blogpost/AerRacers/scene_neko.png
+cover : /Data/BlogPost/AerRacers/scene_neko.png
 mode: normal
 article_header:
   type: overlay
@@ -17,7 +17,7 @@ article_header:
   background_color: rgb(34, 57, 230)
   background_image: 
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
-    src: /Data/Blogpost/AerRacers/scene_neko.png
+    src: /Data/BlogPost/AerRacers/scene_neko.png
 ---
 
 # Blog Importing Unity Scene into a C++ Engine
@@ -34,7 +34,7 @@ During this project, we decided to use **Unity to design the level**. For this, 
 
 We chose to implement the level design on Unity because it allowed us to use the Unity editor tools without having to recreate them in the NekoEngine.
 
-<img src="/Data/Blogpost/AerRacers/unity_editor.png" width="300" alt="Unity Editor">
+<img src="/Data/BlogPost/AerRacers/unity_editor.png" width="300" alt="Unity Editor">
 
 > Editor in Unity
 
@@ -55,7 +55,7 @@ The **Unity scene export system** has been implemented by [William](https://worg
 
 The tool is a Unity window allowing to select the objects not to be exported and to save the .aerscene file to the desired location.
 
-<img src="/Data/Blogpost/AerRacers/scene_exporter.png" width="300" alt="Tool Scene Exporter">
+<img src="/Data/BlogPost/AerRacers/scene_exporter.png" width="300" alt="Tool Scene Exporter">
 
 > Tool Scene Exporter in Unity
 
@@ -179,7 +179,7 @@ As each component has a unique way of defining the information, it was important
 
 So, once the scene is finished loading, all the entities are defined with the right components and their right information.
 
-<img src="/Data/Blogpost/AerRacers/load_scene.png" width="300" alt="Diagram Scene Importation">
+<img src="/Data/BlogPost/AerRacers/load_scene.png" width="300" alt="Diagram Scene Importation">
 
 > Diagram Scene Importation
 
@@ -192,7 +192,7 @@ To do this, I write the same information I read in the scene for the scene infor
 
 In order to make the loading of the scenes easier, I have set up a tool to display the scenes that can be loaded and to load them and save them.
 
-<img src="/Data/Blogpost/AerRacers/scene_loader.png" width="300" alt="Tool Scene Loading Neko">
+<img src="/Data/BlogPost/AerRacers/scene_loader.png" width="300" alt="Tool Scene Loading Neko">
 
 > Tool Scene Loading
 
@@ -204,8 +204,8 @@ In order to make the loading of the scenes easier, I have set up a tool to displ
 
 Finally, the scene system works well and it allowed us to easily export the level design scenes to test them on the NekoEngine.
 
-<img src="/Data/Blogpost/AerRacers/scene_unity.png" width="300" alt="Comparison of the Unity scene">
-<img src="/Data/Blogpost/AerRacers/scene_neko.png" width="300" alt="Comparison of the Neko scene">
+<img src="/Data/BlogPost/AerRacers/scene_unity.png" width="300" alt="Comparison of the Unity scene">
+<img src="/Data/BlogPost/AerRacers/scene_neko.png" width="300" alt="Comparison of the Neko scene">
 
 > Comparison of the Unity scene (left) and Neko imported scene (right) 
 

@@ -21,18 +21,23 @@ article_header:
     src: /Data/Portfolio/Game/TheUnstoppableMrStarr/gameplay2.gif
 ---
 # Context
-During the SAE Spring Jam, I work with 1 programmer and 2 artists to create again 48 hours answering the theme “Don't stop moving!”
+During the SAE Spring Jam, I work with **1 programmer and 2 artists** to create again **48 hours** answering the theme **“Don't stop moving!”**
 
 # Pitch
-The Unstoppable Mr.Starr is a rodeo game where you need to survive against cowboys, hummers, and giant cows. Drive fast to recover your life.
+The Unstoppable Mr.Starr is a **rodeo game** where you need to **survive against cowboys, hummers, and giant cows**. Drive fast to recover your life.
 
-# Réalisation
-I work on the spawning of enemies in different waves.
-I also work on car movement and its collision with other objects.
-Finally, I managed the UI integration.
+# Realization
+I work on the **spawning of enemies in different waves**.
+
+I also work on **car movement** and its **collision with other objects**.
+
+Finally, I managed the **UI integration**.
+
+<img src="/Data/Portfolio/Game/TheUnstoppableMrStarr/gameplay2.gif" width="600" alt="">
 
 # Learned Skills
-I learn a lot working with 3D artists and 3D animation in FBX models.
+I learn a lot working with **3D artists and 3D animation in FBX models**.
 
 # Result :
-Play on itch
+<iframe width="552" height="167" frameborder="0" src="https://itch.io/embed/677444?bg_color=0f5525&amp;fg_color=e3cc97&amp;link_color=c96038&amp;border_color=213921"><a href="https://demonskiddy.itch.io/the-unstoppable-mrstarr">The Unstoppable Mr.Starr by DemonsKiddy</a></iframe>
+

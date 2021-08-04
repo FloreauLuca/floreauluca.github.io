@@ -21,21 +21,30 @@ article_header:
     src: /Data/Portfolio/Game/LeechWeapon/screengif1.gif
 ---
 # Context
-For the Ludum Dare 44, I work alone for 48 hours to create a game with the theme “Health is currency”.
+For the **Ludum Dare 44**, I work **alone for 48 hours** to create a game with the theme **“Your life is currency”**.
 
 # Pitch
-You have to use your own health using the LeechWeapon to kill zombies.
-You have to manage to kill the most zombies by balls to save your money to upgrade your weapon.
+You have to use **your own health** using the **LeechWeapon to kill zombies**.
 
-# Réalisation
-I first work on the gameplay developing the player's movement and aiming.
-Then I develop the enemy spawning and movement.
-I also work on the development of a shop.
+You have to manage to **kill the most zombies by balls** to save your money to **upgrade your weapon**.
 
-But I also work on graphics creation. I create all the voxel models with MagicaVoxel and I animate the characters using Maximo.
+# Realization
+I first work on the gameplay developing the **player's movement and aiming**.
+
+Then I develop the **enemy spawning and movement**.
+
+I also work on the development of a **shop**.
+
+<img src="/Data/Portfolio/Game/LeechWeapon/screen.png" width="600" alt="">
+
+But I also work on **graphics creation**. I create **all the voxel models with MagicaVoxel** and I **animate the characters using Maximo**.
 
 # Learned Skills
-This project mainly taught me about 3D voxel modelization, 3D animation, and its integration in Unity.
+This project mainly taught me about **3D voxel modelization**, **3D animation**, and its **integration in Unity**.
 
-# Result :
-Play on itch
+# Result
+
+<img src="/Data/Portfolio/Game/LeechWeapon/screengif1.gif" width="600" alt="">
+
+<iframe  width="552" height="167" frameborder="0" src="https://itch.io/embed/412405?bg_color=494949&amp;fg_color=ffffff&amp;link_color=00d41d&amp;border_color=7f7373"><a href="https://demonskiddy.itch.io/leech-weapon">LeechWeapon by DemonsKiddy</a></iframe>
+

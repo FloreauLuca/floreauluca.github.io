@@ -21,21 +21,28 @@ article_header:
     src: /Data/Portfolio/Game/SpringMan/tutoGif.gif
 ---
 # Context
-For the first MizJam, I had to create a game in 48 hours using an imposed asset pack from Kenney.
+For the **first MizJam**, I had to create a game in **48 hours** using an **imposed asset pack from Kenney**.
 
 # Pitch
-- Embody an enchanted spring around a level to collect treasure and grab the king's crown.
-- Drag and drop to bounce across the level
+You embody an **enchanted spring** around a level to **collect treasure** and **grab the king's crown**.
+
+**Drag and drop to bounce** across the level.
 
 # Realization
-The first step was to develop the controls. I developed a system of point’n click allowing the game to be playable on PC and mobile. Then, I did a lot of adjustments in the movement to obtain a good feel with the bounce.
-As I didn’t have a lot of mechanics, I had time to work on juiciness for the score incrementation, particles, sound, respawn effect, etc... 
+The first step was to develop the controls. I developed a system of **drag’n drop** allowing the game to be **playable on PC and mobile**. Then, I did a lot of adjustments in the movement to obtain **a good feel with the bounce**.
 
+<img src="/Data/Portfolio/Game/SpringMan/tutoGif.gif" width="600" alt="">
+
+As I didn’t have a lot of mechanics, I had time to **work on juiciness** for the score incrementation, particles, sound, respawn effect, etc... 
+
+<img src="/Data/Portfolio/Game/SpringMan/keyGif.gif" width="600" alt="">
 
 # Learned Skills
-Thanks to the simple gameplay, I had time to test and learn a lot about all types of juicy integration.
-I also appreciate working with imposed assets leaving time on other thing and allowing to obtain a more coherent artistic direction.
+Thanks to the simple gameplay, I had time to test and learn a lot about **all types of juicy integration**.
+
+I also appreciate working with imposed assets **leaving time** on other thing and allowing to obtain a **more coherent artistic direction**.
 
 # Result
 
-Play on itch
+<iframe width="552" height="167" frameborder="0" src="https://itch.io/embed/734163?bg_color=4a2e3b&amp;fg_color=ffffff&amp;link_color=e0403f&amp;border_color=410033"><a href="https://demonskiddy.itch.io/springman">SpringMan by DemonsKiddy</a></iframe>
+

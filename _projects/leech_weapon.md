@@ -3,7 +3,7 @@ layout: article
 title: LeechWeapon
 tags: Solo Jam Design Prog Art Unity
 date: 2019-04-29
-order: 6
+order: 7
 excerpt: LeechWeapon is an action shooter in 3D where you have to use your health to kill zombies.
 key: leech-weapon
 show_title : true

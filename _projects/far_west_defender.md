@@ -3,7 +3,7 @@ layout: article
 title: Far West Defender
 tags: Solo Design Prog Art
 date: 2018-11-25
-order: 7
+order: 8
 excerpt: Western Defender is a tower defense in which you have to eliminate the Indians who come to steal the gold from the train.
 key: far-west-defender
 show_title : true

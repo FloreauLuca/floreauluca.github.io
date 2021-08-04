@@ -21,67 +21,86 @@ article_header:
     src: /Data/Portfolio/Game/AerRacers/aerracers_run.gif
 ---
 # Context
-During my third year of Bachelor in Game Programming at the SAE Institute, we had objectives to set up a specialization project aiming to put into practice what we had learned and to develop our skills in the fields of our future jobs.
-This project took place over 8 months from September 2020 to April 2021.
-Our objective was to create a racing game on Switch in local multiplayer.
-For this, we had to use the NekoEngine, a custom game engine developed in C++ by Elias Farhan. It is an engine based on the ECS system. It uses the OpenGL, SDL2, and EasyProfiler libraries.
+During my **third year of Bachelor in Game Programming** at the SAE Institute, we had objectives to set up a specialization project aiming to put into practice what we had learned and to develop our skills in the fields of our future jobs.
+
+This project took place over **8 months** from September 2020 to April 2021.
+
+Our objective was to create **a racing game on Switch in local multiplayer**.
+
+For this, we had to use the NekoEngine, a **custom game engine** developed in **C++** by Elias Farhan. It is an engine based on the **ECS system**. It uses the **OpenGL**, **SDL2**, and **EasyProfiler** libraries.
 
 # Pitch
-AerRacers is a local multiplayer pod racing game. You can choose between 2 ships with different colors to compete in a single race. You will cross different environments such as valleys, plains, and caves. You can play from 1 to 4 players on PC using 2 joysticks to controls each propeller separately.
+AerRacers is a **local multiplayer pod racing game**. You can choose between **2 ships with different colors** to compete in a single race. You will cross **different environments** such as valleys, plains, and caves. You can play **from 1 to 4 players** on PC using 2 joysticks to **controls each propeller separately**.
 
 # Roles
-For the implementation of the project we were 5 programmers:
-Sebastien Feser, Project Leader, Lead Designer, and Lead Game,
-Stephen Grosjean Dev Ops,
-Simon Canas Lead Engine Prog
-Dylan Von Arx Lead Tool who left in January
-Me, Luca Floreau, Producer and Lead Programmer
+For the implementation of the project we were **5 programmers**:
 
-As Producer, I was in charge of the planning.
+- Sebastien Feser, Project Leader, Lead Designer, and Lead Game,
+- Stephen Grosjean Dev Ops,
+- Simon Canas Lead Engine Prog
+- Dylan Von Arx Lead Tool who left in January
+- Me, Luca Floreau, Producer and Lead Programmer
 
-As Lead Programmer, I was in charge of the distribution and the progress of the tasks.
+As **Producer**, I was in charge of the **planning**.
 
-Finally, I also took care of the Engine and Game tasks according to the needs of each team.
+As **Lead Programmer**, I was in charge of **the distribution and the progress of the tasks**.
+
+Finally, I also took care of the **Engine and Game tasks** according to the needs of each team.
 
 
 # Realization 
 ## Plannification
-I work on the planning of the project setting up the milestones, deliverables, and tasks for each team.
-IMG
+I work on the planning of the project setting up the **milestones, deliverables, and tasks** for each team.
+
+<img src="/Data/BlogPost/AerRacers/delivrables_img.png" width="600" alt="Deliverables"> 
 
 ## Task Tracking
-As Lead Programmer, I also manage the communication between teams and help the team in need.
+As Lead Programmer, I also manage **the communication between teams** and help the team in need.
 
 ## Implementation of a Physic Engine
-One of my first tasks was the implementation of the library PhysX inside the project using CMake. You can learn more about it in my blogpost : https://floreauluca.github.io/blogposts/blogpost-physx 
+One of my first tasks was the **implementation of the library PhysX** inside the project using **CMake**. You can learn more about it in my [blogpost : https://floreauluca.github.io/blogposts/blogpost-physx ](https://floreauluca.github.io/blogposts/blogpost-physx)
+
+<img src="/Data/BlogPost/AerRacers/nekophysic.gif" width="600" alt="Deliverables">
 
 ## InputSystem
-Another task was the implementation of an Input System based on SDL Events. This system has to managed keyboard and mouse input but also managed up to 4 controllers simultaneously. It also has to manage up to 4 switch controllers simultaneously and react to the connection or detection of each controller.
+Another task was the implementation of an **Input System** based on **SDL Events**. This system has to managed **keyboard and mouse inputs** but also managed up to **4 controllers simultaneously**.
+
+It also has to manage up to **4 switch controllers simultaneously** and **react to the connection or detection** of each controller.
 
 ## Switch integration
-Indeed, one of my tasks was the porting from PC to Switch and the correction of each faulty system.
+Indeed, one of my tasks was the **porting from PC to Switch** and the correction of each faulty system.
 
 ## Scene System
-I also had to develop a scene system capable to export and import a scene from Unity with each needed component and hierarchy. 
-You can learn more about it in my other blogpost :
-https://floreauluca.github.io/blogposts/blogpost-scene 
+I also had to develop a scene system capable to **export a scene from Unity** and **importing it to NekoEngine** with each needed **component and hierarchy**.
 
-## Multijoueur
-Finally, one of my last tasks was the implementation of the multiplayer allowing the manipulation of 4 players simultaneously.
+You can learn more about it in my other [blogpost :
+https://floreauluca.github.io/blogposts/blogpost-scene ](https://floreauluca.github.io/blogposts/blogpost-scene)
+
+<img src="/Data/BlogPost/AerRacers/scene_neko.png" width="300" alt="Comparison of the Neko scene">
+
+## Multiplayer
+Finally, one of my last tasks was the **implementation of the multiplayer** allowing the manipulation of **4 players simultaneously**.
 
 # Learned Skills
-As Producer and Lead Programmer, I learned a lot about planning and team management for an 8-month project. It was my first time working with artists on a big project. 
-I also learn a lot about library implementation and project hierarchy using CMake.
-The scene system introduced me to JSON files, serialization and deserialization, and the JSON Schema.
-Finally, I discovered the programmation for the console with all the specificity of the Switch.
+As Producer and Lead Programmer, I learned a lot about **planning and team management** for an 8-month project. It was my first time **working with artists** on a big project.
+
+I also learn a lot about **library implementation** and **project hierarchy using CMake**.
+
+The scene system introduced me to **JSON files, serialization and deserialization**, and the **JSON Schema**.
+Finally, I discovered the **programmation for the console** with all the specificity of the Switch.
 
 # Result
-Trailer
+<iframe width="800" height="500" src="https://www.youtube.com/embed/nS2PKKQuND4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-To play the game check our Release : https://github.com/SAE-Institute-Geneva/AerRacers/release 
+To play the game **check out the release** : https://github.com/SAE-Institute-Geneva/AerRacers/release 
 
-You can find more information on my blogpost :
-About the project development with the post-mortem : https://floreauluca.github.io/blogposts/blogpost-postmortem 
-About the PhysX implementation : https://floreauluca.github.io/blogposts/blogpost-physx 
-About the Scene System : https://floreauluca.github.io/blogposts/blogpost-scene 
-You can also check out the GitHub : https://github.com/SAE-Institute-Geneva/AerRacers 
+You can find more information on my blogposts :
+
+About the project development with the [**post-mortem** : https://floreauluca.github.io/blogposts/blogpost-postmortem ](https://floreauluca.github.io/blogposts/blogpost-postmortem)
+
+About the [**PhysX implementation** : https://floreauluca.github.io/blogposts/blogpost-physx ](https://floreauluca.github.io/blogposts/blogpost-physx)
+
+About the [**Scene System** : https://floreauluca.github.io/blogposts/blogpost-scene ](https://floreauluca.github.io/blogposts/blogpost-scene)
+
+You can also [**check out the GitHub** : https://github.com/SAE-Institute-Geneva/AerRacers ](https://github.com/SAE-Institute-Geneva/AerRacers)
+

@@ -20,32 +20,22 @@ article_header:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: /Data/Portfolio/Game/SpringMan/tutoGif.gif
 ---
-
-# Contexe
-- 48 hours MizJam1 
-- Pack de texture imposé
+# Context
+For the first MizJam, I had to create a game in 48 hours using an imposed asset pack from Kenney.
 
 # Pitch
-- Embodie an enchanted spring around a level
-- Drag and drop to bounce acros the level
+- Embody an enchanted spring around a level to collect treasure and grab the king's crown.
+- Drag and drop to bounce across the level
 
-# Réalisation
-- Control
-	- Point and click
-	- bouncing adjustement
-- Juicy 
-	- Score
-	- Particle
-	- Sound
-	- Effect
+# Realization
+The first step was to develop the controls. I developed a system of point’n click allowing the game to be playable on PC and mobile. Then, I did a lot of adjustments in the movement to obtain a good feel with the bounce.
+As I didn’t have a lot of mechanics, I had time to work on juiciness for the score incrementation, particles, sound, respawn effect, etc... 
 
 
 # Learned Skills
-- Juicy
-- Work with an impose asset
+Thanks to the simple gameplay, I had time to test and learn a lot about all types of juicy integration.
+I also appreciate working with imposed assets leaving time on other thing and allowing to obtain a more coherent artistic direction.
 
 # Result
 
-- More information
-- itch.io
-
+Play on itch

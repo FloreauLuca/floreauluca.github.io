@@ -20,41 +20,32 @@ article_header:
     gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
     src: /Data/Portfolio/Game/PotionCooking/screengif.gif
 ---
-
-# Contexe
-- 1er projet apprentisage unity
+# Context
+During my first year of Bachelor in Games Programming and as part of the module of Unity basics, I was asked to create a full game in Unity.
 
 # Pitch
-Scénario :
-Dans un univers médiéval fantastique, il existe, au fond d'une forêt, un stand de restauration
-rapide de potion magique. Les clients viennent demander une potion magique et ils sont servis dans
-les plus bref délai.
-Principe de jeu:
-Vous incarnez le sorcier fabricant les potions. Il vous est donc demandé d'accueillir les
-clients, de choisir les ingrédients, de gérer la cuisson, le remplir les récipients puis de servir les
-clients. Pour cela, vous avez accès à 4 fenêtres : Ingrédient, Cuisson, Préparation et Accueil.
-Les clients possèdent une limite d'attente avant de s'énerver et de partir.
+In a medieval fantasy world, there is, at the bottom of a forest, a magic potion fast-food stand. Customers come to ask for a magic potion and they are served in
+the shortest time.
+You play as the potion-making sorcerer. You are therefore requested to welcome the
+customers, choose the ingredients, manage the cooking, fill the containers and then serve the clients. For this, you have access to 4 windows: Ingredient, Cooking, Preparation, and Reception.
+Customers have a waiting limit before they get angry and leave.
 
-# Réalisation
-- Gameplay
-	- Switch caméra
-	- Drag & Drop
-- Interaction entre les objets
-- Recettes
-	- Scriptable Object
-- Sign & Feedback
+# Realization
+I first work on the camera of the game allowing the player to switch between each step of the preparation.
+Then, I developed a Drag’n Drop System to manipulate brewing ingredients.
+The next step was to developed the interaction between each object. To manage the recipe, I use ScriptableObject.
+Finally, I had time to add some signs and feedback for the cooking and the customer.
 
 # Learned Skills
-- Unity
-- Illustrator
-- Scriptable Object
-- Mobile developpement
+It allows me to practice in Unity and discover a lot of mechanics.
+I also create all the graphism allowing me to practice using Illustrator. 
+This project taught me why and how to use the ScriptableObjects.
+Finally, it was my first game on mobile allowing me to learn a lot about Android development in Unity.
+
 
 # Result
+Play on itch : 
 
-- More information
--Github
-- Document Technique
-
-Play ithc
-
+More information
+You can check the Github of the project : 
+You can also check the Technical Document (only in french) :

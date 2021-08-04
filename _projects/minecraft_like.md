@@ -21,30 +21,41 @@ article_header:
     src: /Data/Portfolio/Game/Minecraft-like/screengif.gif
 ---
 # Context
-During my second year of Bachelor in Games Programming and as part of the module of computer graphics, we were asked to create a Minecraft-like in C++ using the NekoEngine. The NekoEngine is a custom game engine developed in C++ by Elias Farhan. It is an engine based on the ECS system. It uses the OpenGL ES 3.0, SDL2, and EasyProfiler libraries.
+During my **second year of Bachelor in Games Programming** and as part of the module of **computer graphics**, we were asked to create a **Minecraft-like in C++ using the NekoEngine**.
+
+The NekoEngine is a custom game engine developed in C++ by Elias Farhan. It is an engine based on the **ECS system**. It uses the **OpenGL ES 3.0, SDL2, and EasyProfiler** libraries.
 
 # Pitch
-The project is a Minecraft-like allowing the player to navigate through an infinite voxel world to break and build blocks
+The project is a **Minecraft-like** allowing the player to navigate through an **infinite voxel world** to **break and build blocks**
 
 # Realization
-One of my first tasks was the implementation of Gizmo using OpenGL. We had to be able to draw cubes and lines for debugging.
-Next, I had to implement an AABBManager allowing the detection of intersection between two AABB, one AABB, and a raycast or an AABB and a sphere.
-I also have to implement a multi-threaded infinite chunk generation. You can learn more in my blogpost : https://floreauluca.github.io/blogposts/chunk-generation 
-To optimize, I also implement the occlusion culling of non-viewable blocks of each chunk.
+One of my first tasks was the implementation of **Gizmo using OpenGL**. We had to be able to draw **cubes and lines** for debugging.
 
+<img src="/Data/BlogPost/BlogPost3/chunkwithout frustum.jpg" width="600" alt="Gif of CheckVisibleChunks">
+
+Next, I had to implement an **AABBManager** allowing the detection of intersection between **two AABB, one AABB, and a raycast or an AABB and a sphere**.
+
+I also have to implement a **multi-threaded infinite chunk generation**. You can learn more in my [blogpost : https://floreauluca.github.io/blogposts/chunk-generation](https://floreauluca.github.io/blogposts/chunk-generation)
+
+To optimize, I also implement the **occlusion culling** of non-viewable blocks of each chunk.
+
+<img src="/Data/BlogPost/BlogPost3/dirtychunk.gif" width="600" alt="">
 
 # Learned Skills
-This project was my first complete game in C++ the first project with a big team of programmers. 
-I learn a lot about C++ development and optimization. 
-I also understood better multi-threading and job systems.
-Finally, it also taught a lot about graphics rendering with OpenGL
+This project was **my first complete game in C++** and the first project with a big team of programmers.
+
+I learn a lot about **C++ development and optimization**.
+
+I also understood better **multi-threading and job systems**.
+
+Finally, it also taught a lot about **graphics rendering with OpenGL**.
 
 # Result
 
-IMG
+<img src="/Data/Portfolio/Game/Minecraft-like/screengif.gif" width="600" alt="">
 
-Check out the release : https://github.com/LoshkinOleg/NekoEngine/releases
+[**Check out the release** : https://github.com/LoshkinOleg/NekoEngine/releases](https://github.com/LoshkinOleg/NekoEngine/releases)
 
 More information :
-Infinite Chunk Generation Blogpost : https://floreauluca.github.io/blogposts/chunk-generation 
-Full GitHub : https://github.com/LoshkinOleg/NekoEngine 
+[Infinite Chunk Generation Blogpost : https://floreauluca.github.io/blogposts/chunk-generation](https://floreauluca.github.io/blogposts/chunk-generation) 
+[Full GitHub : https://github.com/LoshkinOleg/NekoEngine](https://github.com/LoshkinOleg/NekoEngine) 

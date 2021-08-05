@@ -98,7 +98,7 @@ p {
 /* Style the top navigation bar */
 .navbar {
   overflow: hidden; /* Hide overflow */
-  background-color: #333; /* Dark background color */
+  background-color: #c3f3fa; /* Dark background color */
   position: fixed;
   width: 100%;
   top: 0;
@@ -109,7 +109,7 @@ p {
 .navbar a {
   float: left; /* Make sure that the links stay side-by-side */
   display: block; /* Change the display to block, for responsive reasons (see below) */
-  color: white; /* White text color */
+  color: #313094; /* White text color */
   text-align: center; /* Center the text */
   padding: 14px 20px; /* Add some padding */
   text-decoration: none; /* Remove underline */
@@ -122,7 +122,7 @@ p {
 
 /* Change color on hover/mouse-over */
 .navbar a:hover {
-  background-color: #ddd; /* Grey background color */
+  background-color: #def3fa; /* Grey background color */
   color: black; /* Black text color */
 }
 

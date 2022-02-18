@@ -4,6 +4,12 @@ var radius = 30;
 var count = 10;
 var deltaTime = 0;
 var lastTimestamp = 0;
+update_size();
+
+window.addEventListener('resize', () => {
+  update_size();
+});
+
 draw();
 
 function draw() {
@@ -32,7 +38,7 @@ function mouseMoveHandler(e) {
 function drawCircle(x, y) {
   ctx.beginPath();
   let radiusModif = (Math.sin((lastTimestamp / 1000) + (y+x) / 100) * 0.5 + 0.5);
-  ctx.arc(x, y, radius - radiusModif * 10, 0, Math.PI * 2);
+  ctx.arc(x, y, radius - radiusModif * 20, 0, Math.PI * 2);
   let colorHue = x / canvas.width;
   if (Math.abs(x - relativeX) < radius && Math.abs(y - relativeY) < radius) {
     ctx.fillStyle = "#FFFFFF";
@@ -49,4 +55,10 @@ function drawDebug() {
     document.getElementById("debug").innerHTML = "Pos: " + relativeX + ", " + relativeY;
     document.getElementById("debug").innerHTML += "\n Dt: " + deltaTime;
   }
+}
+
+
+function update_size() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }

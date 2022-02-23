@@ -64,8 +64,15 @@ function draw() {
   timestamp = Date.now();
   timestamp *= 0.5;
   time = (timestamp % 1000) / 1000;
-  let circle = new MusicCircle(window.innerWidth / 2, window.innerHeight / 2, 100);
+
+  let circle = new MusicCircle(window.innerWidth * 1 / 4, window.innerHeight / 2, 100);
   circle.draw(time);
+
+  let circle2 = new MusicCircle(window.innerWidth * 2 / 4, window.innerHeight / 2, 100);
+  circle2.draw(time);
+
+  let circle3 = new MusicCircle(window.innerWidth * 3 / 4, window.innerHeight / 2, 100);
+  circle3.draw(time);
 
   requestAnimationFrame(draw);
 

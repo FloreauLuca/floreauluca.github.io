@@ -3,6 +3,20 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var btn = document.getElementById("resetBtn");
 
+const url = "https://floreauluca.github.io/jsgames/data/piano.wav"; // use any valid audio file if this disappears over time...
+
+const player = new Tone.Player({
+  url,
+  loop: true,
+  autostart: true,
+});
+
+pitchShift = new Tone
+    .PitchShift({ pitch: -8 })
+  .toDestination();
+
+player.connect(pitchShift);
+
 var deltaTime = 0;
 var lastTimestamp = 0;
 var timestamp = 0;
@@ -15,6 +29,8 @@ btn.addEventListener('click', restart);
 function restart() {
   time = 0;
   linesPoint = [];
+  Tone.Transport.start();
+  pitchShift.pitch += 1;
 }
 
 window.onload = function () {

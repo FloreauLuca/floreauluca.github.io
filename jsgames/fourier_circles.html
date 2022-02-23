@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Fourier circles</title>
+  <title>Fourier circles / Camille's Garden</title>
   <style>
     body {
-      background: #111111;
+      background: #030303;
       padding: 0;
       margin: 0;
     }
@@ -24,30 +24,29 @@
   <script src="utility/Vector2.js"></script>     
 </head>
 <body>
-  <canvas id="myCanvas" width="506" height="900"></canvas>
-  <select id="dropdown">
-    <option value="increase" selected>Increase</option>
-    <option value="decrease" selected>Decrease</option>
-    <option value="custom" selected>Custom</option>
+  <canvas id="circlesCanvas" width="506" height="600"></canvas>
+  <select id="loadDropdown">
+    <option value="custom">Custom</option>
+    <option value="flowerCamille" selected>Camille's flower</option>
+    <option value="circles">Circles</option>
+    <option value="line">Line</option>
   </select>
-  <div class="sliderContainer">
-    <p>Debug slider :</p>
-    <p> MultSlider <input id="mulSlider" type="number" value="0.1" step="0.1"></p>
-    <p id="mulText"></p>
-    <p> Frequence <input id="frequence" type="text" value="10"></p>
-    <p> SpeedSlider <input id="speedSlider" type="range" min="1" max="30" value="10"></p>
-    <p id="addText"></p>
-    <p>
-      Speed
-      <input id="speed1" type="number" width="10">
-      <input id="speed2" type="number" width="10">
-      <input id="speed3" type="number" width="10">
-      <input id="speed4" type="number" width="10">
-      <input id="speed5" type="number" width="10">
-    </p>
+  <input id="loadParam" type="button" value="Load Parameters">
+  <div class="paramContainer">
+    <input id="circleCount" type="text" value="4">
+    <input id="updateCirclesBtn" type="button" value="Update Circles">
+    <p class="speedContainer"> Speed </p>
+    <p class="radiusContainer"> Radius </p>
   </div>
-  <input id="resetBtn" type="button" value="Reset">
-  <!--<p id="debug"></p>-->
+  <div class="displayContainer">
+    <input id="resetBtn" type="button" value="Reset">
+    <p> Frequence <input id="frequence" type="text" value="10"></p>
+    <p id="speedText"> </p><input id="speedSlider" type="range" min="1" max="30" value="10">
+  </div>
+<canvas id="frequenceCanvas" width="1400" height="400"></canvas>
+  <div class="soundContainer" style="display:none">
+    <p> Pitch Range <input id="playBtn" type="button" value="Play"> <input id="pitchRange" type="range" min="-10" max="10" value="0"></p>
+  </div>
   <script src="fourier_circles.js"></script>
 </body>
 </html>

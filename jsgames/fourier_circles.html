@@ -22,6 +22,7 @@
   </style>
   <script src="https://unpkg.com/tone@next/build/Tone.js"></script>
   <script src="utility/Vector2.js"></script>     
+  <script src="utility/SoundModule.js"></script>     
 </head>
 <body>
   <canvas id="circlesCanvas" width="506" height="600"></canvas>
@@ -30,6 +31,7 @@
     <option value="flowerCamille" selected>Camille's flower</option>
     <option value="circles">Circles</option>
     <option value="line">Line</option>
+    <option value="cannabis">Cannabis</option>
   </select>
   <input id="loadParam" type="button" value="Load Parameters">
   <div class="paramContainer">
@@ -43,10 +45,19 @@
     <p> Frequence <input id="frequence" type="text" value="10"></p>
     <p id="speedText"> </p><input id="speedSlider" type="range" min="1" max="30" value="10">
   </div>
-<canvas id="frequenceCanvas" width="1400" height="400"></canvas>
-  <div class="soundContainer" style="display:none">
-    <p> Pitch Range <input id="playBtn" type="button" value="Play"> <input id="pitchRange" type="range" min="-10" max="10" value="0"></p>
-  </div>
+<canvas id="frequenceCanvas" width="1400" height="400" style="display:none"></canvas>
+<div class="soundContainer" style="display: block">
+  <input id="playBtn" type="button" value="Play">
+  <p> Volume <input id="volume" type="range" min="0.00001" max="2.0" value="1.0" step="0.01"></p>
+  <p> BaseFrequency <input id="baseFrequency" type="number" value="440.0" step="1.0"> </p>
+  <p id="frequencyText"></p>
+  <select id="soundDropdown">
+    <option value="sine" selected>sine</option>
+    <option value="square">square</option>
+    <option value="triangle">triangle</option>
+    <option value="sawtooth">sawtooth</option>
+  </select>
+</div>
   <script src="fourier_circles.js"></script>
 </body>
 </html>

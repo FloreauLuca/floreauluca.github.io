@@ -26,38 +26,43 @@ window.onload = function() {
   restart();
 }
 
-var slide = document.getElementById('pitchRange');
+//var slide = document.getElementById('pitchRange');
 
-slide.onchange = function() {
-  pitchShift.pitch = parseInt(this.value);
-}
+//slide.onchange = function() {
+//  pitchShift.pitch = parseInt(this.value);
+//}
 
-const url = "https://floreauluca.github.io/jsgames/data/wave.wav";
-const player = new Tone.Player({
-  url,
-  loop: true,
-  autostart: true,
-});
+//const url = "https://floreauluca.github.io/jsgames/data/wave.wav";
+//const player = new Tone.Player({
+//  url,
+//  loop: true,
+//  autostart: true,
+//});
 
-pitchShift = new Tone
-  .PitchShift({ pitch: 0 })
-  .toDestination();
+//pitchShift = new Tone
+//  .PitchShift({ pitch: 0 })
+//  .toDestination();
 
-player.connect(pitchShift);
+//player.connect(pitchShift);
 
 var btnPlay = document.getElementById("playBtn");
 btnPlay.addEventListener('click', playBtn);
-var playBool = false;
+
+var module = null;
+
+function load() {
+  module = new SoundModule(false);
+}
 
 function playBtn() {
-  if (playBool) {
-    playBool = false;
-    player.stop();
-    console.log("Tone.stop()");
+  if (module == null)
+    load();
+  if (module.isPlaying) {
+    module.stop();
+    console.log("sound.stop");
   } else {
-    playBool = true;
-    player.start();
-    console.log("Tone.start()");
+    module.play();
+    console.log("sound.play");
   }
 }
 
@@ -122,12 +127,21 @@ function loadParam() {
     circleCount = 5;
     speed = [10.1, 1, 1, 1, 1];
     radius = [1, 0.5, 0.4, 0.3, 0.2];
-    break;
+      break;
+    case "cannabis":
+      doReadInputs = false;
+      paramContainer.style.display = "none";
+      clearCircles();
+      circleCount = 4;
+      speed = [1, -3, 4, 100];
+      radius = [0.5, 0.5, 0.5, 0.02];
+      break;
   default:
   }
   time = 0;
   linesPoint = [];
 }
+
 class FourierCircle {
   constructor(pos, radius, speed) {
     this.pos = pos;
@@ -183,16 +197,18 @@ function draw() {
 
   let cycleFreq = parseFloat(document.getElementById("frequence").value);
 
-  //if ((mulModifier*10) % 10 === 0)
-  //{
-  // cycleFreq = 1;
-  //} else if ((mulModifier*10) % 5 === 0)
-  //{
-  // cycleFreq = 2;
-  //} else if ((mulModifier*10) % 2 === 0)
-  //{
-  // cycleFreq = 5;
-  //}
+  /*
+  if ((mulModifier*10) % 10 === 0)
+  {
+   cycleFreq = 1;
+  } else if ((mulModifier*10) % 5 === 0)
+  {
+   cycleFreq = 2;
+  } else if ((mulModifier*10) % 2 === 0)
+  {
+   cycleFreq = 5;
+  }
+  */
 
   if (time % (cycleFreq * 2) < cycleFreq) {
     linesPoint.push(circlePos);
@@ -211,11 +227,42 @@ function draw() {
 
   drawFrequency();
 
+  updateSound(circlePos);
+
   requestAnimationFrame(draw);
 
   deltaTime = 0.016;
   lastTimestamp = timestamp;
   time += deltaTime * speedModifier;
+}
+
+function updateSound(pos) {
+
+  let baseFrequency = parseFloat(document.getElementById("baseFrequency").value);
+
+  let dist =
+    pos.subtract(new Vector2(cirCanvas.width / 2, cirCanvas.height / 2)).magnitude();
+  dist = pos.x - cirCanvas.width / 2;
+  let radiusSum = 0.0;
+  for (var i = 0; i < radius.length; i++) {
+    radiusSum += radius[i] * 100;
+  }
+  console.log(radiusSum);
+  let distScaled = dist / radiusSum;
+  console.log(distScaled);
+  let frequency = baseFrequency + (distScaled - 0.5) * 200;
+  document.getElementById("frequencyText").innerHTML = parseInt(frequency);
+  if (module == null)
+    return;
+  if (!module.isPlaying)
+    return;
+
+  module.setFrequency(frequency);
+  
+  module.setGain(parseFloat(document.getElementById("volume").value));
+
+  module.setWaveType(document.getElementById("soundDropdown").value);
+
 }
 
 function drawFrequency() {

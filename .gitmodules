@@ -1,0 +1,3 @@
+[submodule "jsgames/Minecraft-js"]
+	path = jsgames/Minecraft-js
+	url = https://github.com/FloreauLuca/Minecraft-js.git

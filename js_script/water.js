@@ -12,8 +12,8 @@ function createWater(camera, pos, size) {
         uniforms: {
             time: { value: 1.0 },
             camera: { value: camera.position },
-            cameraNear: { value: camera.near },
-            cameraFar: { value: camera.far },
+            cameraNear: { value: 0.1 },
+            cameraFar: { value: 10 },
             width: { value: 1.0 },
             height: { value: 1.0 },
             tDiffuse: { value: null },
@@ -79,8 +79,8 @@ export default function main() {
 
     const fov = 70;
     const aspect = 2;  // the canvas default
-    const near = 0.01;
-    const far = 20;
+    const near = 0.1;
+    const far = 100;
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.set(0, 10, -10);
 
@@ -96,9 +96,6 @@ export default function main() {
     // Create a render target with depth texture
     setupRenderTarget();
 
-    // Our scene
-    setupScene();
-
     // Setup post-processing step
     setupPost();
 
@@ -111,6 +108,7 @@ export default function main() {
         controls.update();
         stats.update();
         renderShader();
+        // renderPostProcess();
         requestAnimationFrame(update);
     }
 
@@ -149,7 +147,7 @@ export default function main() {
             }
         });
         const postPlane = new THREE.PlaneGeometry(2, 2);
-        const postQuad = new THREE.Mesh(postPlane, postMaterial);
+        const postQuad = new THREE.Mesh(postPlane, waterShader);
         postScene = new THREE.Scene();
         postScene.add(postQuad);
     }
@@ -158,8 +156,47 @@ export default function main() {
         
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0x222222);
-        scene.add(createCube(new THREE.Vector3(0, 0, 0), new THREE.Vector3(5, 1, 5), new THREE.Vector3(0, 0, 0)));
-        scene.add(createCube(new THREE.Vector3(0, 1, 0), new THREE.Vector3(1, 1, 1), new THREE.Vector3(Math.PI/4, 0,0)));
+
+
+        let geometry = new THREE.BoxGeometry(50,1, 50);
+        let mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial( { color: 0xffffff } ));
+        mesh.name = "Ground";
+        mesh.position.set(0,-1, 0);
+        mesh.rotation.set(0, 0, 0);
+        scene.add(mesh);
+        
+        geometry = new THREE.BoxGeometry(2, 2, 2);
+        mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial( { color: 0xffffff } ));
+        mesh.name = "Cube";
+        mesh.position.set(0,0.5, 0);
+        mesh.rotation.set(Math.PI/4, 0,0);
+        scene.add(mesh);
+        
+        geometry = new THREE.ConeGeometry(3, 4, 32);
+        mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial( { color: 0x9999c0 } ));
+        mesh.name = "Cone";
+        mesh.position.set(5,0, 0);
+        scene.add(mesh);
+        
+        geometry = new THREE.OctahedronGeometry(2, 2);
+        mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial( { color: 0x99c099 } ));
+        mesh.name = "Sphere";
+        mesh.position.set(0,0, 5);
+        scene.add(mesh);
+        
+        geometry = new THREE.TorusGeometry();
+        mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial( { color: 0xc09999 } ));
+        mesh.name = "Torus";
+        mesh.position.set(0,0.8, -5);
+        mesh.rotation.set(Math.PI/2, 0,0);
+        scene.add(mesh);
+        
+        geometry = new THREE.TorusKnotGeometry(1, 0.2, 128, 10, 3, 8);
+        mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial( { color: 0xf0ccaa } ));
+        mesh.name = "TorusKnot";
+        mesh.position.set(-5,1, 0);
+        mesh.rotation.set(Math.PI/2, 0,0);
+        scene.add(mesh);
     }
 
     function renderPostProcess() {
@@ -181,11 +218,14 @@ export default function main() {
     
     function renderShader() {
 
+        // Our scene
+        setupScene();
+
         // render scene into target
         renderer.setRenderTarget(renderTarget);
         renderer.render(scene, camera);
 
-        scene.add(createWater(camera, new THREE.Vector3(0, 1, 0), new THREE.Vector3(5, 1, 5)));
+        scene.add(createWater(camera, new THREE.Vector3(0, 1, 0), new THREE.Vector3(50, 1, 50)));
 
         // render post FX
         const canvas = renderer.domElement;
@@ -193,11 +233,12 @@ export default function main() {
         const height = canvas.clientHeight;
         waterShader.uniforms.tDiffuse.value = renderTarget.texture;
         waterShader.uniforms.tDepth.value = renderTarget.depthTexture;
-        waterShader.uniforms.width.value = 2.0;
-        waterShader.uniforms.height.value = 2.0;
+        waterShader.uniforms.width.value = width;
+        waterShader.uniforms.height.value = height;
 
         renderer.setRenderTarget(null);
         renderer.render(scene, camera);
+        // renderer.render(postScene, postCamera);
 
         stats.update();
 

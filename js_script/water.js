@@ -12,12 +12,19 @@ function createWater(camera, pos, size) {
         uniforms: {
             time: { value: 1.0 },
             camera: { value: camera.position },
-            cameraNear: { value: 0.1 },
-            cameraFar: { value: 10 },
+            cameraNear: { value: camera.near },
+            cameraFar: { value: camera.far },
             width: { value: 1.0 },
             height: { value: 1.0 },
             tDiffuse: { value: null },
-            tDepth: { value: null }
+            tDepth: { value: null },
+            depthMaxDistance: { value: 2.0 },
+            depthGradientShallow: { value: new THREE.Color(0.1, 0.8, 1.0) },
+            depthGradientDeep: { value: new THREE.Color(0.0, 0.5, 1.0) },
+            surfaceNoiseCutoff: { value: 0.65 },
+            foamDistance: { value: 1.0 },
+            noiseScale: { value: new THREE.Vector2(0.2, 0.4) },
+            scrollSpeed : {value : new THREE.Vector2(0.1, 0.2)}
         },
         fragmentShader: WaterShader.fragmentShader(),
         vertexShader: WaterShader.vertexShader(),
@@ -32,7 +39,7 @@ function createWater(camera, pos, size) {
     water.position.set(pos.x, pos.y, pos.z);
     water.rotation.set(Math.PI/2, 0, 0);
     water.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
-        // console.log(material)
+        //console.log(material)
         material.uniforms.time.value += 0.1;
     };
     return water;
@@ -92,12 +99,18 @@ export default function main() {
     gui.close();
 
     renderer = new THREE.WebGLRenderer({ canvas });
-
+    scene = new THREE.Scene();
+    postScene = new THREE.Scene();
+    // Our scene
+    setupScene(scene);
+    setupScene(postScene);
+    postScene.add(createWater(camera, new THREE.Vector3(0, 1, 0), new THREE.Vector3(50, 1, 50)));
+        
     // Create a render target with depth texture
     setupRenderTarget();
 
     // Setup post-processing step
-    setupPost();
+    //setupPost();
 
     function update() {
         if (resizeRendererToDisplaySize(renderer)) {
@@ -152,9 +165,8 @@ export default function main() {
         postScene.add(postQuad);
     }
 
-    function setupScene() {
+    function setupScene(scene) {
         
-        scene = new THREE.Scene();
         scene.background = new THREE.Color(0x222222);
 
 
@@ -218,14 +230,10 @@ export default function main() {
     
     function renderShader() {
 
-        // Our scene
-        setupScene();
 
         // render scene into target
         renderer.setRenderTarget(renderTarget);
         renderer.render(scene, camera);
-
-        scene.add(createWater(camera, new THREE.Vector3(0, 1, 0), new THREE.Vector3(50, 1, 50)));
 
         // render post FX
         const canvas = renderer.domElement;
@@ -237,8 +245,8 @@ export default function main() {
         waterShader.uniforms.height.value = height;
 
         renderer.setRenderTarget(null);
-        renderer.render(scene, camera);
-        // renderer.render(postScene, postCamera);
+        //renderer.render(scene, camera);
+        renderer.render(postScene, camera);
 
         stats.update();
 

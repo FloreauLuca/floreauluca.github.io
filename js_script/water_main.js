@@ -19,39 +19,63 @@ const utilityURL = [
 const shadersURL = [
     './shader/water/water_roy_vert.glsl',
     './shader/water/water_roy_frag.glsl',
-    './shader/water/water_gab_vert.glsl',
-    './shader/water/water_gab_frag.glsl',
+    './shader/water/water_poly_vert.glsl',
+    './shader/water/water_poly_frag.glsl',
     './shader/water/water_cyan_vert.glsl',
     './shader/water/water_cyan_frag.glsl',
+    './shader/water/water_final_vert.glsl',
+    './shader/water/water_final_frag.glsl',
 ];
 
 function createWater(camera, canvas, pos, size, renderTarget) {
     const waterShader = new THREE.ShaderMaterial({
-        vertexShader: shaders[0],
-        fragmentShader: utilityShaders[0] + utilityShaders[1] + shaders[1],
+        vertexShader: shaders[6],
+        fragmentShader: utilityShaders[0] + utilityShaders[1] + shaders[7],
         uniforms: {
-            uTime: { value: 0.0 },
-            uCamera: { value: camera.position },
+            // Depth calculation
+            uTexDepth: { value: renderTarget.depthTexture },
             uCameraNear: { value: camera.near },
             uCameraFar: { value: camera.far },
             uWidth: { value: canvas.clientWidth },
             uHeight: { value: canvas.clientHeight },
-            uTexDiffuse: { value: renderTarget.texture },
-            uTexDepth: { value: renderTarget.depthTexture },
 
-            uDepthMaxDistance: { value: 3.0 },
-            uDepthGradientShallow: { value: new THREE.Color(0.1, 0.8, 1.0) },
-            uDepthGradientDeep: { value: new THREE.Color(0.0, 0.5, 1.0) },
+            // Faded Depth
+            uDepthMaxDistance: { value: 1.4 },
+
+            // UV Displacement
+            uTime: { value: 0.0 },
+            uScale: { value: new THREE.Vector2(0.5, 0.5) },
+            uSpeed: { value: new THREE.Vector2(0.1, 0.1) },
+            uWaveSpeed: { value: new THREE.Vector2(0.05, 0.1) },
+            uWaveAmplitude: { value: new THREE.Vector2(1.0, 1.0) },
+            uWaveFrequency: { value: new THREE.Vector2(0.0, 0.1) },
+
+            // Deep general
+            uDeepThickness: { value: 0.1 },
+            uDeepMiddle: { value: 0.4 },
+            uDeepWaveSpeed: { value: 0.05 },
+            uDeepRange: { value: 0.05 },
+            uDeepFadeOut: { value: 2.0 },
+
+            // Foam general
+            uFoamThickness: { value: 0.015 },
+            uFoamMiddle: { value: 0.4 },
+            uFoamWaveSpeed: { value: 0.05 },
+            uFoamRange: { value: 0.05 },
+
+            // Coast Foam
+            uFoamDistance: { value: 2.0 },
             uSurfaceNoiseCutoff: { value: 0.75 },
-            uFoamDistance: { value: 1.5 },
-            uNoiseScale: { value: new THREE.Vector2(0.2, 0.4) },
-            uScrollSpeed: { value: new THREE.Vector2(0.1, 0.2) },
+            uCoastWaveSpeed: { value: 0.05 },
+            uCoastWaveRange: { value: 0.05 },
+            uCoastFoamPow: { value: 0.27 },
+            uCoastFoamScale: { value: new THREE.Vector2(2.0, 2.0) },
 
-            uScale: { value: 2.0 },
-            uThickness: { value: 0.02 },
-            uSpeed: { value: 0.05 },
-            uWaveSpeed: { value: 0.1 },
-            uMiddle: { value: 0.5 },
+            // Colors
+            uWaterColor: { value: new THREE.Color(0.0, 0.4, 0.8) },
+            uWaterDeepColor: { value: new THREE.Color(0.0, 0.3, 0.7) },
+            uFoamColor: { value: new THREE.Color(0.7, 0.9, 1.0) },
+            uDepthGradientShallow: { value: new THREE.Color(0.1, 0.8, 1.0) },
         },
         transparent: true,
         depthTest: true,
@@ -73,36 +97,63 @@ function createWater(camera, canvas, pos, size, renderTarget) {
 
 function drawWaterGUI(gui, water) {
     const waterFolder = gui.addFolder("Water");
-    const waterRoyFolder = waterFolder.addFolder("WaterRoy");
-    waterRoyFolder.add(water.material.uniforms.uDepthMaxDistance, 'value', 0.0, 5.0, 0.01)
+
+    const waterFadedDepthFolder = waterFolder.addFolder("Faded Depth");
+    waterFadedDepthFolder.add(water.material.uniforms.uDepthMaxDistance, 'value', 0.0, 5.0, 0.01)
         .name('depthMaxDistance');
-    waterRoyFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uDepthGradientShallow, 'value'), 'value')
-        .name('depthGradientShallow');
-    waterRoyFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uDepthGradientDeep, 'value'), 'value')
-        .name('depthGradientDeep');
-    waterRoyFolder.add(water.material.uniforms.uSurfaceNoiseCutoff, 'value', 0.0, 5.0, 0.01)
-        .name('surfaceNoiseCutoff');
-    waterRoyFolder.add(water.material.uniforms.uFoamDistance, 'value', 0.0, 5.0, 0.01)
-        .name('foamDistance');
-    waterRoyFolder.add(water.material.uniforms.uNoiseScale.value, 'x', 0.0, 2.0, 0.01)
-        .name('noiseScaleX');
-    waterRoyFolder.add(water.material.uniforms.uNoiseScale.value, 'y', 0.0, 2.0, 0.01)
-        .name('noiseScaleY');
-    waterRoyFolder.add(water.material.uniforms.uScrollSpeed.value, 'x', 0.0, 5.0, 0.01)
-        .name('scrollSpeedX');
-    waterRoyFolder.add(water.material.uniforms.uScrollSpeed.value, 'y', 0.0, 5.0, 0.01)
-        .name('scrollSpeedY');
-    const waterCyanFolder = waterFolder.addFolder("WaterCyan");
-    waterCyanFolder.add(water.material.uniforms.uScale, 'value', 0.0, 5.0, 0.01)
-        .name('scale');
-    waterCyanFolder.add(water.material.uniforms.uThickness, 'value', 0.0, 5.0, 0.01)
-        .name('thickness');
-    waterCyanFolder.add(water.material.uniforms.uSpeed, 'value', 0.0, 5.0, 0.01)
-        .name('speed');
-    waterCyanFolder.add(water.material.uniforms.uWaveSpeed, 'value', 0.0, 5.0, 0.01)
-        .name('waveSpeed');
-    waterCyanFolder.add(water.material.uniforms.uMiddle, 'value', 0.0, 5.0, 0.01)
-        .name('middle');
+
+    const uvDisplacementFolder = waterFolder.addFolder("UV Displacement");
+    GUIHelper.displayVector2(uvDisplacementFolder, water.material.uniforms.uScale.value, 'Scale', 0.0, 2.0);
+    GUIHelper.displayVector2(uvDisplacementFolder, water.material.uniforms.uSpeed.value, 'Speed', 0.0, 2.0);
+    GUIHelper.displayVector2(uvDisplacementFolder, water.material.uniforms.uWaveSpeed.value, 'WaveSpeed', 0.0, 2.0);
+    GUIHelper.displayVector2(uvDisplacementFolder, water.material.uniforms.uWaveAmplitude.value, 'WaveAmplitude', 0.0, 2.0);
+    GUIHelper.displayVector2(uvDisplacementFolder, water.material.uniforms.uWaveFrequency.value, 'WaveFrequency', 0.0, 2.0);
+
+    const waterDeapFolder = waterFolder.addFolder("Deep general");
+    waterDeapFolder.add(water.material.uniforms.uDeepThickness, 'value', 0.0, 0.5, 0.01)
+        .name('DeepThickness');
+    waterDeapFolder.add(water.material.uniforms.uDeepMiddle, 'value', 0.0, 1.0, 0.01)
+        .name('DeepMiddle');
+    waterDeapFolder.add(water.material.uniforms.uDeepWaveSpeed, 'value', 0.0, 1.0, 0.01)
+        .name('DeepWaveSpeed');
+    waterDeapFolder.add(water.material.uniforms.uDeepRange, 'value', 0.0, 1.0, 0.01)
+        .name('DeepRange');
+    waterDeapFolder.add(water.material.uniforms.uDeepFadeOut, 'value', 0.0, 5.0, 0.01)
+        .name('DeepFadeOut');
+
+    const waterFoamFolder = waterFolder.addFolder("Foam general");
+    waterFoamFolder.add(water.material.uniforms.uFoamThickness, 'value', 0.0, 0.1, 0.01)
+        .name('FoamThickness');
+    waterFoamFolder.add(water.material.uniforms.uFoamMiddle, 'value', 0.0, 1.0, 0.01)
+        .name('FoamMiddle');
+    waterFoamFolder.add(water.material.uniforms.uFoamWaveSpeed, 'value', 0.0, 1.0, 0.01)
+        .name('FoamWaveSpeed');
+    waterFoamFolder.add(water.material.uniforms.uFoamRange, 'value', 0.0, 1.0, 0.01)
+        .name('FoamRange');
+
+    const waterCoastFoamFolder = waterFolder.addFolder("Coast Foam");
+    waterCoastFoamFolder.add(water.material.uniforms.uFoamDistance, 'value', 0.0, 5.0, 0.01)
+        .name('FoamDistance');
+    waterCoastFoamFolder.add(water.material.uniforms.uSurfaceNoiseCutoff, 'value', 0.0, 1.0, 0.01)
+        .name('SurfaceNoiseCutoff');
+    waterCoastFoamFolder.add(water.material.uniforms.uCoastWaveSpeed, 'value', 0.0, 1.0, 0.01)
+        .name('CoastWaveSpeed');
+    waterCoastFoamFolder.add(water.material.uniforms.uCoastWaveRange, 'value', 0.0, 1.0, 0.01)
+        .name('CoastWaveRange');
+    waterCoastFoamFolder.add(water.material.uniforms.uCoastFoamPow, 'value', 0.0, 2.0, 0.01)
+        .name('CoastFoamPow');
+    GUIHelper.displayVector2(waterCoastFoamFolder, water.material.uniforms.uCoastFoamScale.value, 'CoastFoamScale', 0.0, 5.0);
+
+
+    const waterColorsFolder = waterFolder.addFolder("Colors");
+    waterColorsFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uWaterColor, 'value'), 'value')
+        .name('WaterColor');
+    waterColorsFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uWaterDeepColor, 'value'), 'value')
+        .name('WaterDeepColor');
+    waterColorsFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uFoamColor, 'value'), 'value')
+        .name('FoamColor');
+    waterColorsFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uDepthGradientShallow, 'value'), 'value')
+        .name('DepthGradientShallow');
 }
 
 function setupScene(scene) {

@@ -1,50 +1,83 @@
-#include <packing>
+// Depth calculation
+uniform sampler2D uTexDepth;
+uniform float uCameraNear;
+uniform float uCameraFar;
+uniform float uWidth;
+uniform float uHeight;
 
-uniform sampler2D tDiffuse;
-uniform sampler2D tDepth;
-uniform float cameraNear;
-uniform float cameraFar;
-uniform float width;
-uniform float height;
-uniform float depthMaxDistance;
+// Faded Depth
+uniform float uDepthMaxDistance;
+
+// UV Displacement
+uniform float uTime;
+uniform vec2 uScale;
+uniform vec2 uSpeed;
+uniform vec2 uWaveSpeed;
+uniform vec2 uWaveAmplitude;
+uniform vec2 uWaveFrequency;
+
+// Deep general
+uniform float uDeepThickness;
+uniform float uDeepMiddle;
+uniform float uDeepWaveSpeed;
+uniform float uDeepRange;
+uniform float uDeepFadeOut;
+
+// Foam general
+uniform float uFoamThickness;
+uniform float uFoamMiddle;
+uniform float uFoamWaveSpeed;
+uniform float uFoamRange;
+
+// Coast Foam
+uniform float uFoamDistance;
+uniform float uSurfaceNoiseCutoff;
+uniform float uCoastWaveSpeed;
+uniform float uCoastWaveRange;
+uniform float uCoastFoamPow;
+uniform vec2 uCoastFoamScale;
+
+// Colors
+uniform vec3 uWaterColor;
+uniform vec3 uWaterDeepColor;
+uniform vec3 uFoamColor;
 uniform vec3 uDepthGradientShallow;
-uniform vec3 uDepthGradientDeep;
-uniform float surfaceNoiseCutoff;
-uniform float foamDistance;
-uniform vec2 scrollSpeed;
-uniform vec2 noiseScale;
-uniform float uuTime;
 
 varying vec2 vUv;
 varying vec4 vScreenPos;
 varying vec3 vPosition;
 
-float readDepth(float fragCoordZ)
-{
-  float viewZ = perspectiveDepthToViewZ(fragCoordZ, cameraNear, cameraFar);
-  return viewZToOrthographicDepth(viewZ, cameraNear, cameraFar);
-}
-
 void main()
 {
-  // gl_FragColor = screenPos;
-  // gl_FragColor = vec4(vUv, 1.0, 1.0);
-  // gl_FragColor = vec4(vPosition, 1.0);
+// Faded Depth
+  float waterDepth = royDepthValue(gl_FragCoord.xyz, vec2(uWidth, uHeight), uTexDepth, uCameraNear, uCameraFar, uDepthMaxDistance);
+  vec3 color = mix(uDepthGradientShallow, uWaterColor, waterDepth);
+  
+// UV Displacement
+  vec2 uv = vPosition.xy / uScale + uSpeed * uTime;
+  // vec2 dist = waveUV(uv, uTime, vec2(0.05, 0.1), vec2(1.0,1.0), vec2(0.0, 0.1));
+  vec2 dist = waveUV(uv, uTime, uWaveSpeed, uWaveAmplitude, uWaveFrequency);
+  uv += dist.yx;
 
-  vec4 screenPos = vec4(gl_FragCoord.x / width, gl_FragCoord.y / height, gl_FragCoord.z, 1.0);
-  float fragCoordZ = texture2D(tDepth, screenPos.xy).x;
-  float depth = readDepth(fragCoordZ);
-  float planeDepth = readDepth(gl_FragCoord.z);
-  float waterDepth = clamp((depth - planeDepth) * cameraFar / depthMaxDistance, 0.0, 1.0);
-  vec3 waterColor = mix(depthGradientShallow, depthGradientDeep, waterDepth);
-  float surfaceNoise = noise((vPosition.xy) / noiseScale + scrollSpeed * uuTime) * .5 + .5;
-  float foamDepthDifference01 = clamp((depth - planeDepth) * cameraFar / foamDistance, 0.0, 1.0);
-  float surfaceNoiseCutoffProcess = foamDepthDifference01 * surfaceNoiseCutoff;
-  surfaceNoise = surfaceNoise > surfaceNoiseCutoffProcess ? 1.0 : 0.0;
-  // gl_FragColor.rgb = vec3( depth );
-  // gl_FragColor.rgb = vec3( planeDepth );
-  // gl_FragColor.rgb = vec3( waterDepth );
-  // gl_FragColor = vec4( waterColor.rgb, 1.0 );
-  gl_FragColor = vec4(waterColor.rgb + surfaceNoise, 1.0);
+// Deep general
+float deepThickness = uDeepThickness * (1.0+sin(uTime * uDeepWaveSpeed)*uDeepRange);
+  float waterDeep = cyanWaveNoise(uv, uTime, uDeepMiddle, deepThickness);
+  waterDeep -= pow(1.0 - waterDepth, uDeepFadeOut);
+  color = mix(color, uWaterDeepColor,clamp(waterDeep, 0.0, 1.0));
+  
+// Foam general
+float foamThickness = uFoamThickness * (1.0+sin(uTime * uFoamWaveSpeed)*uFoamRange);
+  float foam = cyanWaveNoise(vec2(2.0) - uv, uTime, uFoamMiddle, foamThickness);
+  color = mix(color, uFoamColor,foam);
+  
+// Coast Foam
+  float foamDepth = royDepthValue(gl_FragCoord.xyz, vec2(uWidth, uHeight), uTexDepth, uCameraNear, uCameraFar, uFoamDistance);
+  foamDepth = pow(foamDepth, uCoastFoamPow);
+  gl_FragColor.rgb = vec3(foamDepth);
+  float surfaceNoiseCutoff = uSurfaceNoiseCutoff * (1.0 + sin(uTime * uCoastWaveSpeed) * uCoastWaveRange);
+  foamDepth = royWaveNoise(uv * uCoastFoamScale + vec2(50.0, 50.0), uTime, surfaceNoiseCutoff, foamDepth);
+  color = mix(color, uFoamColor, foamDepth);
+
+  gl_FragColor.rgb = color;
   gl_FragColor.a = 1.0;
 }

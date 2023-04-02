@@ -8,5 +8,6 @@ void main()
     vPosition = position;
     vec4 glPos = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     vScreenPos = glPos;
+
     gl_Position = glPos;
 }

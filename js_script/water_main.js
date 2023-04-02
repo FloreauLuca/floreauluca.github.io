@@ -122,7 +122,7 @@ function drawWaterGUI(gui, water) {
         .name('DeepFadeOut');
 
     const waterFoamFolder = waterFolder.addFolder("Foam general");
-    waterFoamFolder.add(water.material.uniforms.uFoamThickness, 'value', 0.0, 0.1, 0.01)
+    waterFoamFolder.add(water.material.uniforms.uFoamThickness, 'value', 0.0, 0.1, 0.0001)
         .name('FoamThickness');
     waterFoamFolder.add(water.material.uniforms.uFoamMiddle, 'value', 0.0, 1.0, 0.01)
         .name('FoamMiddle');
@@ -154,6 +154,12 @@ function drawWaterGUI(gui, water) {
         .name('FoamColor');
     waterColorsFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uDepthGradientShallow, 'value'), 'value')
         .name('DepthGradientShallow');
+}
+
+function drawCommonGUI(gui, controls) {
+    const controlFolder = gui.addFolder("Controls");
+    controlFolder.add(controls, 'autoRotate');
+    controlFolder.add(controls, 'autoRotateSpeed');
 }
 
 function setupScene(scene) {
@@ -328,8 +334,10 @@ export default async function main() {
         controls = new OrbitControls(camera, canvas);
         controls.enableDamping = true;
         controls.target.set(0, 0, 0);
+        controls.autoRotate = false;
+        controls.autoRotateSpeed = 1.0;
     }
-
+    drawCommonGUI(gui, controls);
     const renderer = new THREE.WebGLRenderer({ canvas });
 
     // Our scene

@@ -7,13 +7,13 @@ uniform float cameraFar;
 uniform float width;
 uniform float height;
 uniform float depthMaxDistance;
-uniform vec3 depthGradientShallow;
-uniform vec3 depthGradientDeep;
+uniform vec3 uDepthGradientShallow;
+uniform vec3 uDepthGradientDeep;
 uniform float surfaceNoiseCutoff;
 uniform float foamDistance;
 uniform vec2 scrollSpeed;
 uniform vec2 noiseScale;
-uniform float time;
+uniform float uuTime;
 
 varying vec2 vUv;
 varying vec4 vScreenPos;
@@ -60,7 +60,7 @@ void main()
   float planeDepth = readDepth(gl_FragCoord.z);
   float waterDepth = clamp((depth - planeDepth) * cameraFar / depthMaxDistance, 0.0, 1.0);
   vec3 waterColor = mix(depthGradientShallow, depthGradientDeep, waterDepth);
-  float surfaceNoise = noise((vPosition.xy) / noiseScale + scrollSpeed * time) * .5 + .5;
+  float surfaceNoise = noise((vPosition.xy) / noiseScale + scrollSpeed * uTime) * .5 + .5;
   float foamDepthDifference01 = clamp((depth - planeDepth) * cameraFar / foamDistance, 0.0, 1.0);
   float surfaceNoiseCutoffProcess = foamDepthDifference01 * surfaceNoiseCutoff;
   surfaceNoise = surfaceNoise > surfaceNoiseCutoffProcess ? 1.0 : 0.0;

@@ -6,35 +6,52 @@ import * as GUIHelper from './utility/gui-helper.js';
 
 function loadTextFile(url) {
     return fetch(url).then(response => response.text());
-  }
+}
 
-let files = [];
+let shaders = [];
+let utilityShaders = [];
 
-const urls = [
-'./shader/water/water_roy_vert.glsl',
-'./shader/water/water_roy_frag.glsl',
-];   
+const utilityURL = [
+    './shader/utility/unity_nodes.glsl',
+    './shader/utility/water_ref.glsl'
+];
+
+const shadersURL = [
+    './shader/water/water_roy_vert.glsl',
+    './shader/water/water_roy_frag.glsl',
+    './shader/water/water_gab_vert.glsl',
+    './shader/water/water_gab_frag.glsl',
+    './shader/water/water_cyan_vert.glsl',
+    './shader/water/water_cyan_frag.glsl',
+];
 
 function createWater(camera, canvas, pos, size, renderTarget) {
     const waterShader = new THREE.ShaderMaterial({
-        vertexShader: files[0],
-        fragmentShader: files[1],
+        vertexShader: shaders[0],
+        fragmentShader: utilityShaders[0] + utilityShaders[1] + shaders[1],
         uniforms: {
-            time: { value: 0.0 },
-            camera: { value: camera.position },
-            cameraNear: { value: camera.near },
-            cameraFar: { value: camera.far },
-            width: { value: canvas.clientWidth },
-            height: { value: canvas.clientHeight },
-            tDiffuse: { value: renderTarget.texture },
-            tDepth: { value: renderTarget.depthTexture },
-            depthMaxDistance: { value: 3.0 },
-            depthGradientShallow: { value: new THREE.Color(0.1, 0.8, 1.0) },
-            depthGradientDeep: { value: new THREE.Color(0.0, 0.5, 1.0) },
-            surfaceNoiseCutoff: { value: 0.75 },
-            foamDistance: { value: 0.5 },
-            noiseScale: { value: new THREE.Vector2(0.2, 0.4) },
-            scrollSpeed: { value: new THREE.Vector2(0.1, 0.2) }
+            uTime: { value: 0.0 },
+            uCamera: { value: camera.position },
+            uCameraNear: { value: camera.near },
+            uCameraFar: { value: camera.far },
+            uWidth: { value: canvas.clientWidth },
+            uHeight: { value: canvas.clientHeight },
+            uTexDiffuse: { value: renderTarget.texture },
+            uTexDepth: { value: renderTarget.depthTexture },
+
+            uDepthMaxDistance: { value: 3.0 },
+            uDepthGradientShallow: { value: new THREE.Color(0.1, 0.8, 1.0) },
+            uDepthGradientDeep: { value: new THREE.Color(0.0, 0.5, 1.0) },
+            uSurfaceNoiseCutoff: { value: 0.75 },
+            uFoamDistance: { value: 1.5 },
+            uNoiseScale: { value: new THREE.Vector2(0.2, 0.4) },
+            uScrollSpeed: { value: new THREE.Vector2(0.1, 0.2) },
+
+            uScale: { value: 2.0 },
+            uThickness: { value: 0.02 },
+            uSpeed: { value: 0.05 },
+            uWaveSpeed: { value: 0.1 },
+            uMiddle: { value: 0.5 },
         },
         transparent: true,
         depthTest: true,
@@ -49,32 +66,43 @@ function createWater(camera, canvas, pos, size, renderTarget) {
     water.rotation.set(Math.PI / 2, 0, 0);
     water.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
         //console.log(material)
-        material.uniforms.time.value += 0.1;
+        material.uniforms.uTime.value += 0.1;
     };
     return water;
 }
 
-function drawWaterGUI(gui, water)
-{
+function drawWaterGUI(gui, water) {
     const waterFolder = gui.addFolder("Water");
-    waterFolder.add(water.material.uniforms.depthMaxDistance, 'value', 0.0, 5.0, 0.01)
+    const waterRoyFolder = waterFolder.addFolder("WaterRoy");
+    waterRoyFolder.add(water.material.uniforms.uDepthMaxDistance, 'value', 0.0, 5.0, 0.01)
         .name('depthMaxDistance');
-    waterFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.depthGradientShallow, 'value'), 'value')
+    waterRoyFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uDepthGradientShallow, 'value'), 'value')
         .name('depthGradientShallow');
-    waterFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.depthGradientDeep, 'value'), 'value')
+    waterRoyFolder.addColor(new GUIHelper.ColorGUIHelper(water.material.uniforms.uDepthGradientDeep, 'value'), 'value')
         .name('depthGradientDeep');
-    waterFolder.add(water.material.uniforms.surfaceNoiseCutoff, 'value', 0.0, 5.0, 0.01)
+    waterRoyFolder.add(water.material.uniforms.uSurfaceNoiseCutoff, 'value', 0.0, 5.0, 0.01)
         .name('surfaceNoiseCutoff');
-    waterFolder.add(water.material.uniforms.foamDistance, 'value', 0.0, 5.0, 0.01)
+    waterRoyFolder.add(water.material.uniforms.uFoamDistance, 'value', 0.0, 5.0, 0.01)
         .name('foamDistance');
-    waterFolder.add(water.material.uniforms.noiseScale.value, 'x', 0.0, 2.0, 0.01)
+    waterRoyFolder.add(water.material.uniforms.uNoiseScale.value, 'x', 0.0, 2.0, 0.01)
         .name('noiseScaleX');
-    waterFolder.add(water.material.uniforms.noiseScale.value, 'y', 0.0, 2.0, 0.01)
+    waterRoyFolder.add(water.material.uniforms.uNoiseScale.value, 'y', 0.0, 2.0, 0.01)
         .name('noiseScaleY');
-    waterFolder.add(water.material.uniforms.scrollSpeed.value, 'x', 0.0, 5.0, 0.01)
+    waterRoyFolder.add(water.material.uniforms.uScrollSpeed.value, 'x', 0.0, 5.0, 0.01)
         .name('scrollSpeedX');
-    waterFolder.add(water.material.uniforms.scrollSpeed.value, 'y', 0.0, 5.0, 0.01)
+    waterRoyFolder.add(water.material.uniforms.uScrollSpeed.value, 'y', 0.0, 5.0, 0.01)
         .name('scrollSpeedY');
+    const waterCyanFolder = waterFolder.addFolder("WaterCyan");
+    waterCyanFolder.add(water.material.uniforms.uScale, 'value', 0.0, 5.0, 0.01)
+        .name('scale');
+    waterCyanFolder.add(water.material.uniforms.uThickness, 'value', 0.0, 5.0, 0.01)
+        .name('thickness');
+    waterCyanFolder.add(water.material.uniforms.uSpeed, 'value', 0.0, 5.0, 0.01)
+        .name('speed');
+    waterCyanFolder.add(water.material.uniforms.uWaveSpeed, 'value', 0.0, 5.0, 0.01)
+        .name('waveSpeed');
+    waterCyanFolder.add(water.material.uniforms.uMiddle, 'value', 0.0, 5.0, 0.01)
+        .name('middle');
 }
 
 function setupScene(scene) {
@@ -142,6 +170,68 @@ function setupScene(scene) {
     mesh.position.set(-5, 1, 0);
     mesh.rotation.set(Math.PI / 2, 0, 0);
     scene.add(mesh);
+
+    // Voxel coast
+    geometry = new THREE.BoxGeometry(3, 2, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA6600 }));
+    mesh.name = "Coast";
+    mesh.position.set(-20, 1, 10);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 2.5, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA7550 }));
+    mesh.name = "Coast";
+    mesh.position.set(-21, 0.5, 9);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 1, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA7700 }));
+    mesh.name = "Coast";
+    mesh.position.set(-22, 1, 8);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 1, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA7700 }));
+    mesh.name = "Coast";
+    mesh.position.set(-23, 1, 7);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 1, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA7700 }));
+    mesh.name = "Coast";
+    mesh.position.set(-23, 1, 6);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 1, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA7700 }));
+    mesh.name = "Coast";
+    mesh.position.set(-24, 1, 5);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 1, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA7700 }));
+    mesh.name = "Coast";
+    mesh.position.set(-23, 1, 2);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 1, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA7700 }));
+    mesh.name = "Coast";
+    mesh.position.set(-22, 1, -1);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 2, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA6600 }));
+    mesh.name = "Coast";
+    mesh.position.set(-21, 1, -4);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(3, 2, 3);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xA6600 }));
+    mesh.name = "Coast";
+    mesh.position.set(-20, 1, -5);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(4, 1, 20);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xD4C546 }));
+    mesh.name = "Coast";
+    mesh.position.set(-22, 0, 5);
+    scene.add(mesh);
+    geometry = new THREE.BoxGeometry(4, 2, 20);
+    mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color: 0xD0972A }));
+    mesh.name = "Coast";
+    mesh.position.set(-20, -1, 5);
+    scene.add(mesh);
 }
 
 function createRenderTexture() {
@@ -170,9 +260,10 @@ export default async function main() {
     gui.close();
 
     // load shaders
-    files = await Promise.all(urls.map(loadTextFile));
-    
-    
+    shaders = await Promise.all(shadersURL.map(loadTextFile));
+    utilityShaders = await Promise.all(utilityURL.map(loadTextFile));
+
+
     // setup camera and controls
     let camera, controls;
     {
@@ -214,6 +305,8 @@ export default async function main() {
             if (needResize) {
                 renderer.setSize(width, height, false);
             }
+            water.material.uniforms.uWidth.value = canvas.clientWidth;
+            water.material.uniforms.uHeight.value = canvas.clientHeight;
             return needResize;
         }
 

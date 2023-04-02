@@ -1,5 +1,3 @@
-#include <packing>
-
 varying vec2 vUv;
 varying vec4 vScreenPos;
 varying vec3 vPosition;

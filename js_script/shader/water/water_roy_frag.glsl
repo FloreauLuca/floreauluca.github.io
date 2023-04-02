@@ -1,51 +1,34 @@
 #include <packing>
 
-uniform sampler2D tDiffuse;
-uniform sampler2D tDepth;
-uniform float cameraNear;
-uniform float cameraFar;
-uniform float width;
-uniform float height;
-uniform float depthMaxDistance;
-uniform vec3 depthGradientShallow;
-uniform vec3 depthGradientDeep;
-uniform float surfaceNoiseCutoff;
-uniform float foamDistance;
-uniform vec2 scrollSpeed;
-uniform vec2 noiseScale;
-uniform float time;
+uniform sampler2D uTexDiffuse;
+uniform sampler2D uTexDepth;
+uniform float uCameraNear;
+uniform float uCameraFar;
+uniform float uWidth;
+uniform float uHeight;
+uniform float uDepthMaxDistance;
+uniform vec3 uDepthGradientShallow;
+uniform vec3 uDepthGradientDeep;
+uniform float uSurfaceNoiseCutoff;
+uniform float uFoamDistance;
+uniform vec2 uScrollSpeed;
+uniform vec2 uNoiseScale;
+uniform float uTime;
+
+uniform float uScale;
+uniform float uThickness;
+uniform float uSpeed;
+uniform float uWaveSpeed;
+uniform float uMiddle;
 
 varying vec2 vUv;
 varying vec4 vScreenPos;
 varying vec3 vPosition;
 
-vec2 random2(vec2 st)
-{
-  st = vec2(dot(st, vec2(127.1, 311.7)),
-            dot(st, vec2(269.5, 183.3)));
-  return -1.0 + 2.0 * fract(sin(st) * 43758.5453123);
-}
-
-// Gradient Noise by Inigo Quilez - iq/2013
-// https://www.shadertoy.com/view/XdXGW8
-float noise(vec2 st)
-{
-  vec2 i = floor(st);
-  vec2 f = fract(st);
-
-  vec2 u = f * f * (3.0 - 2.0 * f);
-
-  return mix(mix(dot(random2(i + vec2(0.0, 0.0)), f - vec2(0.0, 0.0)),
-                 dot(random2(i + vec2(1.0, 0.0)), f - vec2(1.0, 0.0)), u.x),
-             mix(dot(random2(i + vec2(0.0, 1.0)), f - vec2(0.0, 1.0)),
-                 dot(random2(i + vec2(1.0, 1.0)), f - vec2(1.0, 1.0)), u.x),
-             u.y);
-}
-
 float readDepth(float fragCoordZ)
 {
-  float viewZ = perspectiveDepthToViewZ(fragCoordZ, cameraNear, cameraFar);
-  return viewZToOrthographicDepth(viewZ, cameraNear, cameraFar);
+  float viewZ = perspectiveDepthToViewZ(fragCoordZ, uCameraNear, uCameraFar);
+  return viewZToOrthographicDepth(viewZ, uCameraNear, uCameraFar);
 }
 
 void main()
@@ -54,16 +37,17 @@ void main()
   // gl_FragColor = vec4(vUv, 1.0, 1.0);
   // gl_FragColor = vec4(vPosition, 1.0);
 
-  vec4 screenPos = vec4(gl_FragCoord.x / width, gl_FragCoord.y / height, gl_FragCoord.z, 1.0);
-  float fragCoordZ = texture2D(tDepth, screenPos.xy).x;
+  vec4 screenPos = vec4(gl_FragCoord.x / uWidth, gl_FragCoord.y / uHeight, gl_FragCoord.z, 1.0);
+  float fragCoordZ = texture2D(uTexDepth, screenPos.xy).x;
   float depth = readDepth(fragCoordZ);
   float planeDepth = readDepth(gl_FragCoord.z);
-  float waterDepth = clamp((depth - planeDepth) * cameraFar / depthMaxDistance, 0.0, 1.0);
-  vec3 waterColor = mix(depthGradientShallow, depthGradientDeep, waterDepth);
-  float surfaceNoise = noise((vPosition.xy) / noiseScale + scrollSpeed * time) * .5 + .5;
-  float foamDepthDifference01 = clamp((depth - planeDepth) * cameraFar / foamDistance, 0.0, 1.0);
-  float surfaceNoiseCutoffProcess = foamDepthDifference01 * surfaceNoiseCutoff;
-  surfaceNoise = surfaceNoise > surfaceNoiseCutoffProcess ? 1.0 : 0.0;
+  float waterDepth = clamp((depth - planeDepth) * uCameraFar / uDepthMaxDistance, 0.0, 1.0);
+  vec3 waterColor = mix(uDepthGradientShallow, uDepthGradientDeep, waterDepth);
+  float foamDepthDifference01 = clamp((depth - planeDepth) * uCameraFar / uFoamDistance, 0.0, 1.0);
+  float surfaceNoiseCutoffProcess = foamDepthDifference01 * uSurfaceNoiseCutoff;
+  float surfaceNoise = cyanWaveNoise(vPosition.xy, uTime, uSpeed, uScale, uWaveSpeed, uMiddle, uThickness * (1.0/surfaceNoiseCutoffProcess));
+  // float surfaceNoise = noise((vPosition.xy) / uNoiseScale + uScrollSpeed * uTime) * .5 + .5;
+  // surfaceNoise = surfaceNoise > surfaceNoiseCutoffProcess ? 1.0 : 0.0;
   // gl_FragColor.rgb = vec3( depth );
   // gl_FragColor.rgb = vec3( planeDepth );
   // gl_FragColor.rgb = vec3( waterDepth );

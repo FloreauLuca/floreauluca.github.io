@@ -31,7 +31,7 @@ export function fragmentShader1() {
   uniform float foamDistance;
   uniform vec2 scrollSpeed;
   uniform vec2 noiseScale;
-  uniform float time;
+  uniform float uTime;
 
   varying vec2 vUv;
   varying vec4 vScreenPos;
@@ -73,7 +73,7 @@ export function fragmentShader1() {
       float planeDepth = readDepth( gl_FragCoord.z );
       float waterDepth = clamp((depth - planeDepth) * cameraFar/depthMaxDistance, 0.0, 1.0);
       vec3 waterColor = mix(depthGradientShallow, depthGradientDeep, waterDepth);
-      float surfaceNoise = noise((vPosition.xy) / noiseScale + scrollSpeed * time)*.5+.5;
+      float surfaceNoise = noise((vPosition.xy) / noiseScale + scrollSpeed * uTime)*.5+.5;
       float foamDepthDifference01 = clamp((depth - planeDepth) * cameraFar/foamDistance, 0.0, 1.0);
       float surfaceNoiseCutoffProcess = foamDepthDifference01 * surfaceNoiseCutoff;
       surfaceNoise = surfaceNoise > surfaceNoiseCutoffProcess ? 1.0 : 0.0;
@@ -104,7 +104,7 @@ export function fragmentShader2() {
   uniform float foamDistance;
   uniform vec2 scrollSpeed;
   uniform vec2 noiseScale;
-  uniform float time;
+  uniform float uTime;
 
   varying vec2 vUv;
   varying vec4 vScreenPos;
@@ -189,7 +189,7 @@ export function fragmentShader2() {
       //gl_FragColor = vec4( waterColor.rgb, 1.0 );
       float Out;
       float Cells;
-      float voronoi = Unity_Voronoi_float(vUv.xy, time * 0.1, 10.0, Out, Cells);
+      float voronoi = Unity_Voronoi_float(vUv.xy, uTime * 0.1, 10.0, Out, Cells);
       //voronoi = pow(voronoi / 2.0, 10.0);
       voronoi = voronoi > surfaceNoiseCutoff ? 1.0 : 0.0;
       gl_FragColor.rgb = vec3(voronoi);

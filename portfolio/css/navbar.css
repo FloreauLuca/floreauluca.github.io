@@ -1,0 +1,31 @@
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden; /* Hide overflow */
+  background: var(--secondary-color);
+  background: linear-gradient(180deg, var(--secondary-color) 75%, var(--background-clear-color) 100%);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left; /* Make sure that the links stay side-by-side */
+  display: block; /* Change the display to block, for responsive reasons (see below) */
+  color: var(--text-color); /* White text color */
+  text-align: center; /* Center the text */
+  padding: 10px 20px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right; /* Float a link to the right */
+}
+
+/* Change color on hover/mouse-over */
+.navbar a:hover {
+  background-color: var(--primary-color); /* Grey background color */
+  background: linear-gradient(180deg, var(--primary-color) 75%, var(--background-clear-color) 100%);
+}

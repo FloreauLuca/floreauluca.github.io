@@ -1,0 +1,57 @@
+/*
+Projects
+- H1
+
+- ProjectPanel
+  - projectText
+    - h2
+    - tag
+    - h3
+    - p
+    - button
+  - projectImg
+*/
+
+
+.projects
+{
+  margin: 100px;
+  text-align: left;
+}
+
+.projects h1
+{
+}
+
+.projectPanel
+{
+  background: var(--primary-color);
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.projectText
+{
+  padding: 25px 10px 25px 30px;
+}
+
+.projectText h2
+{
+}
+
+.projectText h3
+{
+}
+
+.projectText p
+{
+}
+
+.projectText button
+{
+}
+
+.projectImg img {
+  border-radius: 100px;
+}

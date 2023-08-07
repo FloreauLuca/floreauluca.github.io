@@ -14,20 +14,18 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--background-color); /* White background color */
-  color: var(--text-color); /* White background color */
+  background-color: var(--background-color);
+  color: var(--text-color); 
 }
 
 /* Increase the font size of the <h1> element */
 h1 {
   font-size: 80px;
-  color: var(--text-color); /* white text color */
 }
 
 /* Increase the font size of the <h1> element */
 h2 {
   font-size: 35px;
-  color: var(--text-color); /* white text color */
 }
 
 /* Increase the font size of the <h1> element */
@@ -38,6 +36,11 @@ h5 {
 /* Increase the font size of the <h1> element */
 p {
   font-size: 16px;
+}
+
+/* Increase the font size of the <h1> element */
+a {
+  color: var(--accent-color); 
 }
 
 

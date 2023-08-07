@@ -1,0 +1,34 @@
+/*
+About me
+- h1
+- section
+  - p
+  - img
+*/
+
+.aboutme {
+  margin: 100px;
+  padding: 50px;
+  background: var(--primary-color);
+  border-radius: 100px;
+  text-align: left;
+}
+
+.aboutme h1 {
+  font-size: 80px;
+}
+
+.aboutme section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.aboutme p {
+  font-size: 15px;
+}
+
+.aboutme img {
+  height: 250px;
+  border-radius: 500px;
+  margin-left: 20px;
+}

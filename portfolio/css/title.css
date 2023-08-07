@@ -1,18 +1,28 @@
+/*
+Title
+- H1
+- H2
+
+- titleImg
+
+*/
 
 .title {
-  padding: 80px; /* some padding */
-  text-align: center; /* center the text */
-  background: radial-gradient(var(--secondary-color) 0%, var(--background-color) 75%); /* green background */
-  color: var(--text-color); /* white text color */
-  background-repeat: repeat;
-  background-position: center;
+  padding: 80px;
+  text-align: center;
+  background: radial-gradient(rgba(0, 62, 94, 1) 0%, var(--background-color) 75%);
 }
 
-/* Increase the font size of the <h1> element */
 .title h1 {
   font-size: 80px;
 }
 
-.mySlides {
+.title h2 {
+  font-size: 40px;
+}
+
+.title img {
   height: 400px;
+  padding: 20px;
+  margin: auto;
 }

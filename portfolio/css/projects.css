@@ -1,57 +1,132 @@
 /*
-Projects
-- H1
-
-- ProjectPanel
-  - projectText
-    - h2
-    - tag
-    - h3
-    - p
-    - button
-  - projectImg
+#projects
+  h1
+  .projects-list
+    #AerRacers .project-panel
+      .project-text
+        h2
+        .project-smal-text
+        .project-big-text
+      .project-button-list
+        .project-button
+      .project-img
+    #Minecraft
+      ...
 */
 
-
-.projects
+#projects
 {
-  margin: 100px;
+  margin-top : 250px;
+}
+
+#projects h1
+{
   text-align: left;
 }
 
-.projects h1
+.projects-list
 {
+  display: flex;
+  flex-direction: column;
+  gap : 100px;
 }
 
-.projectPanel
+.project-panel-right
 {
   background: var(--primary-color);
   border-radius: 50px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  height: 400px;
+  direction: ltr;
 }
 
-.projectText
+.project-panel-left
 {
-  padding: 25px 10px 25px 30px;
+  background: var(--secondary-color);
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+  direction: rtl;
 }
 
-.projectText h2
+.project-text
+{
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding : 25px;
+}
+
+.project-header
+{
+  direction: ltr;
+  display: flex;
+  flex-direction: row;
+  gap : 50px;
+  height : 70px;
+  padding-bottom : 10px;
+  justify-content: space-between;
+}
+
+.project-header-text
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-title
+{
+  margin : 0px;
+}
+
+.project-date
+{
+  margin : 0px;
+}
+
+.project-tags-list
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap : 10px;
+  padding-right : 25px;
+}
+
+.project-tag
+{
+  background-color: var(--accent-color);
+  width: 70px;
+}
+
+
+.project-small-text
+{
+  margin : 0px;
+}
+
+.project-big-text
+{
+  margin : 0px;
+}
+
+.project-button-list
 {
 }
 
-.projectText h3
+.project-button
 {
 }
 
-.projectText p
-{
+.project-img {
+  height: 100%;
+  border-radius: 50px;
 }
 
-.projectText button
-{
-}
-
-.projectImg img {
-  border-radius: 100px;
+.project-img img{
+  height: 100%;
 }

@@ -50,88 +50,143 @@
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <div class="title">
+  <div id="title" class="title-panel">
     <h1>Floreau Luca</h1>
     <h2>Gameplay Programmer </h2>
     <section>
-      <img class="titleImg" src="resources\Game\Minecraft-like\title.gif">
-      <img class="titleImg" src="resources\Game\PenguinCollector\title.png">
-      <img class="titleImg" src="resources\Game\PotionCooking\title.png">
-      <img class="titleImg" src="resources\Game\SpringMan\title.gif">
-      <img class="titleImg" src="resources\Game\LeechWeapon\title.png">
-      <img class="titleImg" src="resources\Game\TheUnstoppableMrStarr\title.png">
-      <img class="titleImg" src="resources\Game\FarWestDefender\title.gif">
-      <img class="titleImg" src="resources\Game\AerRacers\title.png">
+      <img class="title-img" src="resources\Game\Minecraft-like\title.gif">
+      <!-- <img class="title-img" src="resources\Game\PenguinCollector\title.png">
+      <img class="title-img" src="resources\Game\PotionCooking\title.png">
+      <img class="title-img" src="resources\Game\SpringMan\title.gif">
+      <img class="title-img" src="resources\Game\LeechWeapon\title.png">
+      <img class="title-img" src="resources\Game\TheUnstoppableMrStarr\title.png">
+      <img class="title-img" src="resources\Game\FarWestDefender\title.gif">
+      <img class="title-img" src="resources\Game\AerRacers\title.png"> -->
     </section>
   </div>
 
-  <div class="aboutme">
-    <h2>About Me</h2>
-    <section>
-    <p>
-      I am Floreau Luca, I am 21 years old and I am a French video game developer. I graduated from a Bachelor of Games
-      Programming at the SAE Institute in Geneva. <br />
-      I am passionate about video games and I want to share my passion. My goal is to create games that can be played by
-      anyone, anywhere. <br />
-      I created my first game on my own when I was 10 years old on Game Develop. <br />
-      I develop with Unity 3D and C ++. <br />
-      If you like what you see, you can check out more of what I do on my twitter and my itch.io . <br />
-    </p>
-    <img class="sideimg" src="resources\Fichier 2.png">
-  </section>
+  <div id="aboutme" class="aboutme-panel">
+    <div class="aboutme-content">
+      <h2 class="aboutme-title">About Me</h2>
+      <p>
+        I am Floreau Luca, I am 21 years old and I am a French video game developer. I graduated from a Bachelor of
+        Games
+        Programming at the SAE Institute in Geneva. <br />
+        I am passionate about video games and I want to share my passion. My goal is to create games that can be played
+        by
+        anyone, anywhere. <br />
+        I created my first game on my own when I was 10 years old on Game Develop. <br />
+        I develop with Unity 3D and C ++. <br />
+        If you like what you see, you can check out more of what I do on my twitter and my itch.io . <br />
+      </p>
+    </div>
+    <div class="aboutme-img">
+      <img class="aboutme-img" src="resources\Fichier 2.png">
+    </div>
   </div>
 
-  <div class="projects">
-    <h1>School Projects</h1>
-    <div class="projectPanel AerRacers">
-      <div class="projectText">
-      <h2>AerRacers</h2>
-      <p><b>Game made from September 2020 to May 2021</b></p>
-      <h3>
-        <b>AerRacers is a local multi-player pod racing game running on Nintendo Switch.</b>
-      </h3>
-      <p>
-        This project was created in 8 months as part of my Bachelor. <br />
-        I worked in a team with 4 of my classmates in C++ using the NekoEngine, we also work with 8 tools programmers,
-        10 visual artists, and 2 audio artists. <br />
-        I was the Lead Programmer, Producer, Engine Programmer and Gameplay Programmer. <br />
-        I learned a lot working with a big team on a long-term project. <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/aerracers">https://floreauluca.github.io/projects/aerracers</a>
-      </p>
-      <a href="https://github.com/SAE-Institute-Geneva/AerRacers/releases">
-        <p>Check out the release : github.com/SAE-Institute-Geneva/AerRacers/releases</p>
-      </a>
-      <input type="button" value="Github"/>
-    </div>
-    <img class="projectImg" src="resources\Game\AerRacers\aerracers_run.gif">
-    </div>
-    
-    <div class="Minecraft-like gamepanel">
-      <h2>Minecraft-like</h2>
-      <p><b>Program made from June to July 2020</b></p>
-      <img class="gameimg" style="max-height: 800px;width:auto;" src="resources\Game\Minecraft-like\screengif.gif">
-      <div class="labelbar">
-        <img class="label" src="resources\Icone\Team.png">
-        <img class="label" src="resources\Icone\Prog.png">
-        <img class="label" src="resources\Icone\C++.png">
+  <div id="projects">
+    <h1>Projects</h1>
+    <div class="projects-list">
+      <div id="AerRacers" class="project-panel-right">
+        <div class="project-text">
+          <div class="project-header">
+            <div class="project-header-text">
+              <h2 class="project-title">AerRacers</h2>
+              <p class="project-date">2020-2021</p>
+            </div>
+            <div class="project-tags-list">
+              <a class="project-tag">G</a>
+              <a class="project-tag">P</a>
+            </div>
+          </div>
+          <h3 class="project-small-text">
+            <b>AerRacers is a local multi-player pod racing game running on Nintendo Switch.</b>
+          </h3>
+          <p class="project-big-text">
+            This project was created in 8 months as part of my Bachelor. <br />
+            I worked in a team with 4 of my classmates in C++ using the NekoEngine, we also work with 8 tools
+            programmers,
+            10 visual artists, and 2 audio artists. <br />
+            I was the Lead Programmer, Producer, Engine Programmer and Gameplay Programmer. <br />
+            I learned a lot working with a big team on a long-term project. <br />
+            More information about this project at <ahref="https://floreauluca.github.io/projects/aerracers">
+              https://floreauluca.github.io/projects/aerracers</a>
+          </p>
+          <a href="https://github.com/SAE-Institute-Geneva/AerRacers/releases">
+            <p>Check out the release : github.com/SAE-Institute-Geneva/AerRacers/releases</p>
+          </a>
+          <div class="project-button-list">
+            <a class="project-button">G</a>
+            <a class="project-button">P</a>
+          </div>      
+        </div>
+        <div class="project-img">
+          <img class="project-img" src="resources\Game\AerRacers\aerracers_run.gif">
+        </div>
       </div>
-      <h3>
-        <b>Our Minecraft-like is a project where you can move and construct inside an infinite generated world. </b>
-      </h3>
-      <p>
-        This project was created in 2 months as part of the module of computer graphics. <br />
-        I worked in a team with 7 of my classmates in C++ using the NekoEngine. <br />
-        The NekoEngine is a custom C++ Engine using SDL 2.0 and OpenGL ES 3.0. <br />
-        I enjoyed working on chunk generation and chunk rendering. <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/minecraft-like">https://floreauluca.github.io/projects/minecraft-like</a>
-      </p>
-      <a href="https://github.com/LoshkinOleg/NekoEngine/releases">
-        <p>Check out the release : github.com/LoshkinOleg/NekoEngine/releases</p>
-      </a>
-    </div>
-    <!--<div class="UltraPingBong3D gamepanel">
+      <div id="AerRacers" class="project-panel-left">
+        <div class="project-text">
+          <div class="project-header">
+            <div class="project-header-text">
+              <h2 class="project-title">AerRacers</h2>
+              <p class="project-date">2020-2021</p>
+            </div>
+            <div class="project-tags-list">
+              <a class="project-tag">G</a>
+              <a class="project-tag">P</a>
+            </div>
+          </div>
+          <h3 class="project-small-text">
+            <b>AerRacers is a local multi-player pod racing game running on Nintendo Switch.</b>
+          </h3>
+          <p class="project-big-text">
+            This project was created in 8 months as part of my Bachelor. <br />
+            I worked in a team with 4 of my classmates in C++ using the NekoEngine, we also work with 8 tools
+            programmers,
+            10 visual artists, and 2 audio artists. <br />
+            I was the Lead Programmer, Producer, Engine Programmer and Gameplay Programmer. <br />
+            I learned a lot working with a big team on a long-term project. <br />
+            More information about this project at <ahref="https://floreauluca.github.io/projects/aerracers">
+              https://floreauluca.github.io/projects/aerracers</a>
+          </p>
+          <a href="https://github.com/SAE-Institute-Geneva/AerRacers/releases">
+            <p>Check out the release : github.com/SAE-Institute-Geneva/AerRacers/releases</p>
+          </a>
+          <div class="project-button-list">
+            <a class="project-button">G</a>
+            <a class="project-button">P</a>
+          </div>      
+        </div>
+        <div class="project-img">
+          <img class="project-img" src="resources\Game\AerRacers\aerracers_run.gif">
+        </div>
+      </div>
+      <div class="Minecraft-like gamepanel">
+        <h2>Minecraft-like</h2>
+        <p><b>Program made from June to July 2020</b></p>
+        <img class="gameimg" style="max-height: 800px;width:auto;" src="resources\Game\Minecraft-like\screengif.gif">
+        <div class="labelbar">
+          <img class="label" src="resources\Icone\Team.png">
+          <img class="label" src="resources\Icone\Prog.png">
+          <img class="label" src="resources\Icone\C++.png">
+        </div>
+        <h3>
+          <b>Our Minecraft-like is a project where you can move and construct inside an infinite generated world. </b>
+        </h3>
+        <p>
+          This project was created in 2 months as part of the module of computer graphics. <br />
+          I worked in a team with 7 of my classmates in C++ using the NekoEngine. <br />
+          The NekoEngine is a custom C++ Engine using SDL 2.0 and OpenGL ES 3.0. <br />
+          I enjoyed working on chunk generation and chunk rendering. <br />
+          More information about this project at <a
+            href="https://floreauluca.github.io/projects/minecraft-like">https://floreauluca.github.io/projects/minecraft-like</a>
+        </p>
+        <a href="https://github.com/LoshkinOleg/NekoEngine/releases">
+          <p>Check out the release : github.com/LoshkinOleg/NekoEngine/releases</p>
+        </a>
+      </div>
+      <!--<div class="UltraPingBong3D gamepanel">
         <h2>Ultra PingBong 3D</h2>
         <p><b>Game made on Nov 29, 2019</b></p>
         <img class="gameimg" src="resources\Game\UltraPingBong3D\title.gif">
@@ -150,32 +205,32 @@
         </p>
         <a href="https://github.com/FloreauLuca/PingBongBR/releases"><p>Check out the release : github.com/FloreauLuca/PingBongBR/releases</p></a>
     </div>-->
-    <div class="PenguinCollector gamepanel">
-      <h2>Penguin Collector</h2>
-      <p><b>Game made on April 2019</b></p>
-      <img class="gameimg" src="resources\Game\PenguinCollector\screengif2.gif">
-      <div class="labelbar">
-        <img class="label" src="resources\Icone\Solo.png">
-        <img class="label" src="resources\Icone\Design.png">
-        <img class="label" src="resources\Icone\Prog.png">
-        <img class="label" src="resources\Icone\Art.png">
-        <img class="label" src="resources\Icone\Unity.png">
-        <img class="label" src="resources\Icone\Android.png">
+      <div class="PenguinCollector gamepanel">
+        <h2>Penguin Collector</h2>
+        <p><b>Game made on April 2019</b></p>
+        <img class="gameimg" src="resources\Game\PenguinCollector\screengif2.gif">
+        <div class="labelbar">
+          <img class="label" src="resources\Icone\Solo.png">
+          <img class="label" src="resources\Icone\Design.png">
+          <img class="label" src="resources\Icone\Prog.png">
+          <img class="label" src="resources\Icone\Art.png">
+          <img class="label" src="resources\Icone\Unity.png">
+          <img class="label" src="resources\Icone\Android.png">
+        </div>
+        <h3>
+          <b>Penguin Collector is a shooter in which you must save the penguins from their predators. </b>
+        </h3>
+        <p>
+          This project was created to learn the procedural generation and implementation of artificial intelligence.
+          <br />
+          It is also available on mobile. I created of the graphics, gameplay, and game design. <br />
+          More information about this project at <a
+            href="https://floreauluca.github.io/projects/penguin-collector">https://floreauluca.github.io/projects/penguin-collector</a>
+        </p>
+        <iframe class="gamewidget" frameborder="0"
+          src="https://itch.io/embed/404584?border_width=0&bg_color=02fff0&link_color=2f7dff&border_color=c7fefd"></iframe>
       </div>
-      <h3>
-        <b>Penguin Collector is a shooter in which you must save the penguins from their predators. </b>
-      </h3>
-      <p>
-        This project was created to learn the procedural generation and implementation of artificial intelligence.
-        <br />
-        It is also available on mobile. I created of the graphics, gameplay, and game design. <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/penguin-collector">https://floreauluca.github.io/projects/penguin-collector</a>
-      </p>
-      <iframe class="gamewidget" frameborder="0"
-        src="https://itch.io/embed/404584?border_width=0&bg_color=02fff0&link_color=2f7dff&border_color=c7fefd"></iframe>
-    </div>
-    <!--<div class="OnTheDancefloor gamepanel">
+      <!--<div class="OnTheDancefloor gamepanel">
         <h2>On The Dancefloor</h2>
         <p><b>Game made on Dec 18, 2018</b></p>
         <img class="gameimg" src="resources\Game\OnTheDancefloor\title.png">
@@ -194,135 +249,136 @@
         </p>
         <iframe class="gamewidget" frameborder="0" src="https://itch.io/embed/346517?bg_color=000000&fg_color=ffffff&link_color=11ff49&border_color=00d900"></iframe>
     </div>-->
-    <div class="PotionCooking gamepanel">
-      <h2>Potion Cooking</h2>
-      <p><b>Game made on November 2018</b></p>
-      <img class="gameimg" src="resources\Game\PotionCooking\screengif.gif">
-      <div class="labelbar">
-        <img class="label" src="resources\Icone\Solo.png">
-        <img class="label" src="resources\Icone\Design.png">
-        <img class="label" src="resources\Icone\Prog.png">
-        <img class="label" src="resources\Icone\Art.png">
-        <img class="label" src="resources\Icone\Unity.png">
-        <img class="label" src="resources\Icone\Android.png">
+      <div class="PotionCooking gamepanel">
+        <h2>Potion Cooking</h2>
+        <p><b>Game made on November 2018</b></p>
+        <img class="gameimg" src="resources\Game\PotionCooking\screengif.gif">
+        <div class="labelbar">
+          <img class="label" src="resources\Icone\Solo.png">
+          <img class="label" src="resources\Icone\Design.png">
+          <img class="label" src="resources\Icone\Prog.png">
+          <img class="label" src="resources\Icone\Art.png">
+          <img class="label" src="resources\Icone\Unity.png">
+          <img class="label" src="resources\Icone\Android.png">
+        </div>
+        <h3>
+          <b>Potion Cooking is a point'n'click in which you play as a mage who must make and sell magic potions to his
+            customers. </b>
+        </h3>
+        <p>
+          This project was the first game created during my training at SAE. <br />
+          It allowed me to put into practice what I was learning and to create my first mobile game. <br />
+          Furthermore, I enjoyed creating the sprites with this minimalist style. <br />
+          More information about this project at <a
+            href="https://floreauluca.github.io/projects/potion-cooking">https://floreauluca.github.io/projects/potion-cooking</a>
+        </p>
+        <iframe class="gamewidget" frameborder="0"
+          src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00"><a
+            href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
       </div>
-      <h3>
-        <b>Potion Cooking is a point'n'click in which you play as a mage who must make and sell magic potions to his
-          customers. </b>
-      </h3>
-      <p>
-        This project was the first game created during my training at SAE. <br />
-        It allowed me to put into practice what I was learning and to create my first mobile game. <br />
-        Furthermore, I enjoyed creating the sprites with this minimalist style. <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/potion-cooking">https://floreauluca.github.io/projects/potion-cooking</a>
-      </p>
-      <iframe class="gamewidget" frameborder="0"
-        src="https://itch.io/embed/334586?border_width=5&amp;bg_color=8d642d&amp;fg_color=ffffff&amp;link_color=de8300&amp;border_color=5f3c00"><a
-          href="https://demonskiddy.itch.io/potion-cooking">Potion Cooking by DemonsKiddy</a></iframe>
-    </div>
-    <h1>
-      Personal Projects
-    </h1>
-    <div class="SpringMan gamepanel">
-      <h2>SpringMan</h2>
-      <p><b>Game made on August 2020</b></p>
-      <img class="gameimg" src="resources\Game\SpringMan\tutoGif.gif">
-      <div class="labelbar">
-        <img class="label" src="resources\Icone\Solo.png">
-        <img class="label" src="resources\Icone\Jam.png">
-        <img class="label" src="resources\Icone\Design.png">
-        <img class="label" src="resources\Icone\Prog.png">
-        <img class="label" src="resources\Icone\Unity.png">
-        <img class="label" src="resources\Icone\Android.png">
+      <h1>
+        Personal Projects
+      </h1>
+      <div class="SpringMan gamepanel">
+        <h2>SpringMan</h2>
+        <p><b>Game made on August 2020</b></p>
+        <img class="gameimg" src="resources\Game\SpringMan\tutoGif.gif">
+        <div class="labelbar">
+          <img class="label" src="resources\Icone\Solo.png">
+          <img class="label" src="resources\Icone\Jam.png">
+          <img class="label" src="resources\Icone\Design.png">
+          <img class="label" src="resources\Icone\Prog.png">
+          <img class="label" src="resources\Icone\Unity.png">
+          <img class="label" src="resources\Icone\Android.png">
+        </div>
+        <h3>
+          <b>SpringMan is a platformer where you control the bounce of a spring inside an underground level </b>
+        </h3>
+        <p>
+          This project was created in 48 hours during the Miz Jam 1. The goal was to create a game using specific art
+          assets. The game is available on mobile. <br />
+          More information about this project at <a
+            href="https://floreauluca.github.io/projects/springman">https://floreauluca.github.io/projects/springman</a>
+        </p>
+        <iframe class="gamewidget" frameborder="0"
+          src="https://itch.io/embed/734163?bg_color=4a2e3b&amp;fg_color=ffffff&amp;link_color=e0403f&amp;border_color=410033"><a
+            href="https://demonskiddy.itch.io/springman">SpringMan by DemonsKiddy</a></iframe>
       </div>
-      <h3>
-        <b>SpringMan is a platformer where you control the bounce of a spring inside an underground level </b>
-      </h3>
-      <p>
-        This project was created in 48 hours during the Miz Jam 1. The goal was to create a game using specific art
-        assets. The game is available on mobile. <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/springman">https://floreauluca.github.io/projects/springman</a>
-      </p>
-      <iframe class="gamewidget" frameborder="0"
-        src="https://itch.io/embed/734163?bg_color=4a2e3b&amp;fg_color=ffffff&amp;link_color=e0403f&amp;border_color=410033"><a
-          href="https://demonskiddy.itch.io/springman">SpringMan by DemonsKiddy</a></iframe>
-    </div>
-    <div class="TheUnstoppableMrStarr gamepanel">
-      <h2>The Unstoppable Mr.Starr</h2>
-      <p><b>Game made on June 2020</b></p>
-      <img class="gameimg" src="resources\Game\TheUnstoppableMrStarr\gameplay2.gif">
-      <div class="labelbar">
-        <img class="label" src="resources\Icone\Team.png">
-        <img class="label" src="resources\Icone\Jam.png">
-        <img class="label" src="resources\Icone\Prog.png">
-        <img class="label" src="resources\Icone\Unity.png">
+      <div class="TheUnstoppableMrStarr gamepanel">
+        <h2>The Unstoppable Mr.Starr</h2>
+        <p><b>Game made on June 2020</b></p>
+        <img class="gameimg" src="resources\Game\TheUnstoppableMrStarr\gameplay2.gif">
+        <div class="labelbar">
+          <img class="label" src="resources\Icone\Team.png">
+          <img class="label" src="resources\Icone\Jam.png">
+          <img class="label" src="resources\Icone\Prog.png">
+          <img class="label" src="resources\Icone\Unity.png">
+        </div>
+        <h3>
+          <b>
+            The Unstoppable Mr.Starr is a rodeo game where you need to destroy a maximum of cowboys. <br />
+          </b>
+        </h3>
+        <p>
+          This project was created in 48 hours during the SAE Spring-Jam. <br />
+          It was really fun to work with beautiful 3D assets. <br />
+          More information about this project at <a
+            href="https://floreauluca.github.io/projects/the-unstoppable-mr-starr">https://floreauluca.github.io/projects/the-unstoppable-mr-starr</a>
+        </p>
+        <iframe class="gamewidget" frameborder="0"
+          src="https://itch.io/embed/677444?bg_color=0f5525&amp;fg_color=e3cc97&amp;link_color=c96038&amp;border_color=213921"><a
+            href="https://demonskiddy.itch.io/the-unstoppable-mrstarr">The Unstoppable Mr.Starr by
+            DemonsKiddy</a></iframe>
       </div>
-      <h3>
-        <b>
-          The Unstoppable Mr.Starr is a rodeo game where you need to destroy a maximum of cowboys. <br />
-        </b>
-      </h3>
-      <p>
-        This project was created in 48 hours during the SAE Spring-Jam. <br />
-        It was really fun to work with beautiful 3D assets. <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/the-unstoppable-mr-starr">https://floreauluca.github.io/projects/the-unstoppable-mr-starr</a>
-      </p>
-      <iframe class="gamewidget" frameborder="0"
-        src="https://itch.io/embed/677444?bg_color=0f5525&amp;fg_color=e3cc97&amp;link_color=c96038&amp;border_color=213921"><a
-          href="https://demonskiddy.itch.io/the-unstoppable-mrstarr">The Unstoppable Mr.Starr by
-          DemonsKiddy</a></iframe>
-    </div>
-    <div class="LeechWeapon gamepanel">
-      <h2>LeechWeapon</h2>
-      <p><b>Game made on April 2019</b></p>
-      <img class="gameimg" src="resources\Game\LeechWeapon\screengif1.gif">
-      <div class="labelbar">
-        <img class="label" src="resources\Icone\Solo.png">
-        <img class="label" src="resources\Icone\Jam.png">
-        <img class="label" src="resources\Icone\Design.png">
-        <img class="label" src="resources\Icone\Prog.png">
-        <img class="label" src="resources\Icone\Art.png">
-        <img class="label" src="resources\Icone\Unity.png">
-      </div>
+      <div class="LeechWeapon gamepanel">
+        <h2>LeechWeapon</h2>
+        <p><b>Game made on April 2019</b></p>
+        <img class="gameimg" src="resources\Game\LeechWeapon\screengif1.gif">
+        <div class="labelbar">
+          <img class="label" src="resources\Icone\Solo.png">
+          <img class="label" src="resources\Icone\Jam.png">
+          <img class="label" src="resources\Icone\Design.png">
+          <img class="label" src="resources\Icone\Prog.png">
+          <img class="label" src="resources\Icone\Art.png">
+          <img class="label" src="resources\Icone\Unity.png">
+        </div>
 
-      <h3>
-        <b>LeechWeapon is an action shooter in 3D where you have to use your health to kill zombies. </b>
-      </h3>
-      <p>
-        This project was created in 48 hours during the Ludum Dare 44. I learn a lot about programming and graphism.
-        <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/leech-weapon">https://floreauluca.github.io/projects/leech-weapon</a>
-      </p>
-      <iframe class="gamewidget" frameborder="0"
-        src="https://itch.io/embed/412405?bg_color=494949&amp;fg_color=ffffff&amp;link_color=00d41d&amp;border_color=7f7373"><a
-          href="https://demonskiddy.itch.io/leech-weapon">LeechWeapon by DemonsKiddy</a></iframe>
-    </div>
-    <div class="FarWestDefender gamepanel">
-      <h2>Far West Defender</h2>
-      <p><b>Game made on November 2018</b></p>
-      <img class="gameimg" src="resources\Game\FarWestDefender\screen.jpg">
-      <div class="labelbar">
-        <img class="label" src="resources\Icone\Solo.png">
-        <img class="label" src="resources\Icone\Design.png">
-        <img class="label" src="resources\Icone\Prog.png">
-        <img class="label" src="resources\Icone\Art.png">
+        <h3>
+          <b>LeechWeapon is an action shooter in 3D where you have to use your health to kill zombies. </b>
+        </h3>
+        <p>
+          This project was created in 48 hours during the Ludum Dare 44. I learn a lot about programming and graphism.
+          <br />
+          More information about this project at <a
+            href="https://floreauluca.github.io/projects/leech-weapon">https://floreauluca.github.io/projects/leech-weapon</a>
+        </p>
+        <iframe class="gamewidget" frameborder="0"
+          src="https://itch.io/embed/412405?bg_color=494949&amp;fg_color=ffffff&amp;link_color=00d41d&amp;border_color=7f7373"><a
+            href="https://demonskiddy.itch.io/leech-weapon">LeechWeapon by DemonsKiddy</a></iframe>
       </div>
-      <h3>
-        <b>Western Defender is a tower defense in which you have to eliminate the Indians who come to steal the gold
-          from the train. </b>
-      </h3>
-      <p>
-        This project was created during an internship at Isart Digital. I learned how to use Illustrator and Construct
-        2. As I didn't get the game files, I can't fix some graphic bugs. <br />
-        More information about this project at <a
-          href="https://floreauluca.github.io/projects/far-west-defender">https://floreauluca.github.io/projects/far-west-defender</a>
-      </p>
-      <iframe class="gamewidget" frameborder="0"
-        src="https://itch.io/embed/74972?linkback=true&bg_color=ffca2f&fg_color=222222&link_color=9c5d00&border_color=d28100"></iframe>
+      <div class="FarWestDefender gamepanel">
+        <h2>Far West Defender</h2>
+        <p><b>Game made on November 2018</b></p>
+        <img class="gameimg" src="resources\Game\FarWestDefender\screen.jpg">
+        <div class="labelbar">
+          <img class="label" src="resources\Icone\Solo.png">
+          <img class="label" src="resources\Icone\Design.png">
+          <img class="label" src="resources\Icone\Prog.png">
+          <img class="label" src="resources\Icone\Art.png">
+        </div>
+        <h3>
+          <b>Western Defender is a tower defense in which you have to eliminate the Indians who come to steal the gold
+            from the train. </b>
+        </h3>
+        <p>
+          This project was created during an internship at Isart Digital. I learned how to use Illustrator and Construct
+          2. As I didn't get the game files, I can't fix some graphic bugs. <br />
+          More information about this project at <a
+            href="https://floreauluca.github.io/projects/far-west-defender">https://floreauluca.github.io/projects/far-west-defender</a>
+        </p>
+        <iframe class="gamewidget" frameborder="0"
+          src="https://itch.io/embed/74972?linkback=true&bg_color=ffca2f&fg_color=222222&link_color=9c5d00&border_color=d28100"></iframe>
+      </div>
     </div>
   </div>
 
@@ -410,7 +466,7 @@
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
   <br>
-  
+
   <div class="navbar">
     <!-- <a href="index.html">Menu</a> -->
     <a href="blog_menu">Blog</a>

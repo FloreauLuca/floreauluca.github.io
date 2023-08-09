@@ -1,27 +1,30 @@
 /*
-Title
-- H1
-- H2
-
-- titleImg
-
+#title .title-panel
+  h1
+  h2
+  section
+    title-img
 */
 
-.title {
-  padding: 80px;
+#title
+{
   text-align: center;
+}
+
+.title-panel {
+  padding: 80px;
   background: radial-gradient(rgba(0, 62, 94, 1) 0%, var(--background-color) 75%);
 }
 
-.title h1 {
+.title-panel h1 {
   font-size: 80px;
 }
 
-.title h2 {
+.title-panel h2 {
   font-size: 40px;
 }
 
-.title img {
+.title-img {
   height: 400px;
   padding: 20px;
   margin: auto;

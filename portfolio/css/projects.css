@@ -24,7 +24,7 @@
   text-align: left;
 }
 
-.projects-list
+.projects-main-list
 {
   display: flex;
   flex-direction: column;
@@ -129,4 +129,12 @@
 
 .project-img img{
   height: 100%;
+}
+
+
+.projects-secondary-list
+{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap : 100px;
 }

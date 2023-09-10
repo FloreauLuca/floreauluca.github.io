@@ -1,5 +1,6 @@
 /* Style the top navigation bar */
 .navbar {
+  display: flex;
   overflow: hidden; /* Hide overflow */
   background: var(--secondary-color);
   background: linear-gradient(180deg, var(--secondary-color) 75%, var(--background-clear-color) 100%);
@@ -7,6 +8,9 @@
   width: 100%;
   top: 0;
   left: 0;
+  height:75px;
+  z-index: 100;
+  font-size:20px;
 }
 
 /* Style the navigation bar links */
@@ -17,6 +21,7 @@
   text-align: center; /* Center the text */
   padding: 10px 20px 20px; /* Add some padding */
   text-decoration: none; /* Remove underline */
+  height:100%;
 }
 
 /* Right-aligned link */

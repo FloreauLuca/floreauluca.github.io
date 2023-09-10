@@ -7,14 +7,16 @@
 */
 
 .aboutme-panel {
-  margin: 50px;
+  margin-top: 150px;
+  margin-bottom: 150px;
   padding: 50px;
   background: var(--primary-color);
   border-radius: 100px;
   text-align: left;
   display: flex;
   flex-direction: row;
-  gap : 50px
+  gap : 50px;
+  height: 400px;
 }
 
 .aboutme-content {
@@ -39,9 +41,16 @@
 }
 
 .aboutme-img img{
-  width: 100%;
+  height: 100%;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 500px;
+}
+
+.skills{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
 }

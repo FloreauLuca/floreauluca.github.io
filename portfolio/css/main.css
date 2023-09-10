@@ -4,6 +4,8 @@
   --background-clear-color: rgba(1, 8, 30, 0);
   --primary-color: rgba(0, 31, 161, 1);
   --secondary-color: rgba(2, 17, 64, 1);
+  --primary-color-alpha: rgba(0, 31, 161, 0.65);
+  --secondary-color-alpha: rgba(2, 17, 64, 0.65);
   --accent-color: rgba(0, 169, 255, 1);
 }
 

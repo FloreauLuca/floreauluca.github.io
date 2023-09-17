@@ -48,9 +48,3 @@
   align-items: center;
   border-radius: 500px;
 }
-
-.skills{
-  display: flex;
-  flex-direction:row;
-  justify-content: space-around;
-}

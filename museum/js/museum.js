@@ -8,6 +8,7 @@ import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.j
 import Light from './engine/light.js';
 // import WorldGeneration from './world-generation.js';
 import SceneRenderer from './engine/scene-renderer.js';
+import CharacterController from './character-controller.js';
 // import * as Water from './engine/water.js';
 
 function drawCommonGUI(gui, controls) {
@@ -22,8 +23,24 @@ function drawCommonGUI(gui, controls) {
     quaternionfolder.add(controls.object.quaternion, 'z');
 }
 
+let stats;
+let character;
+
+let controls;
+
+let camera;
+let sceneRenderer;
+let renderScene;
+let prevTime;
+
 export default async function main() {
-    const stats = new Stats();
+    init();
+    update();
+}
+
+function init()
+{
+    stats = new Stats();
     const canvas = document.querySelector('#museum');
     const container = document.querySelector('#container');
     container.appendChild(stats.dom);
@@ -35,43 +52,64 @@ export default async function main() {
     const aspect = 2;  // the canvas default
     const near = 0.1;
     const far = 100000;
-    const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+    camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.set(0, 64, 0);
 
-    const controls = new OrbitControls(camera, canvas);
-    controls.target.set(0, 0, 0);
-    drawCommonGUI(gui, controls);
+    //drawCommonGUI(gui, controls);
+    
+    sceneRenderer = new SceneRenderer(camera);
+    renderScene = sceneRenderer.requestRenderIfNotRequested(sceneRenderer);
 
-    const sceneRenderer = new SceneRenderer(camera);
-    const renderScene = sceneRenderer.requestRenderIfNotRequested(sceneRenderer);
-
+    character = new CharacterController(camera);
+    character.init();
+    controls = character.controls;
+    console.log(character);
+    console.log(controls);
+    sceneRenderer.addToScene(controls.getObject());
     //controls.addEventListener('change', renderScene);
     window.addEventListener('resize', renderScene);
-
-    function update() {
-        if (sceneRenderer.resizeRendererToDisplaySize()) {
-            const canvas = sceneRenderer.renderer.domElement;
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            camera.updateProjectionMatrix();
-        }
-        controls.update();
-        stats.update();
-        renderScene();
-        requestAnimationFrame(update);
-    }
-
-    update();
+    prevTime = performance.now();
 
     const light = new Light(gui, renderScene);
     sceneRenderer.addToScene(light.ambientLight);
     sceneRenderer.addToScene(light.directionalLight);
     sceneRenderer.addToScene(light.directionalLight.target);
     
-    const geometry = new THREE.PlaneGeometry( 10, 10 );
-    const material = new THREE.MeshBasicMaterial( {color: 0xdddddd, side: THREE.DoubleSide} );
+    const geometry = new THREE.PlaneGeometry( 2000, 2000, 100, 100 );
+    geometry.rotateX( - Math.PI / 2 );
+    // const material = new THREE.MeshBasicMaterial( {color: 0xdddddd, side: THREE.DoubleSide} );
+    const material = create_texture();
     const plane = new THREE.Mesh( geometry, material );
-    plane.rotation.set(Math.PI / 2, 0, 0);
     sceneRenderer.addToScene( plane );
 
-    console.log("generate_terrain");
+}
+
+function update() {
+    const time = performance.now();
+    const deltaTime =  ( time - prevTime ) / 1000;
+    if (sceneRenderer.resizeRendererToDisplaySize()) {
+        const canvas = sceneRenderer.renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
+    character.update(deltaTime, sceneRenderer.scene);
+    // controls.update();
+    stats.update();
+    renderScene();
+    requestAnimationFrame(update);
+    prevTime = time;
+}
+
+function create_texture() {
+    const loader = new THREE.TextureLoader();
+    const texture = loader.load('./assets/texture/UV-Block.png');
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.repeat.set( 20, 20 );
+    const material = new THREE.MeshLambertMaterial({
+        map: texture,
+        side: THREE.FrontSide
+    });
+
+    return material;
 }

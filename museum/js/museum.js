@@ -53,7 +53,6 @@ function init()
     const near = 0.1;
     const far = 100000;
     camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    camera.position.set(0, 64, 0);
 
     //drawCommonGUI(gui, controls);
     
@@ -75,13 +74,7 @@ function init()
     sceneRenderer.addToScene(light.directionalLight);
     sceneRenderer.addToScene(light.directionalLight.target);
     
-    const geometry = new THREE.PlaneGeometry( 2000, 2000, 100, 100 );
-    geometry.rotateX( - Math.PI / 2 );
-    // const material = new THREE.MeshBasicMaterial( {color: 0xdddddd, side: THREE.DoubleSide} );
-    const material = create_texture();
-    const plane = new THREE.Mesh( geometry, material );
-    sceneRenderer.addToScene( plane );
-
+    buildMuseum();
 }
 
 function update() {
@@ -100,16 +93,41 @@ function update() {
     prevTime = time;
 }
 
-function create_texture() {
+function createTexture(xScale, yScale) {
     const loader = new THREE.TextureLoader();
     const texture = loader.load('./assets/texture/UV-Block.png');
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set( 20, 20 );
+    texture.repeat.set( xScale, yScale );
     const material = new THREE.MeshLambertMaterial({
         map: texture,
         side: THREE.FrontSide
     });
 
     return material;
+}
+
+function buildMuseum()
+{
+    const geometry = new THREE.PlaneGeometry( 2000, 2000, 100, 100 );
+    geometry.rotateX( - Math.PI / 2 );
+    const material = createTexture(2000, 2000);
+    const plane = new THREE.Mesh( geometry, material );
+    sceneRenderer.addToScene( plane );
+    
+    const wallGeometry = new THREE.BoxGeometry( 0.25, 10, 50);
+    const wallMat = createTexture(50, 10);
+    const wall1 = new THREE.Mesh( wallGeometry, wallMat );
+    wall1.position.set(10, 5, 0);
+    sceneRenderer.addToScene( wall1 );
+    
+    const wall2= new THREE.Mesh( wallGeometry, wallMat );
+    wall2.position.set(-10, 5, 0);
+    sceneRenderer.addToScene( wall2 );
+    
+    const cubeGeometry = new THREE.BoxGeometry( 1, 3, 1 );
+    const cube = new THREE.Mesh( cubeGeometry, material );
+    cube.position.set(0, 1.5, 10);
+    sceneRenderer.addToScene( cube );
+
 }

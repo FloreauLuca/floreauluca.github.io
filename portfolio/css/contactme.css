@@ -1,0 +1,108 @@
+/*
+#contactme .contactme
+  .contactme-panel
+      h2
+      .contact-list
+        .contact
+          img
+          p
+  .twitter-panel
+*/
+
+#contactme {
+  padding-top: 75px;
+}
+
+.contactme {
+  margin: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contactme-panel {
+  background: var(--primary-color);
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 50px;
+}
+
+.twitter-panel {
+  background: var(--secondary-color);
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 50px;
+}
+
+.contactme-panel h2 {
+  text-align: center;
+}
+
+.twitter-panel h2 {
+  text-align: center;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.contact {
+  background: var(--secondary-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  padding-left: 20px;
+  gap: 5%;
+  align-items: center;
+  text-decoration: none;
+  justify-content: left;
+}
+
+.contact svg {
+  display: block;
+  width: 75px;
+}
+
+.contact p {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  color: var(--text-color);
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  overflow-wrap: normal;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1100px) {
+  .contactme {
+    flex-direction: column;
+    gap : 10px;
+  }
+
+  .contactme-panel {
+    width: 100%;
+  }
+  
+  .twitter-panel {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact p {
+    font-size: 4vw;
+  }
+}

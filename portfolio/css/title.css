@@ -28,4 +28,26 @@
   height: 400px;
   padding: 20px;
   margin: auto;
+  display: none;
+}
+
+#title h3 {
+  font-size: 30px;
+}
+
+#title a {
+  text-decoration: none; /* Remove underline */
+}
+
+@media screen and (max-width: 725px) {
+  .title-panel {
+    padding: 10px;
+  }
+
+  .title-img {
+    height: 50vw;
+    padding: 20px;
+    margin: auto;
+    display: none;
+  }  
 }

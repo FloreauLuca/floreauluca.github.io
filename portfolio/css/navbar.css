@@ -34,3 +34,9 @@
   background-color: var(--primary-color); /* Grey background color */
   background: linear-gradient(180deg, var(--primary-color) 75%, var(--background-clear-color) 100%);
 }
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    font-size:2vw;
+  }
+}

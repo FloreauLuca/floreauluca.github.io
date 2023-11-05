@@ -61,33 +61,3 @@
     padding: 10px; /* Some padding */
     float: left; /* Make sure that the links stay side-by-side */
 }
-
-/* game image*/
-.contactbar {
-    width: 100%;
-}
-
-/* game image*/
-.contact {
-    display: flex;
-    background-color: #19D1FF;
-    width: 100%;
-}
-
-/* game image*/
-.contactimg {
-    display: block;
-    height: 70px; /* Set the width of the sidebar */
-    padding: 10px 15px; /* Some padding */
-    float: left; /* Make sure that the links stay side-by-side */
-}
-
-/* game image*/
-.contacttxt {
-    display: inline-block;
-    overflow-wrap: normal;
-    color: black;
-    font-weight: bold;
-    padding-left: 15px; /* Some padding */
-    vertical-align: middle;
-}

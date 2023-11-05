@@ -1,6 +1,132 @@
+/*
+#skills .skills
+  .tech-skills-panel
+      h2
+      .tech-skills-list
+        .tech-skill
+          img
+          p
+  .other-skills-panel
+      h2
+      .other-skills-list
+        .other-skill
+          p
+*/
 
-.skills{
+#skills {
+  padding-top: 75px;
+}
+
+.skills {
   display: flex;
-  flex-direction:row;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5%;
+  min-height: 500px;
+}
+
+.tech-skills-panel {
+  background: var(--secondary-color);
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 25px;
+}
+
+.tech-skills-panel h2 {
+  text-align: center;
+}
+
+.tech-skills-list {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap : wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+
+.tech-skill {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech-skill p {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  color: var(--text-color);
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  overflow-wrap: normal;
+  font-weight: bold;
+}
+
+.tech-skill svg {
+  width: 75px;
+}
+
+.other-skills-panel {
+  background: var(--primary-color);
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 25px;
+}
+
+.other-skills-panel h2 {
+  text-align: center;
+}
+
+.other-skills-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: center;
+  flex: 1 1 auto;
+}
+
+.other-skill p {
+  vertical-align: middle;
+  line-height: normal;
+  color: var(--text-color);
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  overflow-wrap: normal;
+  font-weight: bold;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.other-skill svg {
+  width: 50px;
+}
+
+@media screen and (max-width: 725px) {
+  .skills {
+    flex-direction: column;
+    gap : 10px;
+  }
+
+  .tech-skills-panel {
+    width: 100%;
+  }
+  
+  .other-skills-panel {
+    width: 100%;
+  }
 }

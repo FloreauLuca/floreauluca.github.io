@@ -1,13 +1,12 @@
 // Automatic Slideshow - change image every 3 seconds
 var myIndex = 0;
-window.onload = () =>
-{
-carousel();
+window.onload = () => {
+    carousel();
 }
 
 function carousel() {
     var i;
-    var x = document.getElementsByClassName("titleImg");
+    var x = document.getElementsByClassName("title-img");
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }

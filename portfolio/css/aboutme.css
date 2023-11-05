@@ -1,14 +1,18 @@
 /*
-#aboutme .aboutme-panel 
-  .aboutme-text
-    h2
-    p
-  .aboutme-img
+#aboutme 
+  .aboutme-panel
+    .aboutme-text
+      h2
+      p
+    .aboutme-img
 */
 
+#aboutme
+{
+  padding-top : 75px;
+}
+
 .aboutme-panel {
-  margin-top: 150px;
-  margin-bottom: 150px;
   padding: 50px;
   background: var(--primary-color);
   border-radius: 100px;
@@ -16,7 +20,7 @@
   display: flex;
   flex-direction: row;
   gap : 50px;
-  height: 400px;
+  height: 100%;
 }
 
 .aboutme-content {
@@ -34,6 +38,7 @@
 
 .aboutme-img {
   width: 40%;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,4 +52,12 @@
   justify-content: center;
   align-items: center;
   border-radius: 500px;
+}
+
+@media screen and (max-width: 725px) {
+  .aboutme-panel {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
 }

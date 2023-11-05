@@ -1,22 +1,43 @@
 /*
 #projects
   h1
-  .projects-list
-    #AerRacers .project-panel
+  .projects-main-list
+    #AerRacers .project-panel-right/left
       .project-text
-        h2
-        .project-smal-text
-        .project-big-text
-      .project-button-list
-        .project-button
+        .project-header
+          .project-header-text
+            h2
+            p
+          .project-tags-list
+            a .project-tag
+            a .project-tag
+        h3 .project-small-text
+        p .project-big-text
+        .project-button-list
+          .project-button
       .project-img
-    #Minecraft
-      ...
+        img
+  .projects-secondary-list
+    #Dreamness .project-panel-right/left
+      .project-text
+        .project-header
+          .project-header-text
+            h2
+            p
+          .project-tags-list
+            a .project-tag
+            a .project-tag
+        h3 .project-small-text
+        p .project-big-text
+        .project-button-list
+          .project-button
+      .project-img
+        img
 */
 
 #projects
 {
-  margin-top : 250px;
+  padding-top : 75px;
 }
 
 #projects h1
@@ -39,7 +60,7 @@
   flex-direction: row;
   height: 350px;
   direction: ltr;
-  justify-content: space-between;;
+  justify-content: space-between;
 }
 
 .project-panel-left
@@ -50,7 +71,7 @@
   flex-direction: row;
   height: 350px;
   direction: rtl;
-  justify-content: space-between;;
+  justify-content: left;
 }
 
 .project-text
@@ -58,8 +79,10 @@
   direction: ltr;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: left;
   padding : 50px;
+  min-width: 600px;
+  width: 100%;
 }
 
 .project-header
@@ -148,13 +171,15 @@
 .projects-secondary-list .project-panel-right {
   float:left;
   position:relative;
-  width:30%;
+  max-width:30%;
+  min-width:450px;
 }
 
 .projects-secondary-list .project-panel-left {
   float:left;
   position:relative;
   width:30%;
+  min-width:450px;
 }
 
 .projects-secondary-list .project-panel-right .project-text {
@@ -188,4 +213,100 @@
 .projects-secondary-list .project-tag {
   width: 70px;
   font-size: 20px;
+}
+
+.projects-secondary-list .project-text {
+  min-width:450px;
+}
+
+@media screen and (max-width: 1350px) {
+  .projects-main-list
+  {
+    margin-top : 50px;
+    display: flex;
+    flex-direction: column;
+    gap : 50px;
+  }
+
+  .project-panel-right {
+    float:left;
+    position:relative;
+    width:100%;
+    justify-content: end;
+  }
+  
+  .project-panel-left {
+    float:left;
+    position:relative;
+    width:100%;
+    justify-content: end;
+  }
+
+  .project-panel-right .project-img
+  {
+    direction: rtl;
+  }
+  
+  .project-panel-left .project-img
+  {
+    direction: ltr;
+  }
+
+  .project-panel-right .project-text {
+    display: block;
+    z-index: 5;
+    position: relative;
+    background-color: var(--primary-color-alpha);
+    border-radius: 50px;
+  }
+  
+  .project-panel-left .project-text {
+    display: block;
+    z-index: 5;
+    position: relative;
+    background-color: var(--secondary-color-alpha);
+    border-radius: 50px;
+  }
+  
+  .project-img {
+    position:absolute;
+    z-index: 3;
+  }
+  
+  .projects-secondary-list .project-panel-left {
+    min-width: 450px;
+    justify-content: space-between;
+  }
+
+  .projects-secondary-list .project-panel-right {
+    min-width: 450px;
+    justify-content: space-between;
+  }
+
+  .project-text
+  {
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding : 50px;
+    min-width: 250px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .project-panel-left {
+    min-width: 450px;
+    justify-content: space-between;
+  }
+
+  .project-panel-right {
+    min-width: 450px;
+    justify-content: space-between;
+  }
+
+  .project-img {
+    width:100%;
+  }
 }

@@ -11,6 +11,7 @@
 
 #contactme {
   padding-top: 75px;
+  padding-bottom: 50px;
 }
 
 .contactme {
@@ -72,6 +73,7 @@
 .contact svg {
   display: block;
   width: 75px;
+  fill: var(--text-color); 
 }
 
 .contact p {

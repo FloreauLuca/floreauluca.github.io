@@ -31,6 +31,8 @@
         p .project-big-text
         .project-button-list
           .project-button
+            svg
+          .project-button
       .project-img
         img
 */
@@ -79,7 +81,7 @@
   direction: ltr;
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  justify-content: space-between;
   padding : 50px;
   min-width: 600px;
   width: 100%;
@@ -144,10 +146,25 @@
 
 .project-button-list
 {
+  display: flex;
+  flex-direction: row;
+  gap : 25px;
 }
 
 .project-button
 {
+  display: block;
+  height: 50px;
+  fill: var(--text-color); 
+}
+
+.project-button svg {
+  display: block;
+  height: 50px;
+}
+
+.project-button :hover {
+  fill: var(--accent-color); 
 }
 
 .project-img {
@@ -183,7 +200,6 @@
 }
 
 .projects-secondary-list .project-panel-right .project-text {
-  display: block;
   z-index: 5;
   position: relative;
   background-color: var(--primary-color-alpha);
@@ -192,7 +208,6 @@
 }
 
 .projects-secondary-list .project-panel-left .project-text {
-  display: block;
   z-index: 5;
   position: relative;
   background-color: var(--secondary-color-alpha);
@@ -217,6 +232,10 @@
 
 .projects-secondary-list .project-text {
   min-width:450px;
+}
+
+.projects-secondary-list .project-title {
+  font-size: 25px;
 }
 
 @media screen and (max-width: 1350px) {

@@ -12,20 +12,20 @@
 }
 
 .title-panel {
-  padding: 80px;
+  padding: 50px;
   background: radial-gradient(rgba(0, 62, 94, 1) 0%, var(--background-color) 75%);
 }
 
 .title-panel h1 {
-  font-size: 80px;
+  font-size: 50px;
 }
 
 .title-panel h2 {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .title-img {
-  height: 400px;
+  height: 500px;
   padding: 20px;
   margin: auto;
   display: none;

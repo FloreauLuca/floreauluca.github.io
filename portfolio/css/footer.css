@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary-color);
+  margin:-50px;
+  margin-top:0px;
+  padding : 10px;
+  font-weight: bold;
+  justify-content:space-between;
+  align-items: center;
+  vertical-align: center;
+}

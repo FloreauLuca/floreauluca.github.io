@@ -73,6 +73,7 @@
 
 .tech-skill svg {
   width: 75px;
+  fill: var(--text-color); 
 }
 
 .other-skills-panel {

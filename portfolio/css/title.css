@@ -14,6 +14,7 @@
 .title-panel {
   padding: 50px;
   background: radial-gradient(rgba(0, 62, 94, 1) 0%, var(--background-color) 75%);
+  align-content: center;
 }
 
 .title-panel h1 {
@@ -31,15 +32,15 @@
   display: none;
 }
 
-#title h3 {
+.title-panel h3 {
   font-size: 30px;
 }
 
-#title a {
+.title-panel a {
   text-decoration: none; /* Remove underline */
 }
 
-@media screen and (max-width: 725px) {
+@media screen and (max-width: 925px) {
   .title-panel {
     padding: 10px;
   }
@@ -50,4 +51,22 @@
     margin: auto;
     display: none;
   }  
+}
+
+/* Mobile */
+@media screen and (max-width: 500px) {
+  .title-panel h1 {
+    font-size: 40px;
+  }
+  .title-panel h2 {
+    font-size: 25px;
+  }
+  .title-img {
+    padding: 0px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }  
+  .title-panel h3 {
+    font-size: 20px;
+  }
 }

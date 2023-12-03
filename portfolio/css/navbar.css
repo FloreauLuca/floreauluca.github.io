@@ -40,3 +40,18 @@
     font-size:2vw;
   }
 }
+
+/* Mobile */
+@media screen and (max-width: 500px) {
+  .navbar {
+    justify-content: space-between;
+    font-size:10px;
+    height: 40px;
+    width: 100vw;
+  }
+  .navbar a {
+    display:block;
+    width: auto;
+    padding: 10px 5px 5px; /* Add some padding */
+  }
+}

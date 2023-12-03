@@ -10,3 +10,10 @@
   align-items: center;
   vertical-align: center;
 }
+
+/* Mobile */
+@media screen and (max-width: 500px) {
+  .footer {
+    margin:-10px;
+  }
+}
